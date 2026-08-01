@@ -81,8 +81,8 @@ cleaner	cleaner	Прибиральник
 cleave	Cleave	Розсічення
 cntnuemove	keep moving	Продовжуй рух
 coinyou	coin on you	Монета на тобі
-colorswitch	color switch	Зміна кольору
-colorswitchsoon	color switch soon	Скоро зміна кольору
+colorchange	color switch	Зміна кольору
+colorchangesoon	color switch soon	Скоро зміна кольору
 com_go	GO GO GO	Вперед, вперед, вперед!
 crowdcontrol	crowd control	Контроль
 crusher	Crusher	Трощитель
@@ -255,7 +255,7 @@ movetopool	Move to Pool	Іди до калюжі
 movetostatue	move to statue	Іди до статуї
 movetotank	move to tank	Іди до танка
 movetotendrils	move to tendrils	Іди до щупалець
-movetotrap	move to trap	Іди до пастки
+runtotrap	move to trap	Іди до пастки
 movetoweb	move to web	Іди до павутиння
 movetoyelloworb	move to yellow orb	Іди до жовтої сфери
 mpurple	move to purple	Іди на фіолетовий
