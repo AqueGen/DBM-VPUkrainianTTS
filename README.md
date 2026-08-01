@@ -1,6 +1,6 @@
-# DBM Voice Pack: Ukrainian Female Matilda TTS
+# DBM Ukrainian Voice Pack
 
-Ukrainian female voice pack for [Deadly Boss Mods](https://github.com/DeadlyBossMods/DBM-Retail), fully generated with ElevenLabs TTS (voice "Matilda", model `eleven_multilingual_v2` / `eleven_turbo_v2_5`).
+Ukrainian voice for [Deadly Boss Mods](https://github.com/DeadlyBossMods/DBM-Retail). Female voice, fully generated with ElevenLabs TTS (models `eleven_multilingual_v2` / `eleven_turbo_v2_5`).
 
 - 440 sounds: 391 alert phrases + 11 countdown + 38 Grimrail Depot (Thogar) train callouts
 - Voice pack version 19 (current DBM maximum), Interface 12.0.7 / 12.1.0
@@ -8,7 +8,7 @@ Ukrainian female voice pack for [Deadly Boss Mods](https://github.com/DeadlyBoss
 
 ## Install
 
-Unpack `DBM-VPUkrainianTTS` into `Interface/AddOns`, then in game: `/dbm` -> Options -> Spoken Alerts -> select **Ukrainian Female Matilda TTS**.
+Unpack `DBM-VPUkrainianTTS` into `Interface/AddOns`, then in game: `/dbm` -> Options -> Spoken Alerts -> select **Ukrainian Female TTS**.
 
 ## How the voices were generated
 
@@ -44,5 +44,5 @@ DBM builds sound paths as `Interface/AddOns/DBM-VP<X-DBM-Voice-ShortName>/<file>
 
 ## Credits
 
-- Voice: ElevenLabs "Matilda", generated under the ElevenLabs free tier.
+- Voice generated with ElevenLabs (voice "Matilda") under the free tier.
 - Phrase list: Deadly Boss Mods project.
