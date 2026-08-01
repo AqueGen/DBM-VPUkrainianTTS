@@ -32,6 +32,10 @@ Two modes exist because `eleven_multilingual_v2` auto-detects language and misre
 2. Add rows to `generation/ua_table.tsv` with Ukrainian translations.
 3. Run the script (it only generates missing files), copy new oggs into the addon, bump `X-DBM-Voice-Version` in the TOC.
 
+### TOC constraint
+
+DBM builds sound paths as `Interface/AddOns/DBM-VP<X-DBM-Voice-ShortName>/<file>.ogg`, so the addon folder name MUST be `DBM-VP` + ShortName exactly (here: ShortName `UkrainianTTS`, folder `DBM-VPUkrainianTTS`). Mismatch = pack listed but silent.
+
 ### Translation conventions
 
 - Short imperative raid callouts, no politeness.

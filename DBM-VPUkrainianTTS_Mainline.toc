@@ -13,6 +13,6 @@
 ## X-DBM-Voice: 1
 ## X-DBM-Voice-Name: Ukrainian Female Matilda TTS
 ## X-DBM-Voice-Name-ruRU: Украинский женский Matilda TTS
-## X-DBM-Voice-ShortName: UkrainianMatilda
+## X-DBM-Voice-ShortName: UkrainianTTS
 ## X-DBM-Voice-Version: 19
 ## X-DBM-Voice-HasCount: 1
