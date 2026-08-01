@@ -1,0 +1,18 @@
+## Interface: 120007, 120100
+## Category: DBM
+
+## Title:|cffffe00a<|r|cffff7d0aDBM Media|r|cffffe00a>|r |cff308530Voicepack Ukrainian Female Matilda TTS|r
+## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Media|r|cffffe00a>|r |cff308530Слава Україні!|r
+
+## Notes: Ukrainian female voice pack for Deadly Boss Mods, generated with ElevenLabs TTS (Matilda).
+## DefaultState: enabled
+## RequiredDeps: DBM-Core
+## Author: Artem
+## Version: 1.0.0
+## IconTexture: Interface\AddOns\DBM-Core\textures\dbm_airhorn
+## X-DBM-Voice: 1
+## X-DBM-Voice-Name: Ukrainian Female Matilda TTS
+## X-DBM-Voice-Name-ruRU: Украинский женский Matilda TTS
+## X-DBM-Voice-ShortName: UkrainianMatilda
+## X-DBM-Voice-Version: 19
+## X-DBM-Voice-HasCount: 1
