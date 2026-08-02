@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1
+
+- First release built by the automated pipeline (tag -> CurseForge, Wago, GitHub Release). No changes to the sounds.
+
 ## 1.1.0
 
 - Ukrainian countdown for the DBM count sound dropdowns. WoW 12.x plays a single pre-assembled countdown file instead of the numbers one by one, so the pack now ships `fivecount`/`threecount` and their 10-second variants, built from the existing Ukrainian numbers.

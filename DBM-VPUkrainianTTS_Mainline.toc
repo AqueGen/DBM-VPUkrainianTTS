@@ -8,7 +8,7 @@
 ## DefaultState: enabled
 ## RequiredDeps: DBM-Core
 ## Author: Artem
-## Version: 1.1.0
+## Version: 1.1.1
 ## X-Curse-Project-ID: 1635520
 ## X-Wago-ID: 96d2rlGO
 ## IconTexture: Interface\AddOns\DBM-Core\textures\dbm_airhorn
