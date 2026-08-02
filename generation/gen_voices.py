@@ -13,17 +13,18 @@ KEY = os.environ.get("ELEVENLABS_API_KEY")
 if not KEY:
     sys.exit("ELEVENLABS_API_KEY not set")
 
-rows = [l.split("\t") for l in open(os.path.join(SP, "ua_table.tsv"), encoding="utf-8").read().strip().split("\n")]
+TABLE = os.environ.get("GEN_TABLE", "ua_table.tsv")
+
+rows = [l.split("\t") for l in open(os.path.join(SP, TABLE), encoding="utf-8").read().strip().split("\n")]
 if SHORT_MODE:
     rows = [r for r in rows if len(r[2].split()) <= 2]
     for name, _, _ in rows:  # force regen
         for p in (os.path.join(SP, "out_ogg", name + ".ogg"), os.path.join(SP, "out_mp3", name + ".mp3")):
             if os.path.exists(p):
                 os.remove(p)
-os.makedirs(os.path.join(SP, "out_mp3", "count"), exist_ok=True)
-os.makedirs(os.path.join(SP, "out_mp3", "Thogar"), exist_ok=True)
-os.makedirs(os.path.join(SP, "out_ogg", "count"), exist_ok=True)
-os.makedirs(os.path.join(SP, "out_ogg", "Thogar"), exist_ok=True)
+for name, _, _ in rows:  # subfolders used by the table (count, Thogar, events, ...)
+    for base in ("out_mp3", "out_ogg"):
+        os.makedirs(os.path.dirname(os.path.join(SP, base, name + ".ogg")), exist_ok=True)
 
 def tts(text, dest):
     payload = {"text": text, "model_id": MODEL}

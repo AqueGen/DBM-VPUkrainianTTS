@@ -8,7 +8,7 @@
 ## DefaultState: enabled
 ## RequiredDeps: DBM-Core
 ## Author: Artem
-## Version: 1.0.4
+## Version: 1.1.0
 ## IconTexture: Interface\AddOns\DBM-Core\textures\dbm_airhorn
 ## X-DBM-Voice: 1
 ## X-DBM-Voice-Name: Ukrainian Female TTS
@@ -16,3 +16,6 @@
 ## X-DBM-Voice-ShortName: UkrainianTTS
 ## X-DBM-Voice-Version: 19
 ## X-DBM-Voice-HasCount: 1
+## X-DBM-Voice-MidnightCompat: 1
+
+DBM-VPUkrainianTTS.lua
