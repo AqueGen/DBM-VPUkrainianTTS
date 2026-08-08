@@ -58,11 +58,19 @@ The `_5s` variants are used when the timer highlight window is 10 s. `build_coun
 
 DBM builds sound paths as `Interface/AddOns/DBM-VP<X-DBM-Voice-ShortName>/<file>.ogg`, so the addon folder name MUST be `DBM-VP` + ShortName exactly (here: ShortName `UkrainianTTS`, folder `DBM-VPUkrainianTTS`). Mismatch = pack listed but silent.
 
+### What the TTS engine does and does not honour
+
+Learned the hard way while tuning pronunciation, all of it verified by ear against ElevenLabs:
+
+- A combining acute accent (U+0301) **breaks** the word. The engine treats it as a foreign character rather than a stress mark, so `За́хист` comes out mis-stressed while plain `Захист` is read correctly. Never put accents in the table.
+- **Capitalising the stressed syllable does work**: `Багато стАків` moves the stress where `стаків` alone lands it wrong. Use it only on words the engine gets wrong on its own - most words are fine untouched.
+- A **trailing period** stops the last word being clipped, which happened on `Поглинь порожнечу`.
+- Watch for words that are spelled the same as a different part of speech. `Перерви` is both the imperative of "interrupt" and a form of the noun "перерва"; the engine picked the noun, so those lines say `Збий закляття` instead.
+
 ### Translation conventions
 
 - Short imperative raid callouts, no politeness.
 - Gaming slang is transliterated from English pronunciation: "соук" (soak), "кік" (kick), "таунт" (taunt), "кайть" (kite), "ади" (adds), "АОЕ" in caps.
-- A combining acute accent (U+0301) controls stress where the TTS guesses wrong, e.g. "Ста́кнутись".
 
 ## Credits
 

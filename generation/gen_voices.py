@@ -17,7 +17,8 @@ TABLE = os.environ.get("GEN_TABLE", "ua_table.tsv")
 
 rows = [l.split("\t") for l in open(os.path.join(SP, TABLE), encoding="utf-8").read().strip().split("\n")]
 if SHORT_MODE:
-    rows = [r for r in rows if len(r[2].split()) <= 2]
+    if TABLE == "ua_table.tsv":  # a custom table already picked the rows
+        rows = [r for r in rows if len(r[2].split()) <= 2]
     for name, _, _ in rows:  # force regen
         for p in (os.path.join(SP, "out_ogg", name + ".ogg"), os.path.join(SP, "out_mp3", name + ".mp3")):
             if os.path.exists(p):

@@ -27,7 +27,7 @@ backcenter	go to back center	Іди назад у центр
 backleft	go to back left	Іди назад ліворуч
 backright	go to back right	Іди назад праворуч
 backtowhereyouwere	back to where you were	Повернись на місце
-backward	face away from the team	Відвернись від команди
+backward	face away from the team	Відвернись
 bait	bait now	Приманюй зараз
 banishment	Banishment on you	Вигнання на тобі
 barrageonway	barrage run away	Обстріл, тікай
@@ -84,13 +84,13 @@ coinyou	coin on you	Монета на тобі
 colorchange	color switch	Зміна кольору
 colorchangesoon	color switch soon	Скоро зміна кольору
 com_go	GO GO GO	Вперед, вперед, вперед!
-crowdcontrol	crowd control	Контроль
+crowdcontrol	crowd control	Контролюй
 crusher	Crusher	Трощитель
 curseyou	curse on you	Прокляття на тобі
 darknessyou	darkness on you	Темрява на тобі
 dawncrystal	dawn crystal	Кристал світанку
 debuffyou	debuff on you	Дебаф на тобі
-defensive	Defensive	Захисні
+defensive	Defensive	Захист
 demolisher	Demolisher	Руйнівник
 devotionaura	devotion aura	Аура відданості
 di	di	Ді
@@ -98,7 +98,7 @@ didi	didi	Ді-ді
 dispelboss	dispel boss	Знімай з боса
 dispelnow	dispel	Розвіюй
 dontmove	don't move	Не рухайся
-dotyou	dot on you	ДоТ на тобі
+dotyou	dot on you	Дот на тобі
 doubleat	Thrash	Молотіння
 dpshard	hard dps	ДПС на повну
 dpsmore	more dps	Більше ДПС
@@ -106,13 +106,13 @@ dpsslow	slow dps	Повільніше ДПС
 dpsstop	stop dps	Стоп ДПС
 dragonnow	dragon out	Дракон вийшов
 droptorch	drop torch	Кинь смолоскип
-dshigh	Mortal Strike high	Багато смертельних ударів
+dshigh	Mortal Strike high	Багато стАків.
 east	east	Схід
 end	The end	Кінець
 energyhigh	Energy high	Багато енергії
 enfeeblingroar	Enfeebling Roar	Ослаблюючий рик
 engineercoming	Engineer coming	Іде інженер
-enrage	enrage	Лють
+enrage	enrage	Зніми лють.
 enteringcombat	entering combat	Початок бою
 entertainer	entertainer	Артист
 failed	failed	Провал
@@ -147,7 +147,7 @@ frontcenter	go to front center	Іди вперед у центр
 frontleft	go to front left	Іди вперед ліворуч
 frontright	go to front right	Іди вперед праворуч
 frost	Frost	Мороз
-gather	stack	Ста́кнутись
+gather	stack	стАкнутись.
 gatheritem	Gather Item	Підбери предмет
 gathershare	Stack	Збирайтесь разом
 getboned	get bone	Візьми кістку
@@ -166,21 +166,21 @@ group2	Group Two	Група два
 group3	Group Three	Група три
 group4	Group Four	Група чотири
 group5	Group Five	Група п'ять
-harmonic	harmonic	Гармонійний
+harmonic	harmonic	Гармонія
 healall	heal team	Лікуй команду
 healfull	heal to full	Відлікуй до повного
-helpdispel	dispel	Допоможи розвіяти
-helpkick	interrupt	Допоможи перервати
+helpdispel	dispel	Розвіюй.
+helpkick	interrupt	Збий закляття.
 helpme	Help	Допоможіть
 helpme2	Help me	Допоможіть мені
-helpsoak	help soak	Допоможи соукнути
+helpsoak	help soak	Допоможи поглинути
 helpspirit	help spirit	Допоможи з духом
 holdit	defensive	Тримайся
 iceorbmove	ice orb, move	Крижана сфера, рухайся
 incomingdebuff	incoming de-buff	Скоро дебаф
 inhalegetinpuddle	inhale, get inside the puddle	Вдих, стань у калюжу
 inktoshark	bring ink to shark	Неси чорнило до акули
-interruptbyeye	interrupt by eye	Перервай оком
+interruptbyeye	interrupt by eye	Збий закляття оком.
 interruptingshout	Interrupting Shout	Крик переривання
 interruptsoon	ready to interrupt	Готуйся переривати
 jumpinpit	Jump in Pit	Стрибай у яму
@@ -193,8 +193,8 @@ kick2r	interrupt 2	Кік два
 kick3r	interrupt 3	Кік три
 kick4r	interrupt 4	Кік чотири
 kick5r	interrupt 5	Кік п'ять
-kickcast	interrupt	Перервай
-kickorstopcast	kick or stop cast	Перервай або зупини каст
+kickcast	interrupt	Збий закляття.
+kickorstopcast	kick or stop cast	Збий або зупини закляття.
 killbigmob	Kill big add	Вбий великого ада
 killmine	attack Crawler Mine	Атакуй міну
 killmob	kill adds	Вбивай адів
@@ -208,7 +208,7 @@ leavingcombat	leaving combat	Кінець бою
 left	left	Ліворуч
 lightinfusion	Light Infusion on you	Вливання світла на тобі
 lightrifts	light rifts	Розломи світла
-lightsoak	light soak	Соук світла
+lightsoak	light soak	Поглинь світло
 lightstorm	Lightning Storm	Буря блискавок
 lightyou	light on you	Світло на тобі
 lineapart	line apart	Лінія, розійдіться
@@ -220,7 +220,7 @@ markedfordeath	marked for death	Мітка смерті
 markyou	mark on you	Мітка на тобі
 mblue	move to blue	Іди на синій
 mediumball	medium ball	Середня куля
-melodic	melodic	Мелодійний
+melodic	melodic	Мелодія
 meteorrun	Meteor, run!	Метеор, тікай!
 mgreen	move to green	Іди на зелений
 mm1	move to Star	Іди на зірку
@@ -241,7 +241,7 @@ movecenter	move to center	Рухайся в центр
 moveleft	move left	Рухайся ліворуч
 movemelee	move to melee	Іди в мілі
 moveright	move right	Рухайся праворуч
-movesoon	get moving	Приготуйся рухатись
+movesoon	get moving	Рухайся
 movetimebubble	Move to time bubble	Іди в бульбашку часу
 movetoarrow	move to arrow	Іди до стріли
 movetobeam	move to beam	Іди до променя
@@ -260,7 +260,7 @@ movetoweb	move to web	Іди до павутиння
 movetoyelloworb	move to yellow orb	Іди до жовтої сфери
 mpurple	move to purple	Іди на фіолетовий
 myellow	move to yellow	Іди на жовтий
-negative	negative	Негативний
+negative	negative	Мінус
 newmatrix	Matrix on you	Матриця на тобі
 newportal	new portal	Новий портал
 north	north	Північ
@@ -279,7 +279,7 @@ phasechange	phase change	Зміна фази
 polarityshift	polarity shift	Зміна полярності
 pone	Phase one	Перша фаза
 poolyou	pool on you	Калюжа на тобі
-positive	positive	Позитивний
+positive	positive	Плюс
 pthree	phase three	Третя фаза
 ptran	Transition phase	Перехідна фаза
 ptwo	phase two	Друга фаза
@@ -325,8 +325,8 @@ silencesoon	silence soon	Скоро німота
 silenceyou	silence on you	Німота на тобі
 slagelementalcoming	Slag Elemental coming	Іде шлаковий елементаль
 slamincoming	slam incoming	Скоро удар
-soakbeam	soak beam	Соукай промінь
-soakincoming	soak incoming	Скоро соук
+soakbeam	soak beam	Поглинь промінь
+soakincoming	soak incoming	Скоро поглинання
 soulcleave	Soul Cleave	Розсічення душі
 south	south	Південь
 southeast	southeast	Південний схід
@@ -376,7 +376,7 @@ useextraaction	use extra action	Використай додаткову дію
 usegate	use gate	Використай браму
 useitem	Use item	Використай предмет
 uu	yours	Твоє
-voidsoak	void soak	Соук порожнечі
+voidsoak	void soak	Поглинь порожнечу.
 voidyou	void on you	Порожнеча на тобі
 watchfeet	Watch your feet	Дивись під ноги
 watchimpale	impale	Пронизування

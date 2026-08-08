@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.0
+
+- Reworked 22 alert lines after listening to them in game. `Перервай` was not a real word form and `Перерви` was read as the noun "перерва", so interrupts now say `Збий закляття`. `Соук` was a transliteration that does not exist in Ukrainian - soak lines use `Поглинь`. `helpkick`, `helpdispel` and `movesoon` now match what the English pack actually says.
+- `positive`, `negative`, `harmonic` and `melodic` play when the charge or alignment lands on you (Raszageth, Lihuvim), so they name what you got: `Плюс`, `Мінус`, `Гармонія`, `Мелодія`.
+- `enrage` and `crowdcontrol` are declared as dispel and interrupt warnings, so they now call the action instead of naming the effect.
+- Fixed stress on `Багато стАків` and `стАкнутись`, and the clipped last word in `Поглинь порожнечу`.
+
 ## 1.1.1
 
 - First release built by the automated pipeline (tag -> CurseForge, Wago, GitHub Release). No changes to the sounds.
