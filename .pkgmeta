@@ -1,12 +1,17 @@
 package-as: DBM-VPUkrainianTTS
 
 manual-changelog:
-  filename: CHANGELOG.md
+  filename: RELEASE_NOTES.md
   markup-type: markdown
 
 ignore:
   - README.md
   - CHANGELOG.md
+  - RELEASE_NOTES.md
+  - CLAUDE.md
+  - .github
+  - release-please-config.json
+  - .release-please-manifest.json
   - generation
   - assets
   - .gitignore

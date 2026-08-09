@@ -1,9 +1,10 @@
-name: Package and Release
+name: Package and Release (manual)
 
+# Routine releases are driven by release-please.yml. This workflow is the
+# manual entry point only - it must NOT trigger on tag pushes, or it would
+# race the packaging job in release-please.yml.
 on:
-  push:
-    tags:
-      - "v*"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -13,6 +14,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract release notes for this version
+        run: |
+          awk '/^## \[/ { if (seen) exit; seen = 1 } seen' CHANGELOG.md > RELEASE_NOTES.md
+          cat RELEASE_NOTES.md
 
       - uses: BigWigsMods/packager@v2
         with:
