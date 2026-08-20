@@ -63,9 +63,11 @@ def build():
         })
     rows.sort(key=lambda r: (r["cat"] != "core", r["cat"], r["key"]))
 
+    # Escape "<" so a phrase containing "</script>" cannot close the inline script block.
+    data = json.dumps(rows, ensure_ascii=False).replace("<", "\\u003c")
     out = os.path.join(HERE, "review.html")
     with open(out, "w", encoding="utf-8") as fh:
-        fh.write(TEMPLATE.replace("__DATA__", json.dumps(rows, ensure_ascii=False)))
+        fh.write(TEMPLATE.replace("__DATA__", data))
     print("wrote %s (%d phrases)" % (out, len(rows)))
 
 
