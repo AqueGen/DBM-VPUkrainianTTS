@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0](https://github.com/AqueGen/DBM-VPUkrainianTTS/compare/v1.2.0...v1.3.0) (2026-08-20)
+
+
+### Features
+
+* add the nine sounds introduced by DBM voice version 20 ([d31b301](https://github.com/AqueGen/DBM-VPUkrainianTTS/commit/d31b3019c375773fe31287df2e81d8db2a64f220))
+
+
+### Bug Fixes
+
+* escape "&lt;" when embedding the phrase table in the review page ([2d6747b](https://github.com/AqueGen/DBM-VPUkrainianTTS/commit/2d6747b4ddae7348e0da02b5115163a8584d5088))
+
 ## [1.2.0](https://github.com/AqueGen/DBM-VPUkrainianTTS/releases/tag/v1.2.0)
 
 - Reworked 22 alert lines after listening to them in game. `Перервай` was not a real word form and `Перерви` was read as the noun "перерва", so interrupts now say `Збий закляття`. `Соук` was a transliteration that does not exist in Ukrainian - soak lines use `Поглинь`. `helpkick`, `helpdispel` and `movesoon` now match what the English pack actually says.
