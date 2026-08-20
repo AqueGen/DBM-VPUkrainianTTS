@@ -18,7 +18,7 @@
 ## X-DBM-Voice-Name: Ukrainian Female TTS
 ## X-DBM-Voice-Name-ruRU: Украинский женский TTS
 ## X-DBM-Voice-ShortName: UkrainianTTS
-## X-DBM-Voice-Version: 19
+## X-DBM-Voice-Version: 20
 ## X-DBM-Voice-HasCount: 1
 ## X-DBM-Voice-MidnightCompat: 1
 

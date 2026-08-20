@@ -108,6 +108,7 @@ dragonnow	dragon out	Дракон вийшов
 droptorch	drop torch	Кинь смолоскип
 dshigh	Mortal Strike high	Багато стАків.
 east	east	Схід
+eggyou	egg on you	Яйце на тобі
 end	The end	Кінець
 energyhigh	Energy high	Багато енергії
 enfeeblingroar	Enfeebling Roar	Ослаблюючий рик
@@ -147,6 +148,7 @@ frontcenter	go to front center	Іди вперед у центр
 frontleft	go to front left	Іди вперед ліворуч
 frontright	go to front right	Іди вперед праворуч
 frost	Frost	Мороз
+frostyou	frost on you	Мороз на тобі
 gather	stack	стАкнутись.
 gatheritem	Gather Item	Підбери предмет
 gathershare	Stack	Збирайтесь разом
@@ -175,6 +177,8 @@ helpme	Help	Допоможіть
 helpme2	Help me	Допоможіть мені
 helpsoak	help soak	Допоможи поглинути
 helpspirit	help spirit	Допоможи з духом
+holdingdeadlyorb	holding deadly orb	Тримаєш смертельну сферу
+holdingorb	holding orb	Тримаєш сферу.
 holdit	defensive	Тримайся
 iceorbmove	ice orb, move	Крижана сфера, рухайся
 incomingdebuff	incoming de-buff	Скоро дебаф
@@ -247,15 +251,17 @@ movetoarrow	move to arrow	Іди до стріли
 movetobeam	move to beam	Іди до променя
 movetoboss	move to boss	Іди до боса
 movetoegg	move to egg	Іди до яйця
+movetofire	move to fire	Іди до вогню
 movetoflamethrower	move to flamethrower	Іди до вогнемета
+movetofrost	move to frost	Іди до морозу
 movetojelly	move to jellyfish	Іди до медузи
 movetomobs	move to mobs	Іди до мобів
+movetopartner	move to partner	Іди до партнера
 movetopillar	Move to Pillar	Іди до колони
 movetopool	Move to Pool	Іди до калюжі
 movetostatue	move to statue	Іди до статуї
 movetotank	move to tank	Іди до танка
 movetotendrils	move to tendrils	Іди до щупалець
-runtotrap	move to trap	Іди до пастки
 movetoweb	move to web	Іди до павутиння
 movetoyelloworb	move to yellow orb	Іди до жовтої сфери
 mpurple	move to purple	Іди на фіолетовий
@@ -276,6 +282,7 @@ peaceaura	peace aura	Аура миру
 pfive	phase five	П'ята фаза
 pfour	phase 4	Четверта фаза
 phasechange	phase change	Зміна фази
+poisonyou	poison on you	Отрута на тобі
 polarityshift	polarity shift	Зміна полярності
 pone	Phase one	Перша фаза
 poolyou	pool on you	Калюжа на тобі
@@ -306,6 +313,7 @@ runout	run out	Вибігай
 runoverflowers	run over the flowers	Пробіжи по квітах
 runovermobs	run over mobs	Пробіжи по мобах
 runtoedge	run to edge of room	Біжи до краю
+runtotrap	move to trap	Іди до пастки
 safenow	safe now	Тепер безпечно
 scatter	spread	Розійдіться
 scattersoon	spread soon	Скоро розходитись
@@ -325,6 +333,7 @@ silencesoon	silence soon	Скоро німота
 silenceyou	silence on you	Німота на тобі
 slagelementalcoming	Slag Elemental coming	Іде шлаковий елементаль
 slamincoming	slam incoming	Скоро удар
+slowyou	slow on you	Сповільнення на тобі
 soakbeam	soak beam	Поглинь промінь
 soakincoming	soak incoming	Скоро поглинання
 soulcleave	Soul Cleave	Розсічення душі
