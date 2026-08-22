@@ -311,6 +311,18 @@ def render(variant, rows):
     return texts
 
 
+RETIRED = {
+    # Lost the engine round: an American-accent source voice reading Ukrainian.
+    "turbo-uk", "v3", "edge-polina",
+    # Capitalised stress hints won nothing and later proved to pull stress the wrong way.
+    "v3-caps",
+    # The wording round is settled; its picks live in the table now.
+    "jargon", "plain-words",
+    # Trained on Ukrainian, but lost to Polina by ear.
+    "piper-tetiana", "piper-lada", "piper-multi-tetiana", "piper-multi-lada",
+}
+
+
 def main():
     wanted = sys.argv[1:]
     rows = table()
@@ -319,6 +331,8 @@ def main():
         manifest = json.load(open(MANIFEST, encoding="utf-8"))
     for variant in VARIANTS:
         if wanted and variant["id"] not in wanted:
+            continue
+        if variant["id"] in RETIRED and not wanted:
             continue
         if variant["engine"] == "elevenlabs" and not ELEVEN_KEY:
             print("skip %s: ELEVENLABS_API_KEY not set" % variant["id"])
