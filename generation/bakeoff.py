@@ -92,6 +92,15 @@ VARIANTS = [
         "voice": "uk-UA-PolinaNeural",
         "keys": ENGINE_KEYS,
     },
+    # The whole pack in the voice that won by ear, so the verdict rests on 453 phrases
+    # rather than ten. Same voice as Azure's uk-UA-PolinaNeural.
+    {
+        "id": "polina-all",
+        "label": "Polina - whole pack",
+        "engine": "edge",
+        "voice": "uk-UA-PolinaNeural",
+        "keys": "all",
+    },
     dict(TURBO, id="jargon", label="wording: as shipped (jargon)", keys=JARGON_KEYS),
     dict(TURBO, id="plain-words", label="wording: no borrowed words",
          keys=JARGON_KEYS, override=PLAIN_WORDING),
@@ -132,6 +141,13 @@ def table():
                 if len(parts) >= 3:
                     rows[parts[0]] = (parts[1], parts[2])
     return rows
+
+
+def keys_of(variant, rows):
+    """A variant covers either a hand-picked list or the whole pack."""
+    if variant["keys"] == "all":
+        return list(rows)
+    return variant["keys"]
 
 
 def text_for(variant, key, ua):
@@ -209,7 +225,7 @@ def to_ogg(mp3, ogg):
 def render(variant, rows):
     out = os.path.join(VARIANTS_DIR, variant["id"])
     texts = {}
-    for key in variant["keys"]:
+    for key in keys_of(variant, rows):
         ua = rows[key][1]
         sent = text_for(variant, key, ua)
         texts[key] = sent

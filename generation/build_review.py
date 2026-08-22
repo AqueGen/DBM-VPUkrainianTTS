@@ -54,8 +54,11 @@ def load_variants():
                 texts[key] = text
                 secs[key] = duration(ogg)
         if texts:
+            # A variant covering nearly the whole table is a candidate for the pack, not
+            # an experiment on ten phrases: it belongs beside every row, with a way to
+            # play the column straight through.
             out.append({"id": vid, "label": entry.get("label", vid),
-                        "texts": texts, "secs": secs})
+                        "texts": texts, "secs": secs, "full": len(texts) > 100})
     return out
 
 
@@ -132,6 +135,8 @@ td { padding: 4px 10px; border-bottom: 1px solid #23272e; vertical-align: middle
 tr:hover td { background: #1c2027; }
 tr.flagged td { background: #3a2418; }
 tr.flagged:hover td { background: #462b1c; }
+tr.now td { background: #1f3a22; box-shadow: inset 0 0 0 1px #4c7a3a; }
+tr.now.flagged td { background: #46351c; }
 .key { color: #7fa8d6; font-family: Consolas, monospace; font-size: 12px; }
 .ua { color: #ffd100; }
 .missing { color: #d66; font-style: italic; }
@@ -164,19 +169,22 @@ td.act { width: 1%; white-space: nowrap; }
 </header>
 <section id="bake"></section>
 <table>
-  <thead><tr><th>key</th><th>english</th><th>ukrainian</th><th>play</th><th>flag</th></tr></thead>
+  <thead><tr id="mainhead"><th>key</th><th>english</th><th>ukrainian</th><th>play</th><th>flag</th></tr></thead>
   <tbody id="rows"></tbody>
 </table>
 <textarea id="export" readonly></textarea>
 <script>
 const DATA = __DATA__;
 const VARIANTS = __VARIANTS__;
+const FULL = VARIANTS.filter(function (v) { return v.full; });
+const BAKE = VARIANTS.filter(function (v) { return !v.full; });
 const FLAG_KEY = "vpua-flagged";
 const PICK_KEY = "vpua-picks";
 const flagged = new Set(JSON.parse(localStorage.getItem(FLAG_KEY) || "[]"));
 const picks = JSON.parse(localStorage.getItem(PICK_KEY) || "{}");
 const player = new Audio();
 let current = null;
+let auto = null;   // a column playing itself: {vid, index, list, button}
 
 function saveFlags() { localStorage.setItem(FLAG_KEY, JSON.stringify([...flagged])); }
 
@@ -193,8 +201,79 @@ function play(btn, src) {
           "\nRestart it with: python generation/serve.py");
   });
 }
-player.addEventListener("ended", function () { if (current) current.classList.remove("playing"); });
+player.addEventListener("ended", function () {
+  if (current) current.classList.remove("playing");
+  if (auto) advanceAuto();
+});
 player.addEventListener("pause", function () { if (current) current.classList.remove("playing"); });
+
+// Walking a column: 453 phrases are not worth 453 clicks, so a column plays itself and
+// the row being heard is highlighted and scrolled to. Space pauses, f flags, Escape stops.
+function markNow(tr) {
+  document.querySelectorAll("tr.now").forEach(function (r) { r.classList.remove("now"); });
+  if (tr) {
+    tr.classList.add("now");
+    tr.scrollIntoView({ block: "center", behavior: "smooth" });
+  }
+}
+
+function stopAuto() {
+  if (auto && auto.button) auto.button.classList.remove("playing");
+  auto = null;
+  player.pause();
+  markNow(null);
+}
+
+function playAuto() {
+  if (!auto) return;
+  if (auto.index >= auto.list.length) { stopAuto(); return; }
+  const row = auto.list[auto.index];
+  markNow(row.tr);
+  player.src = "variants/" + auto.vid + "/" + row.d.key + ".ogg";
+  player.play().catch(function () { advanceAuto(); });
+}
+
+function advanceAuto() {
+  if (!auto) return;
+  auto.index++;
+  setTimeout(playAuto, 300);
+}
+
+function startAuto(vid, button) {
+  const variant = FULL.find(function (v) { return v.id === vid; });
+  stopAuto();
+  const list = rowEls.filter(function (r) {
+    return r.tr.style.display !== "none" && variant.texts[r.d.key];
+  });
+  if (!list.length) { alert("nothing to play with the current filter"); return; }
+  auto = { vid: vid, index: 0, list: list, button: button };
+  button.classList.add("playing");
+  playAuto();
+}
+
+function currentAutoRow() {
+  return auto && auto.list[auto.index] ? auto.list[auto.index] : null;
+}
+
+document.addEventListener("keydown", function (e) {
+  if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+  if (e.key === "Escape") { stopAuto(); return; }
+  if (!auto) return;
+  if (e.key === " ") {
+    e.preventDefault();
+    player.paused ? player.play() : player.pause();
+  } else if (e.key.toLowerCase() === "f") {
+    const row = currentAutoRow();
+    if (row) {
+      const cb = row.tr.querySelector("input[type=checkbox]");
+      cb.checked = !cb.checked;
+      cb.onchange();
+    }
+  } else if (e.key === "ArrowRight") {
+    player.pause();
+    advanceAuto();
+  }
+});
 
 function makeBtn(label, src, enabled) {
   const b = document.createElement("button");
@@ -207,8 +286,8 @@ function makeBtn(label, src, enabled) {
 // Bake-off: one column per rendering, plus a radio to record which one wins.
 function buildBakeoff() {
   const host = document.getElementById("bake");
-  if (!VARIANTS.length) { host.remove(); return; }
-  const keys = [...new Set(VARIANTS.flatMap(function (v) { return Object.keys(v.texts); }))];
+  if (!BAKE.length) { host.remove(); return; }
+  const keys = [...new Set(BAKE.flatMap(function (v) { return Object.keys(v.texts); }))];
   const byKey = {};
   DATA.forEach(function (d) { byKey[d.key] = d; });
 
@@ -233,7 +312,7 @@ function buildBakeoff() {
   const table = document.createElement("table");
   const thead = document.createElement("thead");
   const hr = document.createElement("tr");
-  ["key", "english", "pack (current)"].concat(VARIANTS.map(function (v) { return v.label; }))
+  ["key", "english", "pack (current)"].concat(BAKE.map(function (v) { return v.label; }))
     .forEach(function (t) {
       const th = document.createElement("th");
       th.textContent = t;
@@ -263,7 +342,7 @@ function buildBakeoff() {
 
     tr.append(tdKey, tdEn, tdPack);
 
-    VARIANTS.forEach(function (v) {
+    BAKE.forEach(function (v) {
       const td = document.createElement("td");
       const sent = v.texts[key];
       if (!sent) {
@@ -322,6 +401,19 @@ const rowEls = DATA.map(function (d) {
   tdAct.append(makeBtn("EN", "../../DBM-VPVEM/" + d.key + ".ogg", d.hasEn), " ",
                makeBtn("UA", "../" + d.key + ".ogg", d.hasUa));
 
+  // One column per whole-pack candidate, so a row can be compared against what ships.
+  const tdCandidates = FULL.map(function (v) {
+    const td = document.createElement("td");
+    td.className = "act";
+    if (v.texts[d.key]) {
+      td.append(makeBtn("play", "variants/" + v.id + "/" + d.key + ".ogg", true));
+    } else {
+      td.className = "act none";
+      td.textContent = "-";
+    }
+    return td;
+  });
+
   const tdFlag = document.createElement("td");
   tdFlag.className = "act";
   const cb = document.createElement("input");
@@ -335,9 +427,25 @@ const rowEls = DATA.map(function (d) {
   };
   tdFlag.append(cb);
 
-  tr.append(tdKey, tdEn, tdUa, tdAct, tdFlag);
+  tr.append(tdKey, tdEn, tdUa, tdAct);
+  tdCandidates.forEach(function (td) { tr.append(td); });
+  tr.append(tdFlag);
   tbody.append(tr);
   return { d: d, tr: tr };
+});
+
+// Header cells for the candidate columns, each able to play its whole column in order.
+const mainhead = document.getElementById("mainhead");
+const flagHead = mainhead.lastElementChild;
+FULL.forEach(function (v) {
+  const th = document.createElement("th");
+  th.append(document.createTextNode(v.label + " "));
+  const run = document.createElement("button");
+  run.textContent = "play all";
+  run.onclick = function () { auto && auto.vid === v.id ? stopAuto() : startAuto(v.id, run); };
+  v.runButton = run;
+  th.append(run);
+  mainhead.insertBefore(th, flagHead);
 });
 
 const sel = document.getElementById("cat");
