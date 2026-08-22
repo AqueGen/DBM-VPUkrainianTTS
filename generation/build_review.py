@@ -62,6 +62,17 @@ def load_variants():
     return out
 
 
+def changed_keys():
+    """Rows edited in the current round, so they can be auditioned as a set."""
+    path = os.path.join(HERE, "changed.txt")
+    try:
+        with open(path, encoding="utf-8") as fh:
+            return {line.strip() for line in fh
+                    if line.strip() and not line.startswith("#")}
+    except OSError:
+        return set()
+
+
 def check_scores():
     """key -> how well the recognisers made out the clip, 0..1, from check_audio.py."""
     path = os.path.join(HERE, "audio-check.tsv")
@@ -116,9 +127,11 @@ def build():
     for v in variants:
         if not v["full"]:
             respelled.update(v["texts"])
+    edited = changed_keys()
     for row in rows:
         row["match"] = scores.get(row["key"])
         row["respelled"] = row["key"] in respelled
+        row["changed"] = row["key"] in edited
     known = {r["key"] for r in rows}
     for key in sorted(set(dbm_keys()) - known):
         rows.append({
@@ -152,6 +165,7 @@ TEMPLATE = r"""<!DOCTYPE html>
 .match.bad { color: #ff8a7a; }
 .match.warn { color: #ffd100; }
 .match.fine { color: #6f7885; }
+.changed { color: #ffb347; font-size: 10px; text-transform: uppercase; letter-spacing: .04em; }
 .respelled { color: #7fd6a8; font-size: 10px; text-transform: uppercase; letter-spacing: .04em; }
 th[data-sort] { cursor: pointer; user-select: none; }
 th[data-sort]:hover { color: #e6e6e6; }
@@ -205,6 +219,7 @@ td.act { width: 1%; white-space: nowrap; }
   <input type="search" id="q" placeholder="filter: key / english / ukrainian">
   <select id="cat"></select>
   <label class="chk"><input type="checkbox" id="onlyFlagged"> only flagged</label>
+  <label class="chk"><input type="checkbox" id="onlyChanged"> only changed</label>
   <button id="showExport">export flagged</button>
   <span id="stats"></span>
 </header>
@@ -463,6 +478,13 @@ const rowEls = DATA.map(function (d) {
   const tdKey = document.createElement("td");
   tdKey.className = "key";
   tdKey.textContent = d.key;
+  if (d.changed) {
+    const mark = document.createElement("span");
+    mark.className = "changed";
+    mark.textContent = " changed";
+    mark.title = "this line was edited in the current round";
+    tdKey.append(mark);
+  }
   if (d.respelled) {
     const mark = document.createElement("span");
     mark.className = "respelled";
@@ -560,6 +582,7 @@ sel.append(new Option("all categories", ""));
 
 const q = document.getElementById("q");
 const onlyFlagged = document.getElementById("onlyFlagged");
+const onlyChanged = document.getElementById("onlyChanged");
 
 function render() {
   const needle = q.value.trim().toLowerCase();
@@ -568,7 +591,9 @@ function render() {
   for (const row of rowEls) {
     const d = row.d;
     const hit = !needle || (d.key + " " + d.en + " " + d.ua).toLowerCase().includes(needle);
-    const ok = hit && (!cat || d.cat === cat) && (!onlyFlagged.checked || flagged.has(d.key));
+    const ok = hit && (!cat || d.cat === cat)
+      && (!onlyFlagged.checked || flagged.has(d.key))
+      && (!onlyChanged.checked || d.changed);
     row.tr.style.display = ok ? "" : "none";
     if (ok) shown++;
   }
@@ -576,7 +601,7 @@ function render() {
     shown + " / " + DATA.length + " shown - " + flagged.size + " flagged";
 }
 
-q.oninput = sel.onchange = onlyFlagged.onchange = render;
+q.oninput = sel.onchange = onlyFlagged.onchange = onlyChanged.onchange = render;
 
 // Sorting: click a header. The default order is the one the pack is written in, so the
 // first click on "match" puts the clips the recognisers struggled with at the top.
