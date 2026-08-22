@@ -26,6 +26,23 @@ def dbm_keys():
         return []
 
 
+def load_variants():
+    """Bake-off renderings written by bakeoff.py, one column per variant, oldest first."""
+    manifest = os.path.join(HERE, "variants", "manifest.json")
+    try:
+        with open(manifest, encoding="utf-8") as fh:
+            raw = json.load(fh)
+    except OSError:
+        return []
+    out = []
+    for vid, entry in raw.items():
+        texts = {k: t for k, t in entry.get("texts", {}).items()
+                 if os.path.isfile(os.path.join(HERE, "variants", vid, k + ".ogg"))}
+        if texts:
+            out.append({"id": vid, "label": entry.get("label", vid), "texts": texts})
+    return out
+
+
 def read_table(name):
     rows = []
     with open(os.path.join(HERE, name), encoding="utf-8") as fh:
@@ -51,6 +68,7 @@ def build():
             "hasUa": os.path.isfile(os.path.join(PACK, key + ".ogg")),
             "hasEn": os.path.isfile(os.path.join(REF, key + ".ogg")),
         })
+    variants = load_variants()
     known = {r["key"] for r in rows}
     for key in sorted(set(dbm_keys()) - known):
         rows.append({
@@ -64,11 +82,14 @@ def build():
     rows.sort(key=lambda r: (r["cat"] != "core", r["cat"], r["key"]))
 
     # Escape "<" so a phrase containing "</script>" cannot close the inline script block.
-    data = json.dumps(rows, ensure_ascii=False).replace("<", "\\u003c")
+    def embed(value):
+        return json.dumps(value, ensure_ascii=False).replace("<", "\\u003c")
+
     out = os.path.join(HERE, "review.html")
+    page = TEMPLATE.replace("__DATA__", embed(rows)).replace("__VARIANTS__", embed(variants))
     with open(out, "w", encoding="utf-8") as fh:
-        fh.write(TEMPLATE.replace("__DATA__", data))
-    print("wrote %s (%d phrases)" % (out, len(rows)))
+        fh.write(page)
+    print("wrote %s (%d phrases, %d bake-off variants)" % (out, len(rows), len(variants)))
 
 
 TEMPLATE = r"""<!DOCTYPE html>
@@ -100,6 +121,15 @@ tr.flagged:hover td { background: #462b1c; }
 .missing { color: #d66; font-style: italic; }
 td.act { width: 1%; white-space: nowrap; }
 #export { display: none; width: 100%; height: 160px; background: #0f1114; color: #cfd6e0; border: 0; border-top: 1px solid #2c313a; font-family: Consolas, monospace; font-size: 12px; padding: 10px; box-sizing: border-box; }
+#bake { padding: 12px 16px 4px; border-bottom: 2px solid #2c313a; }
+#bake h2 { font-size: 13px; color: #8b93a0; margin: 0 0 8px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+#bake table { table-layout: auto; }
+#bake th { position: static; }
+#bake td { vertical-align: top; }
+#bake .sent { display: block; margin-top: 3px; color: #9aa4b2; font-family: Consolas, monospace; font-size: 11px; max-width: 220px; }
+#bake .sent.changed { color: #ffd100; }
+#bake .pick { margin-right: 5px; }
+#bake .none { color: #555c67; }
 </style>
 </head>
 <body>
@@ -111,6 +141,7 @@ td.act { width: 1%; white-space: nowrap; }
   <button id="showExport">export flagged</button>
   <span id="stats"></span>
 </header>
+<section id="bake"></section>
 <table>
   <thead><tr><th>key</th><th>english</th><th>ukrainian</th><th>play</th><th>flag</th></tr></thead>
   <tbody id="rows"></tbody>
@@ -118,8 +149,11 @@ td.act { width: 1%; white-space: nowrap; }
 <textarea id="export" readonly></textarea>
 <script>
 const DATA = __DATA__;
+const VARIANTS = __VARIANTS__;
 const FLAG_KEY = "vpua-flagged";
+const PICK_KEY = "vpua-picks";
 const flagged = new Set(JSON.parse(localStorage.getItem(FLAG_KEY) || "[]"));
+const picks = JSON.parse(localStorage.getItem(PICK_KEY) || "{}");
 const player = new Audio();
 let current = null;
 
@@ -145,6 +179,96 @@ function makeBtn(label, src, enabled) {
   b.disabled = !enabled;
   if (enabled) b.onclick = function () { play(b, src); };
   return b;
+}
+
+// Bake-off: one column per rendering, plus a radio to record which one wins.
+function buildBakeoff() {
+  const host = document.getElementById("bake");
+  if (!VARIANTS.length) { host.remove(); return; }
+  const keys = [...new Set(VARIANTS.flatMap(function (v) { return Object.keys(v.texts); }))];
+  const byKey = {};
+  DATA.forEach(function (d) { byKey[d.key] = d; });
+
+  const head = document.createElement("h2");
+  head.textContent = "bake-off";
+  const exportPicks = document.createElement("button");
+  exportPicks.textContent = "export picks";
+  exportPicks.style.marginLeft = "10px";
+  exportPicks.onclick = function () {
+    const lines = keys.filter(function (k) { return picks[k]; })
+                      .map(function (k) { return k + "\t" + picks[k]; });
+    if (!lines.length) { alert("nothing picked yet"); return; }
+    const box = document.getElementById("export");
+    box.value = lines.join("\n");
+    box.style.display = "block";
+    box.focus();
+    box.select();
+  };
+  head.append(exportPicks);
+  host.append(head);
+
+  const table = document.createElement("table");
+  const thead = document.createElement("thead");
+  const hr = document.createElement("tr");
+  ["key", "english", "pack (current)"].concat(VARIANTS.map(function (v) { return v.label; }))
+    .forEach(function (t) {
+      const th = document.createElement("th");
+      th.textContent = t;
+      hr.append(th);
+    });
+  thead.append(hr);
+  table.append(thead);
+
+  const body = document.createElement("tbody");
+  keys.forEach(function (key) {
+    const d = byKey[key] || { en: "", ua: "" };
+    const tr = document.createElement("tr");
+
+    const tdKey = document.createElement("td");
+    tdKey.className = "key";
+    tdKey.textContent = key;
+
+    const tdEn = document.createElement("td");
+    tdEn.textContent = d.en;
+
+    const tdPack = document.createElement("td");
+    tdPack.append(makeBtn("play", "../" + key + ".ogg", !!d.hasUa));
+    const orig = document.createElement("span");
+    orig.className = "sent";
+    orig.textContent = d.ua;
+    tdPack.append(orig);
+
+    tr.append(tdKey, tdEn, tdPack);
+
+    VARIANTS.forEach(function (v) {
+      const td = document.createElement("td");
+      const sent = v.texts[key];
+      if (!sent) {
+        td.className = "none";
+        td.textContent = "-";
+        tr.append(td);
+        return;
+      }
+      const radio = document.createElement("input");
+      radio.type = "radio";
+      radio.className = "pick";
+      radio.name = "pick-" + key;
+      radio.checked = picks[key] === v.id;
+      radio.onchange = function () {
+        picks[key] = v.id;
+        localStorage.setItem(PICK_KEY, JSON.stringify(picks));
+      };
+      td.append(radio, makeBtn("play", "variants/" + v.id + "/" + key + ".ogg", true));
+      const txt = document.createElement("span");
+      txt.className = "sent" + (sent !== d.ua ? " changed" : "");
+      txt.textContent = sent;
+      td.append(txt);
+      tr.append(td);
+    });
+    body.append(tr);
+  });
+  table.append(body);
+  host.append(table);
 }
 
 const tbody = document.getElementById("rows");
@@ -223,6 +347,7 @@ document.getElementById("showExport").onclick = function () {
   exportBox.select();
 };
 
+buildBakeoff();
 render();
 </script>
 </body>

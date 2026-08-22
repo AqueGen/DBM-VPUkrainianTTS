@@ -7,3 +7,6 @@ RELEASE_NOTES.md
 
 # Generated review page (generation/build_review.py)
 generation/review.html
+
+# Bake-off renderings (generation/bakeoff.py) - local listening material
+generation/variants/
