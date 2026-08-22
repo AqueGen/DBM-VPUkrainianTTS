@@ -215,12 +215,18 @@ player.addEventListener("pause", function () { if (current) current.classList.re
 
 // Walking a column: 453 phrases are not worth 453 clicks, so a column plays itself and
 // the row being heard is highlighted and scrolled to. Space pauses, f flags, Escape stops.
+// Where the row being played sits on screen, as a fraction of the window height.
+// 0.5 is dead centre; lower values keep it higher up with more of what is coming next
+// visible below it. Change this one number to taste.
+const FOCUS_POSITION = 0.3;
+
 function markNow(tr) {
   document.querySelectorAll("tr.now").forEach(function (r) { r.classList.remove("now"); });
-  if (tr) {
-    tr.classList.add("now");
-    tr.scrollIntoView({ block: "center", behavior: "smooth" });
-  }
+  if (!tr) return;
+  tr.classList.add("now");
+  const box = tr.getBoundingClientRect();
+  const target = window.innerHeight * FOCUS_POSITION;
+  window.scrollBy({ top: box.top - target, behavior: "smooth" });
 }
 
 function stopAuto() {
@@ -243,6 +249,25 @@ function advanceAuto() {
   if (!auto) return;
   auto.index++;
   setTimeout(playAuto, 300);
+}
+
+// Going back matters more than going forward: you notice a bad phrase after it has
+// played, not during it.
+function stepAuto(delta) {
+  if (!auto) return;
+  player.pause();
+  auto.index = Math.max(0, Math.min(auto.list.length - 1, auto.index + delta));
+  playAuto();
+}
+
+function jumpAuto(row) {
+  if (!auto) return false;
+  const i = auto.list.indexOf(row);
+  if (i < 0) return false;
+  player.pause();
+  auto.index = i;
+  playAuto();
+  return true;
 }
 
 function startAuto(vid, button) {
@@ -276,8 +301,17 @@ document.addEventListener("keydown", function (e) {
       cb.onchange();
     }
   } else if (e.key === "ArrowRight") {
-    player.pause();
-    advanceAuto();
+    stepAuto(1);
+  } else if (e.key === "ArrowLeft") {
+    stepAuto(-1);
+  } else if (e.key === "ArrowUp") {
+    e.preventDefault();
+    stepAuto(-5);
+  } else if (e.key === "ArrowDown") {
+    e.preventDefault();
+    stepAuto(5);
+  } else if (e.key.toLowerCase() === "r") {
+    stepAuto(0);
   }
 });
 
@@ -439,6 +473,10 @@ const rowEls = DATA.map(function (d) {
   };
   tdFlag.append(cb);
 
+  tr.onclick = function (e) {
+    if (e.target.tagName === "BUTTON" || e.target.tagName === "INPUT") return;
+    jumpAuto(rowEls.find(function (r) { return r.tr === tr; }));
+  };
   tr.append(tdKey, tdEn, tdUa, tdAct);
   tdCandidates.forEach(function (td) { tr.append(td); });
   tr.append(tdFlag);
