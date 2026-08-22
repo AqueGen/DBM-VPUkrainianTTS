@@ -97,6 +97,18 @@ VARIANTS = [
          keys=JARGON_KEYS, override=PLAIN_WORDING),
 ]
 
+# Round 3 - the voice itself. Matilda is an American-accent source voice, and ElevenLabs
+# states that a voice's own accent leaks into multilingual output, so a Ukrainian-native
+# voice may fix at the root what respelling and stress hints fight downstream.
+# Fill in ids from the ElevenLabs voice library (Voices -> Library -> language Ukrainian)
+# and rerun: python generation/bakeoff.py voice-<name>
+UKRAINIAN_VOICES = {
+    # "voice-<short name>": "<voice_id>",
+}
+for _vid, _voice in sorted(UKRAINIAN_VOICES.items()):
+    VARIANTS.append(dict(TURBO, id=_vid, label="voice: %s (turbo, forced uk)" % _vid,
+                         voice=_voice, keys=ENGINE_KEYS))
+
 
 def table():
     rows = {}
@@ -113,12 +125,12 @@ def text_for(variant, key, ua):
     return variant.get("override", {}).get(key, ua)
 
 
-def eleven(text, model, language_code, dest):
+def eleven(text, model, language_code, dest, voice=MATILDA):
     payload = {"text": text, "model_id": model}
     if language_code:
         payload["language_code"] = language_code
     req = urllib.request.Request(
-        "https://api.elevenlabs.io/v1/text-to-speech/%s?output_format=mp3_44100_128" % MATILDA,
+        "https://api.elevenlabs.io/v1/text-to-speech/%s?output_format=mp3_44100_128" % voice,
         data=json.dumps(payload).encode("utf-8"),
         headers={"xi-api-key": ELEVEN_KEY, "Content-Type": "application/json"},
     )
@@ -172,7 +184,8 @@ def render(variant, rows):
             continue
         mp3 = ogg[:-4] + ".mp3"
         if variant["engine"] == "elevenlabs":
-            ok = eleven(sent, variant["model"], variant.get("language_code"), mp3)
+            ok = eleven(sent, variant["model"], variant.get("language_code"), mp3,
+                        variant.get("voice", MATILDA))
         else:
             ok = edge(sent, variant["voice"], mp3)
         if ok and to_ogg(mp3, ogg):
