@@ -142,14 +142,14 @@ flameyou	flame on you	Полум'я на тобі
 focusedchaosyou	Focused Chaos on you, run	Сфокусований хаос, тікай
 forcenovacoming	force nova coming	Скоро силова хвиля
 frenzy	frenzy	Шаленство
-frontal	frontal	Фронтал
-frontalyou	frontal on you	Фронтал на тобі
+frontal	frontal	Конус
+frontalyou	frontal on you	Конус на тобі
 frontcenter	go to front center	Іди вперед у центр
 frontleft	go to front left	Іди вперед ліворуч
 frontright	go to front right	Іди вперед праворуч
 frost	Frost	Мороз
 frostyou	frost on you	Мороз на тобі
-gather	stack	Стакнутись
+gather	stack	Зберіться
 gatheritem	Gather Item	Підбери предмет
 gathershare	Stack	Збирайтесь разом
 getboned	get bone	Візьми кістку
@@ -192,11 +192,11 @@ jumpnow	jump now	Стрибай зараз
 justrun	run	Біжи
 keepjump	keep jumping	Продовжуй стрибати
 keepmove	keep moving	Продовжуй рухатись
-kick1r	interrupt 1	Кік один
-kick2r	interrupt 2	Кік два
-kick3r	interrupt 3	Кік три
-kick4r	interrupt 4	Кік чотири
-kick5r	interrupt 5	Кік п'ять
+kick1r	interrupt 1	Збий один
+kick2r	interrupt 2	Збий два
+kick3r	interrupt 3	Збий три
+kick4r	interrupt 4	Збий чотири
+kick5r	interrupt 5	Збий п'ять
 kickcast	interrupt	Збий закляття
 kickorstopcast	kick or stop cast	Збий або зупини закляття
 killbigmob	Kill big add	Вбий великого ада
@@ -352,7 +352,7 @@ stompsoon	quake soon	Скоро струс
 stompstart	quake start	Струс почався
 stopatk	stop attacking	Припини атакувати
 stopattack	stop attacking	Припини атаку
-stopcast	stop casting	Зупини каст
+stopcast	stop casting	Зупини закляття
 stopchargewithline	stop charge with line	Зупини ривок лінією
 stopmove	stop moving	Зупинись
 stunsoon	stun incoming	Скоро оглушення
@@ -365,7 +365,7 @@ tankcombo	tank combo	Танкове комбо
 tankheal	heal tank	Лікуй танка
 targetchange	target change	Зміна цілі
 targetyou	target you	Ціль на тобі
-tauntboss	taunt boss	Таунт боса
+tauntboss	taunt boss	Забери боса
 telesoon	teleport incoming	Скоро телепорт
 teleyou	teleport on you	Телепорт на тобі
 thanks	Thanks	Дякую
