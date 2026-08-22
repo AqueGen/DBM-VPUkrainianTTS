@@ -167,7 +167,9 @@ function play(btn, src) {
   player.src = src;
   player.play().catch(function (e) {
     btn.classList.remove("playing");
-    alert("cannot play " + src + "\n" + e);
+    alert("cannot play " + src + "\n" + e +
+          "\n\nThe file exists but did not load - the local server is usually gone." +
+          "\nRestart it with: python generation/serve.py");
   });
 }
 player.addEventListener("ended", function () { if (current) current.classList.remove("playing"); });
