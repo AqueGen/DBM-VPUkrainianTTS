@@ -18,10 +18,15 @@ import urllib.error
 import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
 VARIANTS_DIR = os.path.join(HERE, "variants")
 MANIFEST = os.path.join(VARIANTS_DIR, "manifest.json")
 
-ELEVEN_KEY = os.environ.get("ELEVENLABS_API_KEY")
+import envvars
+
+ELEVEN_KEY = envvars.get("ELEVENLABS_API_KEY", required=False)
+AZURE_KEY = envvars.get("AZURE_SPEECH_KEY", required=False)
+AZURE_REGION = envvars.get("AZURE_SPEECH_REGION", required=False)
 MATILDA = "XrExE9yKIg1WjnnlVkGX"
 
 # Round 1 - which engine. Failure modes behind the flagged phrases: single word, wrong
@@ -129,6 +134,10 @@ VARIANTS += [
      "engine": "piper", "voice": "ukrainian_tts", "speaker": 2, "keys": ENGINE_KEYS},
     {"id": "piper-multi-lada", "label": "Piper ukrainian_tts / lada (local, free)",
      "engine": "piper", "voice": "ukrainian_tts", "speaker": 0, "keys": ENGINE_KEYS},
+    # The same voice as the edge-tts column, but through the licensed API: 48 kHz source
+    # and SSML control, which is what a published pack has to be built on.
+    {"id": "azure-polina", "label": "Azure uk-UA-PolinaNeural - whole pack",
+     "engine": "azure", "voice": "uk-UA-PolinaNeural", "keys": "all"},
 ]
 
 
@@ -175,6 +184,43 @@ def eleven(text, model, language_code, dest, voice=MATILDA):
             print("FAIL %s: %d %s" % (dest, e.code, e.read()[:200].decode("utf-8", "replace")))
             return False
         except Exception as e:  # network hiccup
+            print("RETRY %s: %s" % (dest, e))
+            time.sleep(5)
+    return False
+
+
+def azure(text, voice, dest, style=None, rate=None):
+    """Official Azure Speech, the licensed route to the same voice edge-tts borrows."""
+    inner = text
+    if rate:
+        inner = '<prosody rate="%s">%s</prosody>' % (rate, inner)
+    if style:
+        inner = '<mstts:express-as style="%s">%s</mstts:express-as>' % (style, inner)
+    ssml = ('<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" '
+            'xmlns:mstts="http://www.w3.org/2001/mstts" xml:lang="uk-UA">'
+            '<voice name="%s">%s</voice></speak>' % (voice, inner))
+    req = urllib.request.Request(
+        "https://%s.tts.speech.microsoft.com/cognitiveservices/v1" % AZURE_REGION,
+        data=ssml.encode("utf-8"),
+        headers={
+            "Ocp-Apim-Subscription-Key": AZURE_KEY,
+            "Content-Type": "application/ssml+xml",
+            "X-Microsoft-OutputFormat": "riff-48khz-16bit-mono-pcm",
+            "User-Agent": "dbm-vp-uk",
+        })
+    for attempt in range(5):
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                open(dest, "wb").write(r.read())
+            return True
+        except urllib.error.HTTPError as e:
+            # The free tier's request cap is low, so throttling is expected, not an error.
+            if e.code in (429, 503):
+                time.sleep(10 * (attempt + 1))
+                continue
+            print("FAIL %s: %d %s" % (dest, e.code, e.read()[:200].decode("utf-8", "replace")))
+            return False
+        except Exception as e:
             print("RETRY %s: %s" % (dest, e))
             time.sleep(5)
     return False
@@ -233,12 +279,14 @@ def render(variant, rows):
         os.makedirs(os.path.dirname(ogg), exist_ok=True)
         if os.path.exists(ogg) and os.path.getsize(ogg) > 0:
             continue
-        raw = ogg[:-4] + (".wav" if variant["engine"] == "piper" else ".mp3")
+        raw = ogg[:-4] + (".mp3" if variant["engine"] in ("elevenlabs", "edge") else ".wav")
         if variant["engine"] == "elevenlabs":
             ok = eleven(sent, variant["model"], variant.get("language_code"), raw,
                         variant.get("voice", MATILDA))
         elif variant["engine"] == "piper":
             ok = piper(sent, variant["voice"], raw, variant.get("speaker"))
+        elif variant["engine"] == "azure":
+            ok = azure(sent, variant["voice"], raw, variant.get("style"), variant.get("rate"))
         else:
             ok = edge(sent, variant["voice"], raw)
         if ok and to_ogg(raw, ogg):
