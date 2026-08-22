@@ -2,7 +2,7 @@
 1695uktar	uktar on the boat	Уктар на човні
 1695ukurogg	uk'urogg on the boat	Укуроґ на човні
 absorbyou	absorb on you	Поглинання на тобі
-aesoon	AoE incoming	Скоро АОЕ
+aesoon	AoE incoming	Скоро шкода по площі
 arrowyou	arrow on you	Стріла на тобі
 artillery	Artillery	Артилерія
 attackblood	attack Blood Globule	Атакуй кулю крові
@@ -100,10 +100,10 @@ dispelnow	dispel	Розвіюй
 dontmove	don't move	Не рухайся
 dotyou	dot on you	Дот на тобі
 doubleat	Thrash	Молотіння
-dpshard	hard dps	ДПС на повну
-dpsmore	more dps	Більше ДПС
-dpsslow	slow dps	Повільніше ДПС
-dpsstop	stop dps	Стоп ДПС
+dpshard	hard dps	ДПС на повну	де-пе-ес на повну
+dpsmore	more dps	Більше ДПС	Більше де-пе-ес
+dpsslow	slow dps	Повільніше ДПС	Повільніше де-пе-ес
+dpsstop	stop dps	Стоп ДПС	Стоп де-пе-ес
 dragonnow	dragon out	Дракон вийшов
 droptorch	drop torch	Кинь смолоскип
 dshigh	Mortal Strike high	Багато стАків.
@@ -203,7 +203,7 @@ killbigmob	Kill big add	Вбий великого ада
 killmine	attack Crawler Mine	Атакуй міну
 killmob	kill adds	Вбивай адів
 killspirit	attack spirit	Атакуй духа
-kite	kite	Кайть
+kite	kite	Відбігай
 laserrun	laser on you, run	Лазер на тобі, тікай
 leapyou	leap on you	Стрибок на тобі
 leavecenter	leave center	Залиш центр
@@ -243,7 +243,7 @@ morange	move to orange	Іди на помаранчевий
 moveboss	Move Boss	Пересунь боса
 movecenter	move to center	Рухайся в центр
 moveleft	move left	Рухайся ліворуч
-movemelee	move to melee	Іди в мілі
+movemelee	move to melee	Іди в ближній бій
 moveright	move right	Рухайся праворуч
 movesoon	get moving	Рухайся
 movetimebubble	Move to time bubble	Іди в бульбашку часу

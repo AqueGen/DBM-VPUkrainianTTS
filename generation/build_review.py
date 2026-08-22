@@ -68,7 +68,8 @@ def read_table(name):
         for line in fh:
             parts = line.rstrip("\n").split("\t")
             if len(parts) >= 3 and parts[0].strip():
-                rows.append(parts[:3])
+                spoken = parts[3].strip() if len(parts) > 3 else ""
+                rows.append(parts[:3] + [spoken])
     return rows
 
 
@@ -78,11 +79,14 @@ def category(key):
 
 def build():
     rows = []
-    for key, en, ua in read_table("ua_table.tsv") + read_table("events_table.tsv"):
+    for key, en, ua, spoken in read_table("ua_table.tsv") + read_table("events_table.tsv"):
         rows.append({
             "key": key,
             "en": en,
             "ua": ua,
+            # Only set when the written form and the spoken form differ, e.g. "ДПС"
+            # written but "де-пе-ес" sent to the engine.
+            "spoken": spoken,
             "cat": category(key),
             "hasUa": os.path.isfile(os.path.join(PACK, key + ".ogg")),
             "hasEn": os.path.isfile(os.path.join(REF, key + ".ogg")),
@@ -140,6 +144,8 @@ tr.now.flagged td { background: #46351c; }
 .key { color: #7fa8d6; font-family: Consolas, monospace; font-size: 12px; }
 .ua { color: #ffd100; }
 .missing { color: #d66; font-style: italic; }
+/* What the engine is handed when it differs from what is written. */
+.spoken { display: block; color: #8b93a0; font-family: Consolas, monospace; font-size: 11px; }
 td.act { width: 1%; white-space: nowrap; }
 #export { display: none; width: 100%; height: 160px; background: #0f1114; color: #cfd6e0; border: 0; border-top: 1px solid #2c313a; font-family: Consolas, monospace; font-size: 12px; padding: 10px; box-sizing: border-box; }
 /* Every round adds a column, so this table outgrows the window: scroll it on its own
@@ -395,6 +401,12 @@ const rowEls = DATA.map(function (d) {
   const tdUa = document.createElement("td");
   tdUa.className = d.ua ? "ua" : "missing";
   tdUa.textContent = d.ua || "(not recorded)";
+  if (d.spoken) {
+    const spoken = document.createElement("span");
+    spoken.className = "spoken";
+    spoken.textContent = "spoken: " + d.spoken;
+    tdUa.append(spoken);
+  }
 
   const tdAct = document.createElement("td");
   tdAct.className = "act";

@@ -142,13 +142,20 @@ VARIANTS += [
 
 
 def table():
+    """key -> (english source line, written Ukrainian, what the engine should hear).
+
+    The fourth column exists because those last two are not always the same string.
+    "ДПС" is spelled correctly and read aloud as an expanded government acronym, so the
+    row keeps its spelling and hands the engine "де-пе-ес" instead.
+    """
     rows = {}
     for name in ("ua_table.tsv", "events_table.tsv"):
         with open(os.path.join(HERE, name), encoding="utf-8") as fh:
             for line in fh:
                 parts = line.rstrip("\n").split("\t")
                 if len(parts) >= 3:
-                    rows[parts[0]] = (parts[1], parts[2])
+                    spoken = parts[3].strip() if len(parts) > 3 else ""
+                    rows[parts[0]] = (parts[1], parts[2], spoken or parts[2])
     return rows
 
 
@@ -159,8 +166,8 @@ def keys_of(variant, rows):
     return variant["keys"]
 
 
-def text_for(variant, key, ua):
-    return variant.get("override", {}).get(key, ua)
+def text_for(variant, key, spoken):
+    return variant.get("override", {}).get(key, spoken)
 
 
 def eleven(text, model, language_code, dest, voice=MATILDA):
@@ -281,8 +288,7 @@ def render(variant, rows):
     out = os.path.join(VARIANTS_DIR, variant["id"])
     texts = {}
     for key in keys_of(variant, rows):
-        ua = rows[key][1]
-        sent = text_for(variant, key, ua)
+        sent = text_for(variant, key, rows[key][2])
         texts[key] = sent
         ogg = os.path.join(out, key + ".ogg")
         os.makedirs(os.path.dirname(ogg), exist_ok=True)
