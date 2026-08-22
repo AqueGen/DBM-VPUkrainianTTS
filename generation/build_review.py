@@ -62,6 +62,25 @@ def load_variants():
     return out
 
 
+def check_scores():
+    """key -> how well the recognisers made out the clip, 0..1, from check_audio.py."""
+    path = os.path.join(HERE, "audio-check.tsv")
+    scores = {}
+    try:
+        with open(path, encoding="utf-8") as fh:
+            next(fh, None)
+            for line in fh:
+                parts = line.rstrip("\n").split("\t")
+                if len(parts) >= 2:
+                    try:
+                        scores[parts[1]] = float(parts[0])
+                    except ValueError:
+                        pass
+    except OSError:
+        pass
+    return scores
+
+
 def read_table(name):
     rows = []
     with open(os.path.join(HERE, name), encoding="utf-8") as fh:
@@ -92,6 +111,14 @@ def build():
             "hasEn": os.path.isfile(os.path.join(REF, key + ".ogg")),
         })
     variants = load_variants()
+    scores = check_scores()
+    respelled = set()
+    for v in variants:
+        if not v["full"]:
+            respelled.update(v["texts"])
+    for row in rows:
+        row["match"] = scores.get(row["key"])
+        row["respelled"] = row["key"] in respelled
     known = {r["key"] for r in rows}
     for key in sorted(set(dbm_keys()) - known):
         rows.append({
@@ -122,6 +149,14 @@ TEMPLATE = r"""<!DOCTYPE html>
 <title>DBM-VPUkrainianTTS - phrase review</title>
 <style>
 :root { color-scheme: dark; }
+.match.bad { color: #ff8a7a; }
+.match.warn { color: #ffd100; }
+.match.fine { color: #6f7885; }
+.respelled { color: #7fd6a8; font-size: 10px; text-transform: uppercase; letter-spacing: .04em; }
+th[data-sort] { cursor: pointer; user-select: none; }
+th[data-sort]:hover { color: #e6e6e6; }
+th.sorted::after { content: " 93"; }
+th.sorted.asc::after { content: " 91"; }
 body { margin: 0; font: 14px/1.4 "Segoe UI", system-ui, sans-serif; background: #14161a; color: #e6e6e6; }
 header { position: sticky; top: 0; z-index: 2; background: #1b1e24; border-bottom: 1px solid #2c313a; padding: 10px 16px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 h1 { font-size: 15px; margin: 0 12px 0 0; color: #ffd100; font-weight: 600; }
@@ -175,7 +210,7 @@ td.act { width: 1%; white-space: nowrap; }
 </header>
 <section id="bake"></section>
 <table>
-  <thead><tr id="mainhead"><th>key</th><th>english</th><th>ukrainian</th><th>play</th><th>flag</th></tr></thead>
+  <thead><tr id="mainhead"><th data-sort="key">key</th><th data-sort="en">english</th><th data-sort="ua">ukrainian</th><th>play</th><th data-sort="match">match</th><th data-sort="flag">flag</th></tr></thead>
   <tbody id="rows"></tbody>
 </table>
 <textarea id="export" readonly></textarea>
@@ -428,6 +463,13 @@ const rowEls = DATA.map(function (d) {
   const tdKey = document.createElement("td");
   tdKey.className = "key";
   tdKey.textContent = d.key;
+  if (d.respelled) {
+    const mark = document.createElement("span");
+    mark.className = "respelled";
+    mark.textContent = " respelled";
+    mark.title = "a different spelling of this line was tried; hear it in the table above";
+    tdKey.append(mark);
+  }
 
   const tdEn = document.createElement("td");
   tdEn.textContent = d.en;
@@ -460,6 +502,16 @@ const rowEls = DATA.map(function (d) {
     return td;
   });
 
+  // How well the recognisers made out this clip. Low is a reason to listen, not a verdict.
+  const tdMatch = document.createElement("td");
+  tdMatch.className = "act match";
+  if (typeof d.match === "number") {
+    tdMatch.textContent = Math.round(d.match * 100) + "%";
+    tdMatch.classList.add(d.match < 0.85 ? "bad" : d.match < 0.92 ? "warn" : "fine");
+  } else {
+    tdMatch.textContent = "-";
+  }
+
   const tdFlag = document.createElement("td");
   tdFlag.className = "act";
   const cb = document.createElement("input");
@@ -477,7 +529,9 @@ const rowEls = DATA.map(function (d) {
     if (e.target.tagName === "BUTTON" || e.target.tagName === "INPUT") return;
     jumpAuto(rowEls.find(function (r) { return r.tr === tr; }));
   };
-  tr.append(tdKey, tdEn, tdUa, tdAct);
+  // Order has to match the header, where the candidate columns are inserted between
+  // "match" and "flag".
+  tr.append(tdKey, tdEn, tdUa, tdAct, tdMatch);
   tdCandidates.forEach(function (td) { tr.append(td); });
   tr.append(tdFlag);
   tbody.append(tr);
@@ -523,6 +577,46 @@ function render() {
 }
 
 q.oninput = sel.onchange = onlyFlagged.onchange = render;
+
+// Sorting: click a header. The default order is the one the pack is written in, so the
+// first click on "match" puts the clips the recognisers struggled with at the top.
+let sortBy = null;
+let sortAsc = true;
+
+function valueOf(d, field) {
+  if (field === "match") return typeof d.match === "number" ? d.match : 2;
+  if (field === "flag") return flagged.has(d.key) ? 0 : 1;
+  return (d[field] || "").toLowerCase();
+}
+
+function applySort() {
+  const ordered = rowEls.slice();
+  if (sortBy) {
+    ordered.sort(function (a, b) {
+      const x = valueOf(a.d, sortBy);
+      const y = valueOf(b.d, sortBy);
+      if (x < y) return sortAsc ? -1 : 1;
+      if (x > y) return sortAsc ? 1 : -1;
+      return a.d.key.localeCompare(b.d.key);
+    });
+  }
+  ordered.forEach(function (row) { tbody.append(row.tr); });
+}
+
+document.querySelectorAll("#mainhead th[data-sort]").forEach(function (th) {
+  th.onclick = function () {
+    const field = th.dataset.sort;
+    sortAsc = sortBy === field ? !sortAsc : true;
+    sortBy = field;
+    document.querySelectorAll("#mainhead th").forEach(function (other) {
+      other.classList.remove("sorted", "asc");
+    });
+    th.classList.add("sorted");
+    if (sortAsc) th.classList.add("asc");
+    applySort();
+    render();
+  };
+});
 
 const exportBox = document.getElementById("export");
 document.getElementById("showExport").onclick = function () {
