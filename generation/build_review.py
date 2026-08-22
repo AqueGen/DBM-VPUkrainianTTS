@@ -9,6 +9,7 @@ Then open generation/review.html in a browser.
 import json
 import os
 import re
+import subprocess
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PACK = os.path.dirname(HERE)                      # DBM-VPUkrainianTTS
@@ -26,6 +27,16 @@ def dbm_keys():
         return []
 
 
+def duration(path):
+    """Seconds of audio, or None. Length is half the argument when wording is compared."""
+    try:
+        out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                              "-of", "csv=p=0", path], capture_output=True, text=True)
+        return round(float(out.stdout.strip()), 2)
+    except (OSError, ValueError):
+        return None
+
+
 def load_variants():
     """Bake-off renderings written by bakeoff.py, one column per variant, oldest first."""
     manifest = os.path.join(HERE, "variants", "manifest.json")
@@ -36,10 +47,15 @@ def load_variants():
         return []
     out = []
     for vid, entry in raw.items():
-        texts = {k: t for k, t in entry.get("texts", {}).items()
-                 if os.path.isfile(os.path.join(HERE, "variants", vid, k + ".ogg"))}
+        texts, secs = {}, {}
+        for key, text in entry.get("texts", {}).items():
+            ogg = os.path.join(HERE, "variants", vid, key + ".ogg")
+            if os.path.isfile(ogg):
+                texts[key] = text
+                secs[key] = duration(ogg)
         if texts:
-            out.append({"id": vid, "label": entry.get("label", vid), "texts": texts})
+            out.append({"id": vid, "label": entry.get("label", vid),
+                        "texts": texts, "secs": secs})
     return out
 
 
@@ -129,6 +145,7 @@ td.act { width: 1%; white-space: nowrap; }
 #bake .sent { display: block; margin-top: 3px; color: #9aa4b2; font-family: Consolas, monospace; font-size: 11px; max-width: 220px; }
 #bake .sent.changed { color: #ffd100; }
 #bake .pick { margin-right: 5px; }
+#bake .secs { margin-left: 6px; color: #6f7885; font-size: 11px; font-family: Consolas, monospace; }
 #bake .none { color: #555c67; }
 </style>
 </head>
@@ -261,6 +278,13 @@ function buildBakeoff() {
         localStorage.setItem(PICK_KEY, JSON.stringify(picks));
       };
       td.append(radio, makeBtn("play", "variants/" + v.id + "/" + key + ".ogg", true));
+      const secs = v.secs && v.secs[key];
+      if (secs) {
+        const s = document.createElement("span");
+        s.className = "secs";
+        s.textContent = secs.toFixed(2) + "s";
+        td.append(s);
+      }
       const txt = document.createElement("span");
       txt.className = "sent" + (sent !== d.ua ? " changed" : "");
       txt.textContent = sent;

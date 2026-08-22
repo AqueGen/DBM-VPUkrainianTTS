@@ -24,15 +24,46 @@ MANIFEST = os.path.join(VARIANTS_DIR, "manifest.json")
 ELEVEN_KEY = os.environ.get("ELEVENLABS_API_KEY")
 MATILDA = "XrExE9yKIg1WjnnlVkGX"
 
-# Phrases under test: the failure modes behind the flagged phrases (single word, wrong
-# stress, Russian-sounding vowels, slang, abbreviation, long line with punctuation).
-KEYS = [
+# Round 1 - which engine. Failure modes behind the flagged phrases: single word, wrong
+# stress, Russian-sounding vowels, slang, abbreviation, long line with punctuation.
+ENGINE_KEYS = [
     "uu", "thanks", "defensive", "kite", "aesoon",
     "bait", "harmonic", "crowdcontrol", "interruptbyeye", "Thogar/B2D3",
 ]
 
-# Stress written as a capital letter on the stressed vowel - the one hint the engine is
-# known to honour (a combining acute breaks it, see CLAUDE.md).
+# Round 2 - which wording. Every line that leans on WoW jargon, rendered twice on the
+# same engine so the wording is the only thing that differs.
+JARGON_KEYS = [
+    "aesoon", "kite", "dotyou", "incomingdebuff", "throweyedebuff", "throweyehealer",
+    "movemelee", "stackhigh", "killmob", "mobkill", "mobout", "mobsoon", "mobenough",
+    "behindmob", "bringlighttomob", "movetomobs", "runovermobs",
+]
+
+# The same lines without the borrowed words. Longer, but understandable to someone who
+# does not play - which is exactly what is being judged by ear.
+PLAIN_WORDING = {
+    "aesoon": "Скоро шкода по площі",
+    "kite": "Відбігай",
+    "dotyou": "Періодична шкода на тобі",
+    "incomingdebuff": "Скоро негативний ефект",
+    "throweyedebuff": "Кинь око гравцю з негативним ефектом",
+    "throweyehealer": "Кинь око лікарю",
+    "movemelee": "Іди в ближній бій",
+    "stackhigh": "Багато накладень",
+    "killmob": "Вбивай прислужників",
+    "mobkill": "Вбивай прислужників",
+    "mobout": "Витягни прислужників",
+    "mobsoon": "Скоро прислужники",
+    "mobenough": "Енергія повна, тримайся далі від прислужників",
+    "behindmob": "За ворогом",
+    "bringlighttomob": "Неси світло до ворога",
+    "movetomobs": "Іди до ворогів",
+    "runovermobs": "Пробіжи по ворогах",
+}
+
+# Stress written as a capital letter on the stressed vowel - the one hint the engine was
+# thought to honour (a combining acute breaks it, see CLAUDE.md). Lost every row of
+# round 1, kept here so the comparison stays on the page.
 CAPS_STRESS = {
     "uu": "ТвоЄ",
     "thanks": "ДЯкую",
@@ -46,36 +77,24 @@ CAPS_STRESS = {
     "Thogar/B2D3": "КОлія два: підкрІплення, кОлія три: вОїни",
 }
 
+TURBO = {"engine": "elevenlabs", "model": "eleven_turbo_v2_5", "language_code": "uk"}
+V3 = {"engine": "elevenlabs", "model": "eleven_v3"}
+
 VARIANTS = [
-    {
-        "id": "turbo-uk",
-        "label": "ElevenLabs turbo v2.5, forced uk",
-        "engine": "elevenlabs",
-        "model": "eleven_turbo_v2_5",
-        "language_code": "uk",
-        "text": "plain",
-    },
-    {
-        "id": "v3",
-        "label": "ElevenLabs v3, plain text",
-        "engine": "elevenlabs",
-        "model": "eleven_v3",
-        "text": "plain",
-    },
-    {
-        "id": "v3-caps",
-        "label": "ElevenLabs v3, stress as a capital letter",
-        "engine": "elevenlabs",
-        "model": "eleven_v3",
-        "text": "caps",
-    },
+    dict(TURBO, id="turbo-uk", label="ElevenLabs turbo v2.5, forced uk", keys=ENGINE_KEYS),
+    dict(V3, id="v3", label="ElevenLabs v3, plain text", keys=ENGINE_KEYS),
+    dict(V3, id="v3-caps", label="ElevenLabs v3, stress as a capital letter",
+         keys=ENGINE_KEYS, override=CAPS_STRESS),
     {
         "id": "edge-polina",
         "label": "edge-tts uk-UA-PolinaNeural (free)",
         "engine": "edge",
         "voice": "uk-UA-PolinaNeural",
-        "text": "plain",
+        "keys": ENGINE_KEYS,
     },
+    dict(TURBO, id="jargon", label="wording: as shipped (jargon)", keys=JARGON_KEYS),
+    dict(TURBO, id="plain-words", label="wording: no borrowed words",
+         keys=JARGON_KEYS, override=PLAIN_WORDING),
 ]
 
 
@@ -91,9 +110,7 @@ def table():
 
 
 def text_for(variant, key, ua):
-    if variant["text"] == "caps":
-        return CAPS_STRESS[key]
-    return ua
+    return variant.get("override", {}).get(key, ua)
 
 
 def eleven(text, model, language_code, dest):
@@ -145,7 +162,7 @@ def to_ogg(mp3, ogg):
 def render(variant, rows):
     out = os.path.join(VARIANTS_DIR, variant["id"])
     texts = {}
-    for key in KEYS:
+    for key in variant["keys"]:
         ua = rows[key][1]
         sent = text_for(variant, key, ua)
         texts[key] = sent
@@ -179,7 +196,7 @@ def main():
             continue
         print(variant["id"])
         texts = render(variant, rows)
-        entry = {k: v for k, v in variant.items() if k != "text"}
+        entry = {k: v for k, v in variant.items() if k not in ("keys", "override")}
         entry["texts"] = texts
         manifest[variant["id"]] = entry
     os.makedirs(VARIANTS_DIR, exist_ok=True)
