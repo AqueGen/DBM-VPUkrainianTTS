@@ -258,8 +258,17 @@ def edge(text, voice, dest):
     return True
 
 
-def to_ogg(mp3, ogg):
-    r = subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", mp3,
+# Neural voices pad a clip with silence - Azure's Polina averages 0.17 s in front and
+# 0.90 s behind, against 1.04 s of actual speech. In a boss-warning pack the front
+# padding is a late warning and the back padding is nothing at all, so both go.
+TRIM = ("silenceremove=start_periods=1:start_silence=0.02:start_threshold=-45dB:detection=peak,"
+        "areverse,"
+        "silenceremove=start_periods=1:start_silence=0.10:start_threshold=-45dB:detection=peak,"
+        "areverse")
+
+
+def to_ogg(src, ogg):
+    r = subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, "-af", TRIM,
                         "-c:a", "libvorbis", "-q:a", "4", "-ar", "44100", ogg],
                        capture_output=True, text=True)
     if r.returncode != 0:
