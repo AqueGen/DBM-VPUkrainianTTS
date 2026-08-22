@@ -106,14 +106,14 @@ dpsslow	slow dps	Повільніше ДПС	Повільніше де-пе-ес
 dpsstop	stop dps	Стоп ДПС	Стоп де-пе-ес
 dragonnow	dragon out	Дракон вийшов
 droptorch	drop torch	Кинь смолоскип
-dshigh	Mortal Strike high	Багато стАків.
+dshigh	Mortal Strike high	Багато стаків
 east	east	Схід
 eggyou	egg on you	Яйце на тобі
 end	The end	Кінець
 energyhigh	Energy high	Багато енергії
 enfeeblingroar	Enfeebling Roar	Ослаблюючий рик
 engineercoming	Engineer coming	Іде інженер
-enrage	enrage	Зніми лють.
+enrage	enrage	Зніми лють
 enteringcombat	entering combat	Початок бою
 entertainer	entertainer	Артист
 failed	failed	Провал
@@ -149,7 +149,7 @@ frontleft	go to front left	Іди вперед ліворуч
 frontright	go to front right	Іди вперед праворуч
 frost	Frost	Мороз
 frostyou	frost on you	Мороз на тобі
-gather	stack	стАкнутись.
+gather	stack	Стакнутись
 gatheritem	Gather Item	Підбери предмет
 gathershare	Stack	Збирайтесь разом
 getboned	get bone	Візьми кістку
@@ -171,20 +171,20 @@ group5	Group Five	Група п'ять
 harmonic	harmonic	Гармонія
 healall	heal team	Лікуй команду
 healfull	heal to full	Відлікуй до повного
-helpdispel	dispel	Розвіюй.
-helpkick	interrupt	Збий закляття.
+helpdispel	dispel	Розвіюй
+helpkick	interrupt	Збий закляття
 helpme	Help	Допоможіть
 helpme2	Help me	Допоможіть мені
 helpsoak	help soak	Допоможи поглинути
 helpspirit	help spirit	Допоможи з духом
 holdingdeadlyorb	holding deadly orb	Тримаєш смертельну сферу
-holdingorb	holding orb	Тримаєш сферу.
+holdingorb	holding orb	Тримаєш сферу
 holdit	defensive	Тримайся
 iceorbmove	ice orb, move	Крижана сфера, рухайся
 incomingdebuff	incoming de-buff	Скоро дебаф
 inhalegetinpuddle	inhale, get inside the puddle	Вдих, стань у калюжу
 inktoshark	bring ink to shark	Неси чорнило до акули
-interruptbyeye	interrupt by eye	Збий закляття оком.
+interruptbyeye	interrupt by eye	Збий закляття оком
 interruptingshout	Interrupting Shout	Крик переривання
 interruptsoon	ready to interrupt	Готуйся переривати
 jumpinpit	Jump in Pit	Стрибай у яму
@@ -197,8 +197,8 @@ kick2r	interrupt 2	Кік два
 kick3r	interrupt 3	Кік три
 kick4r	interrupt 4	Кік чотири
 kick5r	interrupt 5	Кік п'ять
-kickcast	interrupt	Збий закляття.
-kickorstopcast	kick or stop cast	Збий або зупини закляття.
+kickcast	interrupt	Збий закляття
+kickorstopcast	kick or stop cast	Збий або зупини закляття
 killbigmob	Kill big add	Вбий великого ада
 killmine	attack Crawler Mine	Атакуй міну
 killmob	kill adds	Вбивай адів
@@ -385,7 +385,7 @@ useextraaction	use extra action	Використай додаткову дію
 usegate	use gate	Використай браму
 useitem	Use item	Використай предмет
 uu	yours	Твоє
-voidsoak	void soak	Поглинь порожнечу.
+voidsoak	void soak	Поглинь порожнечу
 voidyou	void on you	Порожнеча на тобі
 watchfeet	Watch your feet	Дивись під ноги
 watchimpale	impale	Пронизування
