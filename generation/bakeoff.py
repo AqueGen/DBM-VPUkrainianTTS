@@ -115,6 +115,11 @@ VARIANTS += [
      "voice": "tetiana", "keys": ENGINE_KEYS},
     {"id": "piper-lada", "label": "Piper lada (local, free)", "engine": "piper",
      "voice": "lada", "keys": ENGINE_KEYS},
+    # Same speakers, a different model: multi-speaker, CC0 data, 22 kHz.
+    {"id": "piper-multi-tetiana", "label": "Piper ukrainian_tts / tetiana (local, free)",
+     "engine": "piper", "voice": "ukrainian_tts", "speaker": 2, "keys": ENGINE_KEYS},
+    {"id": "piper-multi-lada", "label": "Piper ukrainian_tts / lada (local, free)",
+     "engine": "piper", "voice": "ukrainian_tts", "speaker": 0, "keys": ENGINE_KEYS},
 ]
 
 
