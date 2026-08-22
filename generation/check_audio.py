@@ -43,6 +43,17 @@ def similarity(expected, heard):
     return difflib.SequenceMatcher(None, normalise(expected), normalise(heard)).ratio()
 
 
+def score(sent, heard, stress):
+    """Believe a row is broken only when both models disagree with the text.
+
+    Either model alone produces false alarms on short clips: "П'ять" came back empty
+    from the ASR while the stress model heard п'+ять perfectly, and "Кинь смолоскип"
+    was mangled by the ASR and transcribed correctly by the other. Taking the better of
+    the two leaves the rows where the audio, not the recogniser, is the problem.
+    """
+    return max(similarity(sent, heard), similarity(sent, stress.replace("+", "")))
+
+
 def main():
     manifest = json.load(open(os.path.join(HERE, "variants", "manifest.json"), encoding="utf-8"))
     if VARIANT not in manifest:
@@ -56,18 +67,20 @@ def main():
             continue
         heard = hear.transcribe(clip, models.ASR)
         stress = hear.transcribe(clip, models.STRESS)
-        rows.append((similarity(sent, heard), key, sent, heard, stress))
+        rows.append((score(sent, heard, stress), key, sent, heard, stress))
         if i % 25 == 0:
             print("  %d/%d" % (i, len(texts)), flush=True)
 
     rows.sort()
     with open(REPORT, "w", encoding="utf-8", newline="\n") as fh:
         fh.write("match\tkey\tsent\theard\tstress\n")
-        for score, key, sent, heard, stress in rows:
-            fh.write("%.2f\t%s\t%s\t%s\t%s\n" % (score, key, sent, heard, stress))
+        for match, key, sent, heard, stress in rows:
+            fh.write("%.2f\t%s\t%s\t%s\t%s\n" % (match, key, sent, heard, stress))
 
-    bad = [r for r in rows if r[0] < 0.75]
-    print("\n%s: %d clips, %d below 0.75 match" % (VARIANT, len(rows), len(bad)))
+    # Requiring both models to disagree makes 0.75 unreachable in practice - on the first
+    # full run nothing fell below it. The output is a ranking to listen down, not a gate.
+    bad = [r for r in rows if r[0] < 0.90]
+    print("\n%s: %d clips, %d worth an ear (below 0.90)" % (VARIANT, len(rows), len(bad)))
     for score, key, sent, heard, _ in bad[:25]:
         print("  %.2f  %-18s sent %-34s heard %s" % (score, key, sent, heard))
     print("\nfull report: %s" % REPORT)
