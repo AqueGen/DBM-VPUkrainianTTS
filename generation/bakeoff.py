@@ -109,6 +109,14 @@ for _vid, _voice in sorted(UKRAINIAN_VOICES.items()):
     VARIANTS.append(dict(TURBO, id=_vid, label="voice: %s (turbo, forced uk)" % _vid,
                          voice=_voice, keys=ENGINE_KEYS))
 
+# Free, local, and trained on Ukrainian speech rather than adapted to it.
+VARIANTS += [
+    {"id": "piper-tetiana", "label": "Piper tetiana (local, free)", "engine": "piper",
+     "voice": "tetiana", "keys": ENGINE_KEYS},
+    {"id": "piper-lada", "label": "Piper lada (local, free)", "engine": "piper",
+     "voice": "lada", "keys": ENGINE_KEYS},
+]
+
 
 def table():
     rows = {}
@@ -151,6 +159,28 @@ def eleven(text, model, language_code, dest, voice=MATILDA):
     return False
 
 
+_PIPER_CACHE = {}
+
+
+def piper(text, voice, dest, speaker=None):
+    """Local synthesis with a Piper voice trained on Ukrainian. Writes a wav."""
+    import wave
+
+    import models
+    from piper import PiperVoice
+
+    if voice not in _PIPER_CACHE:
+        _PIPER_CACHE[voice] = PiperVoice.load(models.piper_voice(voice))
+    loaded = _PIPER_CACHE[voice]
+    config = None
+    if speaker is not None:
+        from piper.config import SynthesisConfig
+        config = SynthesisConfig(speaker_id=speaker)
+    with wave.open(dest, "wb") as wav:
+        loaded.synthesize_wav(text, wav, syn_config=config)
+    return True
+
+
 def edge(text, voice, dest):
     r = subprocess.run([sys.executable, "-m", "edge_tts", "--voice", voice,
                         "--text", text, "--write-media", dest],
@@ -182,15 +212,17 @@ def render(variant, rows):
         os.makedirs(os.path.dirname(ogg), exist_ok=True)
         if os.path.exists(ogg) and os.path.getsize(ogg) > 0:
             continue
-        mp3 = ogg[:-4] + ".mp3"
+        raw = ogg[:-4] + (".wav" if variant["engine"] == "piper" else ".mp3")
         if variant["engine"] == "elevenlabs":
-            ok = eleven(sent, variant["model"], variant.get("language_code"), mp3,
+            ok = eleven(sent, variant["model"], variant.get("language_code"), raw,
                         variant.get("voice", MATILDA))
+        elif variant["engine"] == "piper":
+            ok = piper(sent, variant["voice"], raw, variant.get("speaker"))
         else:
-            ok = edge(sent, variant["voice"], mp3)
-        if ok and to_ogg(mp3, ogg):
+            ok = edge(sent, variant["voice"], raw)
+        if ok and to_ogg(raw, ogg):
             print("  %s/%s" % (variant["id"], key))
-        os.path.exists(mp3) and os.remove(mp3)
+        os.path.exists(raw) and os.remove(raw)
         time.sleep(0.3)
     return texts
 
