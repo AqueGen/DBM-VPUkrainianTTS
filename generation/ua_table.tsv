@@ -36,10 +36,10 @@ beamincoming	beam incoming	Скоро промінь
 beamyou	beam on you	Промінь на тобі
 behindboss	Behind Boss	За босом
 behindice	move behind ice	Сховайся за льодом
-behindmob	Behind Mob	За мобом
+behindmob	Behind Mob	За ворогом
 bigball	big ball	Велика куля
-bigmob	Big add	Великий ад
-bigmobsoon	Big add incoming	Скоро великий ад
+bigmob	Big add	Великий ворог
+bigmobsoon	Big add incoming	Скоро великий ворог
 bitenow	bite now	Кусай зараз
 bleedyou	bleed on you	Кровотеча на тобі
 bloodfeast	Blood Feast	Кривавий бенкет
@@ -61,7 +61,7 @@ breaktormentsecond	break torment second	Розбивай муку другим
 breaktormentthird	break torment third	Розбивай муку третім
 breakvine	break vine	Розірви лозу
 breathsoon	Breath incoming	Скоро подих
-bringlighttomob	bring light to mob	Неси світло до моба
+bringlighttomob	bring light to mob	Неси світло до ворога
 bringlighttoshadow	bring light to shadows	Неси світло до тіней
 carefly	knocking back	Відкидання
 catchballs	catch balls	Лови кулі
@@ -199,9 +199,9 @@ kick4r	interrupt 4	Збий чотири
 kick5r	interrupt 5	Збий п'ять
 kickcast	interrupt	Збий закляття
 kickorstopcast	kick or stop cast	Збий або зупини закляття
-killbigmob	Kill big add	Вбий великого ада
+killbigmob	Kill big add	Вбий великого ворога
 killmine	attack Crawler Mine	Атакуй міну
-killmob	kill adds	Вбивай адів
+killmob	kill adds	Вбивай ворогів
 killspirit	attack spirit	Атакуй духа
 kite	kite	Відбігай
 laserrun	laser on you, run	Лазер на тобі, тікай
@@ -235,10 +235,10 @@ mm5	move to Moon	Іди на місяць
 mm6	move to Square	Іди на квадрат
 mm7	move to Cross	Іди на хрест
 mm8	move to Skull	Іди на череп
-mobenough	energy full. stay away from adds.	Енергія повна, тримайся далі від адів
-mobkill	kill adds	Вбивай адів
-mobout	pull adds out	Витягни адів
-mobsoon	adds coming	Скоро ади
+mobenough	energy full. stay away from adds.	Енергія повна, тримайся далі від ворогів
+mobkill	kill adds	Вбивай ворогів
+mobout	pull adds out	Витягни ворогів
+mobsoon	adds coming	Скоро вороги
 morange	move to orange	Іди на помаранчевий
 moveboss	Move Boss	Пересунь боса
 movecenter	move to center	Рухайся в центр
@@ -255,7 +255,7 @@ movetofire	move to fire	Іди до вогню
 movetoflamethrower	move to flamethrower	Іди до вогнемета
 movetofrost	move to frost	Іди до морозу
 movetojelly	move to jellyfish	Іди до медузи
-movetomobs	move to mobs	Іди до мобів
+movetomobs	move to mobs	Іди до ворогів
 movetopartner	move to partner	Іди до партнера
 movetopillar	Move to Pillar	Іди до колони
 movetopool	Move to Pool	Іди до калюжі
@@ -311,7 +311,7 @@ runin	run in	Забігай
 runintofire	run into the fire	Біжи у вогонь
 runout	run out	Вибігай
 runoverflowers	run over the flowers	Пробіжи по квітах
-runovermobs	run over mobs	Пробіжи по мобах
+runovermobs	run over mobs	Пробіжи по ворогах
 runtoedge	run to edge of room	Біжи до краю
 runtotrap	move to trap	Іди до пастки
 safenow	safe now	Тепер безпечно
