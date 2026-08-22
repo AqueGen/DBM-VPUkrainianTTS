@@ -137,7 +137,11 @@ tr.flagged:hover td { background: #462b1c; }
 .missing { color: #d66; font-style: italic; }
 td.act { width: 1%; white-space: nowrap; }
 #export { display: none; width: 100%; height: 160px; background: #0f1114; color: #cfd6e0; border: 0; border-top: 1px solid #2c313a; font-family: Consolas, monospace; font-size: 12px; padding: 10px; box-sizing: border-box; }
-#bake { padding: 12px 16px 4px; border-bottom: 2px solid #2c313a; }
+/* Every round adds a column, so this table outgrows the window: scroll it on its own
+   and pin the key so a row stays identifiable however far right you get. */
+#bake { padding: 12px 16px 4px; border-bottom: 2px solid #2c313a; overflow-x: auto; }
+#bake th:first-child, #bake td:first-child { position: sticky; left: 0; background: #14161a; z-index: 2; }
+#bake tr:hover td:first-child { background: #1c2027; }
 #bake h2 { font-size: 13px; color: #8b93a0; margin: 0 0 8px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
 #bake table { table-layout: auto; }
 #bake th { position: static; }
