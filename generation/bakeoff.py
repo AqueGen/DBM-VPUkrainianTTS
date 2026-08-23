@@ -123,19 +123,8 @@ for _vid, _voice in sorted(UKRAINIAN_VOICES.items()):
     VARIANTS.append(dict(TURBO, id=_vid, label="voice: %s (turbo, forced uk)" % _vid,
                          voice=_voice, keys=ENGINE_KEYS))
 
-# Free, local, and trained on Ukrainian speech rather than adapted to it.
+# The licensed route to the voice the pack ships with.
 VARIANTS += [
-    {"id": "piper-tetiana", "label": "Piper tetiana (local, free)", "engine": "piper",
-     "voice": "tetiana", "keys": ENGINE_KEYS},
-    {"id": "piper-lada", "label": "Piper lada (local, free)", "engine": "piper",
-     "voice": "lada", "keys": ENGINE_KEYS},
-    # Same speakers, a different model: multi-speaker, CC0 data, 22 kHz.
-    {"id": "piper-multi-tetiana", "label": "Piper ukrainian_tts / tetiana (local, free)",
-     "engine": "piper", "voice": "ukrainian_tts", "speaker": 2, "keys": ENGINE_KEYS},
-    {"id": "piper-multi-lada", "label": "Piper ukrainian_tts / lada (local, free)",
-     "engine": "piper", "voice": "ukrainian_tts", "speaker": 0, "keys": ENGINE_KEYS},
-    # The same voice as the edge-tts column, but through the licensed API: 48 kHz source
-    # and SSML control, which is what a published pack has to be built on.
     {"id": "azure-polina", "label": "Azure uk-UA-PolinaNeural - whole pack",
      "engine": "azure", "voice": "uk-UA-PolinaNeural", "keys": "all"},
 ]
@@ -233,28 +222,6 @@ def azure(text, voice, dest, style=None, rate=None):
     return False
 
 
-_PIPER_CACHE = {}
-
-
-def piper(text, voice, dest, speaker=None):
-    """Local synthesis with a Piper voice trained on Ukrainian. Writes a wav."""
-    import wave
-
-    import models
-    from piper import PiperVoice
-
-    if voice not in _PIPER_CACHE:
-        _PIPER_CACHE[voice] = PiperVoice.load(models.piper_voice(voice))
-    loaded = _PIPER_CACHE[voice]
-    config = None
-    if speaker is not None:
-        from piper.config import SynthesisConfig
-        config = SynthesisConfig(speaker_id=speaker)
-    with wave.open(dest, "wb") as wav:
-        loaded.synthesize_wav(text, wav, syn_config=config)
-    return True
-
-
 def edge(text, voice, dest):
     r = subprocess.run([sys.executable, "-m", "edge_tts", "--voice", voice,
                         "--text", text, "--write-media", dest],
@@ -294,12 +261,10 @@ def render(variant, rows):
         os.makedirs(os.path.dirname(ogg), exist_ok=True)
         if os.path.exists(ogg) and os.path.getsize(ogg) > 0:
             continue
-        raw = ogg[:-4] + (".mp3" if variant["engine"] in ("elevenlabs", "edge") else ".wav")
+        raw = ogg[:-4] + (".wav" if variant["engine"] == "azure" else ".mp3")
         if variant["engine"] == "elevenlabs":
             ok = eleven(sent, variant["model"], variant.get("language_code"), raw,
                         variant.get("voice", MATILDA))
-        elif variant["engine"] == "piper":
-            ok = piper(sent, variant["voice"], raw, variant.get("speaker"))
         elif variant["engine"] == "azure":
             ok = azure(sent, variant["voice"], raw, variant.get("style"), variant.get("rate"))
         else:
@@ -318,8 +283,9 @@ RETIRED = {
     "v3-caps",
     # The wording round is settled; its picks live in the table now.
     "jargon", "plain-words",
-    # Trained on Ukrainian, but lost to Polina by ear.
-    "piper-tetiana", "piper-lada", "piper-multi-tetiana", "piper-multi-lada",
+    # The same voice through the browser's read-aloud endpoint: fine for listening,
+    # not something a published pack may be built on.
+    "polina-all",
 }
 
 

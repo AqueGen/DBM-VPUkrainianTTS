@@ -27,32 +27,9 @@ ASR = "Yehor/w2v-bert-uk-v2.1"
 # than a lexical prior - that is the experiment, not an assumption.
 STRESS = "mouseyy/uk_wav2vec2_with_stress_mark"
 
-# Spoken-language identification. Cheap triage: does a Ukrainian line come back as
-# Ukrainian, or as Russian?
-LANGID = "speechbrain/lang-id-voxlingua107-ecapa"
-
-REPOS = [ASR, STRESS, LANGID]
-# Not "*.ckpt": speechbrain ships its weights in that format.
+REPOS = [ASR, STRESS]
 IGNORE = ["*.h5", "*.msgpack", "*.tflite"]
 
-# Piper voices trained on Ukrainian speech, for the free local side of the voice
-# comparison. Matilda is an American-accent source voice and ElevenLabs says that accent
-# leaks into multilingual output, so a natively Ukrainian voice is worth hearing.
-PIPER_REPO = "rhasspy/piper-voices"
-PIPER_VOICES = {
-    "tetiana": "uk/uk_UA/tetiana/high/uk_UA-tetiana-high.onnx",
-    "lada": "uk/uk_UA/lada/x_low/uk_UA-lada-x_low.onnx",
-    "ukrainian_tts": "uk/uk_UA/ukrainian_tts/medium/uk_UA-ukrainian_tts-medium.onnx",
-}
-
-
-def piper_voice(name):
-    """Local path of a Piper voice, downloading it (and its config) on first use."""
-    from huggingface_hub import hf_hub_download
-    onnx = PIPER_VOICES[name]
-    path = hf_hub_download(repo_id=PIPER_REPO, filename=onnx, cache_dir=CACHE)
-    hf_hub_download(repo_id=PIPER_REPO, filename=onnx + ".json", cache_dir=CACHE)
-    return path
 
 
 def fetch(repo):
@@ -77,10 +54,6 @@ def main():
         print("fetching %s ..." % repo, flush=True)
         path = fetch(repo)
         print("  %s  %.0f MB" % (path, size_of(path) / 1e6), flush=True)
-    for name in PIPER_VOICES:
-        print("fetching piper voice %s ..." % name, flush=True)
-        path = piper_voice(name)
-        print("  %s  %.0f MB" % (path, os.path.getsize(path) / 1e6), flush=True)
 
 
 if __name__ == "__main__":
