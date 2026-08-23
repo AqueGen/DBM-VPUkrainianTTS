@@ -7,3 +7,13 @@ RELEASE_NOTES.md
 
 # Generated review page (generation/build_review.py)
 generation/review.html
+
+# Bake-off renderings (generation/bakeoff.py) - local listening material
+generation/variants/
+__pycache__/
+
+# Reports and session-scoped lists: regenerate them, do not track them
+generation/audio-check.tsv
+generation/changed.txt
+generation/*-audit.md
+docs/superpowers/

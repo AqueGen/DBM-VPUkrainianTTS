@@ -1,6 +1,8 @@
 # DBM-VPUkrainianTTS
 
-Ukrainian female TTS voice pack for Deadly Boss Mods, generated with ElevenLabs.
+Ukrainian female TTS voice pack for Deadly Boss Mods, generated with Azure AI Speech (`uk-UA-PolinaNeural`).
+
+The Azure resource must stay on the **Standard (S0)** tier. The free tier synthesises the same audio, but Microsoft's terms grant the right to use the output only on a paid tier - and this pack is published. S0 includes 500,000 characters of neural TTS per month at no cost against roughly 9,000 for a full regeneration, so the tier costs nothing and settles the licence.
 
 ## Release Process
 

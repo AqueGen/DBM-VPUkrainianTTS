@@ -4,7 +4,7 @@
 ## Title:|cffffe00a<|r|cffff7d0aDBM Media|r|cffffe00a>|r |cff308530Voicepack Ukrainian Female TTS|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Media|r|cffffe00a>|r |cff308530Слава Україні!|r
 
-## Notes: Ukrainian female voice pack for Deadly Boss Mods, generated with ElevenLabs TTS.
+## Notes: Ukrainian female voice pack for Deadly Boss Mods. Synthetic speech, generated with Azure AI Speech (uk-UA-PolinaNeural).
 ## DefaultState: enabled
 ## RequiredDeps: DBM-Core
 ## Author: Artem

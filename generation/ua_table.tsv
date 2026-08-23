@@ -2,7 +2,7 @@
 1695uktar	uktar on the boat	Уктар на човні
 1695ukurogg	uk'urogg on the boat	Укуроґ на човні
 absorbyou	absorb on you	Поглинання на тобі
-aesoon	AoE incoming	Скоро АОЕ
+aesoon	AoE incoming	Скоро шкода по площі
 arrowyou	arrow on you	Стріла на тобі
 artillery	Artillery	Артилерія
 attackblood	attack Blood Globule	Атакуй кулю крові
@@ -36,10 +36,10 @@ beamincoming	beam incoming	Скоро промінь
 beamyou	beam on you	Промінь на тобі
 behindboss	Behind Boss	За босом
 behindice	move behind ice	Сховайся за льодом
-behindmob	Behind Mob	За мобом
+behindmob	Behind Mob	За ворогом
 bigball	big ball	Велика куля
-bigmob	Big add	Великий ад
-bigmobsoon	Big add incoming	Скоро великий ад
+bigmob	Big add	Великий ворог
+bigmobsoon	Big add incoming	Скоро великий ворог
 bitenow	bite now	Кусай зараз
 bleedyou	bleed on you	Кровотеча на тобі
 bloodfeast	Blood Feast	Кривавий бенкет
@@ -61,7 +61,7 @@ breaktormentsecond	break torment second	Розбивай муку другим
 breaktormentthird	break torment third	Розбивай муку третім
 breakvine	break vine	Розірви лозу
 breathsoon	Breath incoming	Скоро подих
-bringlighttomob	bring light to mob	Неси світло до моба
+bringlighttomob	bring light to mob	Неси світло до ворога
 bringlighttoshadow	bring light to shadows	Неси світло до тіней
 carefly	knocking back	Відкидання
 catchballs	catch balls	Лови кулі
@@ -92,7 +92,7 @@ dawncrystal	dawn crystal	Кристал світанку
 debuffyou	debuff on you	Дебаф на тобі
 defensive	Defensive	Захист
 demolisher	Demolisher	Руйнівник
-devotionaura	devotion aura	Аура відданості
+devotionaura	devotion aura	Віддана аура
 di	di	Ді
 didi	didi	Ді-ді
 dispelboss	dispel boss	Знімай з боса
@@ -100,20 +100,20 @@ dispelnow	dispel	Розвіюй
 dontmove	don't move	Не рухайся
 dotyou	dot on you	Дот на тобі
 doubleat	Thrash	Молотіння
-dpshard	hard dps	ДПС на повну
-dpsmore	more dps	Більше ДПС
-dpsslow	slow dps	Повільніше ДПС
-dpsstop	stop dps	Стоп ДПС
+dpshard	hard dps	ДПС на повну	де-пе-ес на повну
+dpsmore	more dps	Більше ДПС	Більше де-пе-ес
+dpsslow	slow dps	Повільніше ДПС	Повільніше де-пе-ес
+dpsstop	stop dps	Стоп ДПС	Стоп де-пе-ес
 dragonnow	dragon out	Дракон вийшов
 droptorch	drop torch	Кинь смолоскип
-dshigh	Mortal Strike high	Багато стАків.
+dshigh	Mortal Strike high	Багато стаків
 east	east	Схід
 eggyou	egg on you	Яйце на тобі
 end	The end	Кінець
 energyhigh	Energy high	Багато енергії
 enfeeblingroar	Enfeebling Roar	Ослаблюючий рик
 engineercoming	Engineer coming	Іде інженер
-enrage	enrage	Зніми лють.
+enrage	enrage	Зніми лють
 enteringcombat	entering combat	Початок бою
 entertainer	entertainer	Артист
 failed	failed	Провал
@@ -142,14 +142,14 @@ flameyou	flame on you	Полум'я на тобі
 focusedchaosyou	Focused Chaos on you, run	Сфокусований хаос, тікай
 forcenovacoming	force nova coming	Скоро силова хвиля
 frenzy	frenzy	Шаленство
-frontal	frontal	Фронтал
-frontalyou	frontal on you	Фронтал на тобі
+frontal	frontal	Конус
+frontalyou	frontal on you	Конус на тобі
 frontcenter	go to front center	Іди вперед у центр
 frontleft	go to front left	Іди вперед ліворуч
 frontright	go to front right	Іди вперед праворуч
 frost	Frost	Мороз
 frostyou	frost on you	Мороз на тобі
-gather	stack	стАкнутись.
+gather	stack	Зберіться
 gatheritem	Gather Item	Підбери предмет
 gathershare	Stack	Збирайтесь разом
 getboned	get bone	Візьми кістку
@@ -171,20 +171,20 @@ group5	Group Five	Група п'ять
 harmonic	harmonic	Гармонія
 healall	heal team	Лікуй команду
 healfull	heal to full	Відлікуй до повного
-helpdispel	dispel	Розвіюй.
-helpkick	interrupt	Збий закляття.
+helpdispel	dispel	Розвіюй
+helpkick	interrupt	Збий закляття
 helpme	Help	Допоможіть
 helpme2	Help me	Допоможіть мені
 helpsoak	help soak	Допоможи поглинути
 helpspirit	help spirit	Допоможи з духом
 holdingdeadlyorb	holding deadly orb	Тримаєш смертельну сферу
-holdingorb	holding orb	Тримаєш сферу.
+holdingorb	holding orb	Тримаєш сферу
 holdit	defensive	Тримайся
 iceorbmove	ice orb, move	Крижана сфера, рухайся
 incomingdebuff	incoming de-buff	Скоро дебаф
 inhalegetinpuddle	inhale, get inside the puddle	Вдих, стань у калюжу
 inktoshark	bring ink to shark	Неси чорнило до акули
-interruptbyeye	interrupt by eye	Збий закляття оком.
+interruptbyeye	interrupt by eye	Збий закляття оком
 interruptingshout	Interrupting Shout	Крик переривання
 interruptsoon	ready to interrupt	Готуйся переривати
 jumpinpit	Jump in Pit	Стрибай у яму
@@ -192,18 +192,18 @@ jumpnow	jump now	Стрибай зараз
 justrun	run	Біжи
 keepjump	keep jumping	Продовжуй стрибати
 keepmove	keep moving	Продовжуй рухатись
-kick1r	interrupt 1	Кік один
-kick2r	interrupt 2	Кік два
-kick3r	interrupt 3	Кік три
-kick4r	interrupt 4	Кік чотири
-kick5r	interrupt 5	Кік п'ять
-kickcast	interrupt	Збий закляття.
-kickorstopcast	kick or stop cast	Збий або зупини закляття.
-killbigmob	Kill big add	Вбий великого ада
+kick1r	interrupt 1	Збий один
+kick2r	interrupt 2	Збий два
+kick3r	interrupt 3	Збий три
+kick4r	interrupt 4	Збий чотири
+kick5r	interrupt 5	Збий п'ять
+kickcast	interrupt	Збий закляття
+kickorstopcast	kick or stop cast	Збий або зупини закляття
+killbigmob	Kill big add	Вбий великого ворога
 killmine	attack Crawler Mine	Атакуй міну
-killmob	kill adds	Вбивай адів
+killmob	kill adds	Вбивай ворогів
 killspirit	attack spirit	Атакуй духа
-kite	kite	Кайть
+kite	kite	Відбігай
 laserrun	laser on you, run	Лазер на тобі, тікай
 leapyou	leap on you	Стрибок на тобі
 leavecenter	leave center	Залиш центр
@@ -235,15 +235,15 @@ mm5	move to Moon	Іди на місяць
 mm6	move to Square	Іди на квадрат
 mm7	move to Cross	Іди на хрест
 mm8	move to Skull	Іди на череп
-mobenough	energy full. stay away from adds.	Енергія повна, тримайся далі від адів
-mobkill	kill adds	Вбивай адів
-mobout	pull adds out	Витягни адів
-mobsoon	adds coming	Скоро ади
+mobenough	energy full. stay away from adds.	Енергія повна, тримайся далі від ворогів
+mobkill	kill adds	Вбивай ворогів
+mobout	pull adds out	Витягни ворогів
+mobsoon	adds coming	Скоро вороги
 morange	move to orange	Іди на помаранчевий
 moveboss	Move Boss	Пересунь боса
 movecenter	move to center	Рухайся в центр
 moveleft	move left	Рухайся ліворуч
-movemelee	move to melee	Іди в мілі
+movemelee	move to melee	Іди в ближній бій
 moveright	move right	Рухайся праворуч
 movesoon	get moving	Рухайся
 movetimebubble	Move to time bubble	Іди в бульбашку часу
@@ -255,7 +255,7 @@ movetofire	move to fire	Іди до вогню
 movetoflamethrower	move to flamethrower	Іди до вогнемета
 movetofrost	move to frost	Іди до морозу
 movetojelly	move to jellyfish	Іди до медузи
-movetomobs	move to mobs	Іди до мобів
+movetomobs	move to mobs	Іди до ворогів
 movetopartner	move to partner	Іди до партнера
 movetopillar	Move to Pillar	Іди до колони
 movetopool	Move to Pool	Іди до калюжі
@@ -277,8 +277,8 @@ orbrun	orb. run.	Сфера, тікай
 orbsincoming	orbs incoming	Скоро сфери
 otherin	player in	Гравець зайшов
 otherout	player out	Гравець вийшов
-paranoiayou	paranoia on you	Параноя на тобі
-peaceaura	peace aura	Аура миру
+paranoiayou	paranoia on you	Параноя на тобі	Паранойя на тобі
+peaceaura	peace aura	Мирна аура
 pfive	phase five	П'ята фаза
 pfour	phase 4	Четверта фаза
 phasechange	phase change	Зміна фази
@@ -311,7 +311,7 @@ runin	run in	Забігай
 runintofire	run into the fire	Біжи у вогонь
 runout	run out	Вибігай
 runoverflowers	run over the flowers	Пробіжи по квітах
-runovermobs	run over mobs	Пробіжи по мобах
+runovermobs	run over mobs	Пробіжи по ворогах
 runtoedge	run to edge of room	Біжи до краю
 runtotrap	move to trap	Іди до пастки
 safenow	safe now	Тепер безпечно
@@ -340,7 +340,7 @@ soulcleave	Soul Cleave	Розсічення душі
 south	south	Південь
 southeast	southeast	Південний схід
 southwest	southwest	Південний захід
-sparktowater	Kite spark to water	Кайть іскру до води
+sparktowater	Kite spark to water	Веди іскру до води
 spear	spear	Спис
 specialsoon	special coming	Скоро спецатака
 speedup	speed up	Прискорся
@@ -352,7 +352,7 @@ stompsoon	quake soon	Скоро струс
 stompstart	quake start	Струс почався
 stopatk	stop attacking	Припини атакувати
 stopattack	stop attacking	Припини атаку
-stopcast	stop casting	Зупини каст
+stopcast	stop casting	Зупини закляття
 stopchargewithline	stop charge with line	Зупини ривок лінією
 stopmove	stop moving	Зупинись
 stunsoon	stun incoming	Скоро оглушення
@@ -365,7 +365,7 @@ tankcombo	tank combo	Танкове комбо
 tankheal	heal tank	Лікуй танка
 targetchange	target change	Зміна цілі
 targetyou	target you	Ціль на тобі
-tauntboss	taunt boss	Таунт боса
+tauntboss	taunt boss	Забери боса
 telesoon	teleport incoming	Скоро телепорт
 teleyou	teleport on you	Телепорт на тобі
 thanks	Thanks	Дякую
@@ -385,7 +385,7 @@ useextraaction	use extra action	Використай додаткову дію
 usegate	use gate	Використай браму
 useitem	Use item	Використай предмет
 uu	yours	Твоє
-voidsoak	void soak	Поглинь порожнечу.
+voidsoak	void soak	Поглинь порожнечу
 voidyou	void on you	Порожнеча на тобі
 watchfeet	Watch your feet	Дивись під ноги
 watchimpale	impale	Пронизування
@@ -394,7 +394,7 @@ watchstep	watch your step	Дивись, куди стаєш
 watchwave	watch wave	Стеж за хвилею
 west	west	Захід
 whirlwind	Whirlwind	Вихор
-wrathaura	wrath aura	Аура гніву
+wrathaura	wrath aura	Гнівна аура
 wroughtchaosyou	Wrought Chaos on you, run	Хаос на тобі, тікай
 wwsoon	Rushing Winds coming	Скоро буревій
 yellowyou	yellow on you	Жовтий на тобі
