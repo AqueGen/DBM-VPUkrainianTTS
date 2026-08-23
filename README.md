@@ -17,9 +17,9 @@ Everything needed to regenerate or extend it lives in `generation/`:
 
 - `ua_table.tsv` - the phrase table: `key<TAB>english<TAB>ukrainian[<TAB>spoken]`. The English source lines come from `!VoiceText.txt` in [DBM-Voicepack-Demo](https://github.com/DeadlyBossMods/DBM-Voicepack-Demo); the canonical key list is `DBM-Core/VoicePackSounds.lua`. The optional fourth column is what gets synthesised when it differs from what is written - "ДПС" is spelled the way a player writes it and handed to the engine as "де-пе-ес", because otherwise it is read as an expanded government acronym.
 - `events_table.tsv` - the same format for the four event sounds.
-- `bakeoff.py` - renders the table through an engine into `generation/variants/<id>/`, one folder per configuration. Nothing is overwritten: a new setting means a new id, so every attempt stays comparable. Azure, edge-tts and local Piper voices are supported; retired configurations stay in the file as a record and no longer render.
+- `bakeoff.py` - renders the table into `generation/variants/<id>/`, one folder per configuration. Nothing is overwritten: a new setting means a new id, so every attempt stays comparable. Retired configurations stay in the file as a record of what was tried and no longer render.
 - `build_countdown.py` - assembles the combined countdown files from the per-number clips. ffmpeg only, no synthesis. **Re-run it after regenerating `count/1..5`**, or the countdown will still be in the previous voice.
-- `models.py` - downloads the local recognisers and Piper voices into a cache outside the repo.
+- `models.py` - downloads the two local recognisers the checker needs into a cache outside the repo, on a drive with room for them.
 - `envvars.py` - reads credentials from the live user environment, so a `setx` takes effect without restarting the tooling.
 
 Requirements: Python 3, ffmpeg on PATH, and `AZURE_SPEECH_KEY` / `AZURE_SPEECH_REGION` for synthesis. The Standard (S0) tier includes 500,000 characters of neural TTS per month at no cost - the whole pack is about 9,000 - and unlike the free tier it grants the right to use the output in a published addon.
