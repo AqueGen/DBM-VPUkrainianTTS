@@ -8,6 +8,7 @@
 ## DefaultState: enabled
 ## RequiredDeps: DBM-Core
 ## Author: Artem
+## X-License: All Rights Reserved
 # x-release-please-start-version
 ## Version: 1.3.0
 # x-release-please-end

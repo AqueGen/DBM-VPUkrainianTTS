@@ -5,6 +5,7 @@ manual-changelog:
   markup-type: markdown
 
 ignore:
+  - AGENTS.md
   - README.md
   - CHANGELOG.md
   - RELEASE_NOTES.md
