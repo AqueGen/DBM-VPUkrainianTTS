@@ -14,6 +14,7 @@ ns.L = {
 	DBM_RENAMES_OFF = "у DBM вимкнено 'Use spell renames on announcement text' (Alerts - Special Announcements), "
 		.. "без нього підказки не з'являться.",
 	USAGE = "/uatext, /uatext on, /uatext off",
+	ROLE_CHANGED = "роль змінилася. Підказки під нову роль з'являться після /reload.",
 }
 
 function ns.DB()

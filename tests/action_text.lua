@@ -238,6 +238,18 @@ onChanged(nil, settingStub("DBM_VP_UKRAINIANTTS_ACTION_TEXT"), true)
 assert(#takePrinted() == 1, "the player is told DBM will not show the rename")
 DBM.Options.SpecialWarningShortText = true
 
+-- a spec swap says its piece in chat and never pops a dialog
+ns.applied, ns.appliedRoleVariants, ns.appliedRole = true, true, "dps"
+role = "tank"
+popups = 0
+takePrinted()
+fire("PLAYER_SPECIALIZATION_CHANGED", "player")
+assert(popups == 0, "a spec swap must not demand a reload")
+assert(#takePrinted() == 1, "a role change is announced once")
+fire("PLAYER_SPECIALIZATION_CHANGED", "player")
+assert(#takePrinted() == 0, "swapping between specs of the same role stays quiet")
+role = "dps"
+
 -- the slash command
 takePrinted()
 SlashCmdList["DBMVPUKRAINIANTTS"]("off")

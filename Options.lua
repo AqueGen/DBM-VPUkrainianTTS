@@ -99,6 +99,7 @@ frame:SetScript("OnEvent", function(_, event, arg)
 			Register()
 		end
 	elseif arg == "player" and ns.applied and ns.appliedRoleVariants and ns.appliedRole ~= ns.Role() then
-		StaticPopup_Show("DBM_VP_UKRAINIANTTS_RELOAD")
+		ns.appliedRole = ns.Role()
+		print(ns.PREFIX .. ns.L.ROLE_CHANGED)
 	end
 end)

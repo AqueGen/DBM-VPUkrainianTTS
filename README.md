@@ -26,7 +26,7 @@ Off by default. Game menu -> Options -> AddOns -> **DBM Voice Ukrainian**:
 - **Не чіпати смуги таймерів** - keeps real spell names on the timer bars
 - **Прослухати** - plays a sample and prints the line the way your settings render it
 
-Switching the text on applies at once. Boss mods load per zone, so if you switch it on in a city the text arrives with the first boss mod that loads - the pack says so in chat rather than asking for a reload it does not need. Switching it off, changing the format after the text has run, or swapping to a spec with a different role does need a reload, and the pack offers one on the spot.
+Switching the text on applies at once. Boss mods load per zone, so if you switch it on in a city the text arrives with the first boss mod that loads - the pack says so in chat rather than asking for a reload it does not need. Switching it off or changing the format after the text has run does need a reload, and the pack offers one on the spot. Swapping to a spec with a different role needs one too, but that only earns a line in chat - a dialog on every spec swap is not worth it.
 
 DBM has to be showing renames at all: with `Use spell renames on announcement text` off in DBM -> Alerts -> Special Announcements, nothing changes on screen, and the pack tells you so instead of failing quietly.
 
