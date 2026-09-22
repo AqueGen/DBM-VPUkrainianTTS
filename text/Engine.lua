@@ -9,18 +9,34 @@ ns.L = {
 
 function ns.DB()
 	DBMVPUkrainianTTSDB = DBMVPUkrainianTTSDB or {}
-	if DBMVPUkrainianTTSDB.actionText == nil then
-		DBMVPUkrainianTTSDB.actionText = false
+	local db = DBMVPUkrainianTTSDB
+	if db.showTags ~= nil then
+		if db.format == nil then
+			db.format = db.showTags and "tagphrase" or "phrase"
+		end
+		db.showTags = nil
 	end
-	return DBMVPUkrainianTTSDB
+	if db.actionText == nil then
+		db.actionText = false
+	end
+	if db.format == nil then
+		db.format = "tagphrase"
+	end
+	return db
 end
 
 function ns.TextFor(voiceKey)
 	local action = ns.actionByVoice[voiceKey]
-	if action then
-		return action[1] .. " | " .. action[2]
+	local phrase = action and action[2] or ns.phraseByVoice[voiceKey]
+	if not phrase then return nil end
+	local tag = action and action[1]
+	local format = ns.DB().format
+	if not tag or format == "phrase" then
+		return phrase
+	elseif format == "tag" then
+		return tag
 	end
-	return ns.phraseByVoice[voiceKey]
+	return tag .. " | " .. phrase
 end
 
 function ns.WarningsShowRenames()

@@ -35,13 +35,20 @@ _G.ReloadUI = function() end
 
 local callbacks = {}
 _G.Settings = {
-	VarType = {Boolean = "boolean"},
+	VarType = {Boolean = "boolean", String = "string"},
 	RegisterVerticalLayoutCategory = function(name) return {name = name} end,
 	RegisterAddOnSetting = function(_, variable, key, tbl, _, _, default)
 		if tbl[key] == nil then tbl[key] = default end
 		return {GetVariable = function() return variable end}
 	end,
 	CreateCheckbox = function() end,
+	CreateDropdown = function(_, _, optionsFn) optionsFn() end,
+	CreateControlTextContainer = function()
+		local container = {}
+		function container:Add() end
+		function container:GetData() return {} end
+		return container
+	end,
 	SetOnValueChangedCallback = function(variable, fn) callbacks[variable] = fn end,
 	RegisterAddOnCategory = function() end,
 }
@@ -82,6 +89,15 @@ for key, action in pairs(ns.actionByVoice) do
 	assert(action[3] == nil, "the role layer is gone, no third element belongs here: " .. key)
 end
 
+-- the boolean from the first version becomes the format string
+DBMVPUkrainianTTSDB = {showTags = false}
+assert(ns.DB().format == "phrase", tostring(ns.DB().format))
+assert(ns.DB().showTags == nil, "the migrated key must be dropped")
+DBMVPUkrainianTTSDB = {showTags = true, format = "tag"}
+assert(ns.DB().format == "tag", "an existing format must survive the migration")
+DBMVPUkrainianTTSDB = nil
+assert(ns.DB().format == "tagphrase", "a fresh profile defaults to tag plus phrase")
+
 ns.DB().actionText = false
 DBM.Mods = loadedMods
 fire("PLAYER_LOGIN")
@@ -108,18 +124,33 @@ for spellId in pairs(renames) do
 	assert(before[spellId], "a non-DBM addon must not trigger a pass")
 end
 
+-- the three formats
+ns.DB().format = "tag"
+assert(ns.TextFor("aesoon") == "АОЕ", ns.TextFor("aesoon"))
+assert(ns.TextFor("artillery") == "Артилерія", "a key with no tag keeps its phrase in tag mode")
+ns.DB().format = "phrase"
+assert(ns.TextFor("aesoon") == "Скоро шкода по площі", ns.TextFor("aesoon"))
+ns.DB().format = "tagphrase"
+assert(ns.TextFor("aesoon") == "АОЕ | Скоро шкода по площі", ns.TextFor("aesoon"))
+
 -- the options panel
 fire("ADDON_LOADED", "DBM-VPUkrainianTTS")
+local settingStub = function(variable) return {GetVariable = function() return variable end} end
 local onChanged = callbacks["DBM_VP_UKRAINIANTTS_ACTION_TEXT"]
-assert(onChanged, "the panel must register its callback")
+local onFormat = callbacks["DBM_VP_UKRAINIANTTS_FORMAT"]
+assert(onChanged and onFormat, "the panel must register both callbacks")
 
 popups = 0
 takePrinted()
-onChanged(nil, nil, true)
+onChanged(nil, settingStub("DBM_VP_UKRAINIANTTS_ACTION_TEXT"), true)
 assert(popups == 0, "switching the text on never asks for a reload")
 
 popups = 0
-onChanged(nil, nil, false)
+onFormat(nil, settingStub("DBM_VP_UKRAINIANTTS_FORMAT"), "tag")
+assert(popups == 1, "a format change after renames were registered needs a reload")
+
+popups = 0
+onChanged(nil, settingStub("DBM_VP_UKRAINIANTTS_ACTION_TEXT"), false)
 assert(popups == 1, "switching it off asks for the reload the renames need")
 
 -- before any boss mod loaded there is nothing to reload for, so say so instead
@@ -127,15 +158,20 @@ ns.applied = nil
 DBM.Mods = {}
 popups = 0
 takePrinted()
-onChanged(nil, nil, true)
+onChanged(nil, settingStub("DBM_VP_UKRAINIANTTS_ACTION_TEXT"), true)
 assert(popups == 0, "nothing was registered, so no reload is demanded")
 assert(#takePrinted() == 1, "the player is told the text waits for a boss mod")
+
+popups = 0
+onFormat(nil, settingStub("DBM_VP_UKRAINIANTTS_FORMAT"), "phrase")
+assert(popups == 0, "a format change before anything applied needs no reload")
+ns.DB().format = "tagphrase"
 
 -- DBM's own rename switch is off: say so instead of failing silently
 DBM.Mods = loadedMods
 DBM.Options.SpecialWarningShortText = false
 takePrinted()
-onChanged(nil, nil, true)
+onChanged(nil, settingStub("DBM_VP_UKRAINIANTTS_ACTION_TEXT"), true)
 assert(#takePrinted() == 1, "the player is told DBM will not show the rename")
 
 _G.print = realPrint
