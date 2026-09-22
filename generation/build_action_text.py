@@ -30,9 +30,10 @@ def rows():
 
 def main():
     entries = sorted(rows())
-    bad = [key for key, text in entries if '"' in text or "\\" in text]
+    bad = [key for key, text in entries
+           if any(c in field for field in (key, text) for c in ('"', "\\", "\r", "\n"))]
     if bad:
-        print("phrases with characters that need escaping: %s" % ", ".join(bad))
+        print("rows with characters that need escaping: %s" % ", ".join(bad))
         return 1
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8", newline="\n") as fh:
