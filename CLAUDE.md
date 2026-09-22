@@ -52,6 +52,12 @@ Kept deliberately absent: per-role wording, a format dropdown, category filters,
 
 `python generation/check_pack.py` fails if a key in `text/` is missing from the tables or if any phrase in `Phrases.lua` differs from `ua_table.tsv`. `lua tests/action_text.lua` (Lua 5.1, from the pack root) covers composition, the off switch, first-writer-wins, the event filter and both chat warnings.
 
+## Watching DBM
+
+`generation/check_dbm_keys.py` reads DBM's own registry rather than ours, because `check_pack.py` compares the pack against `ua_table.tsv` and is therefore blind to a key DBM added and we never recorded - that key is simply silent in a fight. It pulls `DBM-Core/VoicePackSounds.lua` and `DBM-Core/modules/objects/VoicePacks.lua` from `DeadlyBossMods/DBM-Retail`, or from a local DBM-Core with `--local`, and fails when DBM lists a key we do not speak or when `minVoicePackVersion` climbs above the TOC's `X-DBM-Voice-Version`. That second check matters as much as the first: once DBM's floor is higher, the pack is flagged outdated in game and `private.swFilterDisabled` cuts the newer lines.
+
+`.github/workflows/dbm-watch.yml` runs it every Monday and keeps a single issue labelled `dbm-watch` in sync with the result, closing it when the gap is filled. Keys the pack speaks and DBM no longer lists are printed but never fail the run: DBM drops keys as content retires, and the audio costs nothing to keep.
+
 ## What the engine honours, measured
 
 - Word order beats spelling hints. `Аура гніву` was read letter by letter as "а-у-ра"; `Гнівна аура` is read correctly.
