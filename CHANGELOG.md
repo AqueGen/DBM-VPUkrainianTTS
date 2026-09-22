@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.4.0](https://github.com/AqueGen/DBM-VPUkrainianTTS/compare/v1.3.0...v1.4.0) (2026-09-22)
+
+
+### Features
+
+* cut the action text down to one switch ([#9](https://github.com/AqueGen/DBM-VPUkrainianTTS/issues/9)) ([fb4ca1c](https://github.com/AqueGen/DBM-VPUkrainianTTS/commit/fb4ca1cfb1fe59bd40db23707f49bf3a074370af))
+* keep the format dropdown ([#12](https://github.com/AqueGen/DBM-VPUkrainianTTS/issues/12)) ([b101b15](https://github.com/AqueGen/DBM-VPUkrainianTTS/commit/b101b15868df97f801a0181caa8c90763e1c8e11))
+* put the spoken line on screen as action text ([#6](https://github.com/AqueGen/DBM-VPUkrainianTTS/issues/6)) ([3b92ae8](https://github.com/AqueGen/DBM-VPUkrainianTTS/commit/3b92ae8fa3470d8947d5fc0af8420ee650182010))
+* record collectghosts and movetogate ([#11](https://github.com/AqueGen/DBM-VPUkrainianTTS/issues/11)) ([43c49bd](https://github.com/AqueGen/DBM-VPUkrainianTTS/commit/43c49bdae421c590702adc4b6833378c22773ebb))
+
 ## [1.3.0](https://github.com/AqueGen/DBM-VPUkrainianTTS/compare/v1.2.0...v1.3.0) (2026-08-23)
 
 
