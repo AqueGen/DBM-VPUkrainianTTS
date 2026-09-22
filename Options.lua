@@ -13,7 +13,7 @@ StaticPopupDialogs["DBM_VP_UKRAINIANTTS_RELOAD"] = {
 	hideOnEscape = true,
 }
 
-local function OnChanged(setting, value)
+local function OnChanged(_, setting, value)
 	if setting:GetVariable() == ACTION_TEXT and value and not ns.applied then
 		ns.ApplyRenames()
 		if ns.applied then return end
