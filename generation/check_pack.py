@@ -46,15 +46,9 @@ def text_keys(name):
     keys = []
     with open(path, encoding="utf-8") as fh:
         for line in fh:
-            quoted = re.findall(r'"([^"]*)"', line)
-            if not quoted:
-                continue
-            if name == "Tags.lua":
-                # A tag header is ["ТЕГ"] = {; the keys are every other quoted string,
-                # on that line or the lines below it.
-                keys.extend(quoted[1:] if re.match(r'\s*\["', line) else quoted)
-            else:
-                keys.append(quoted[0])
+            found = re.match(r'\s*\["([^"]+)"\]', line)
+            if found:
+                keys.append(found.group(1))
     return keys
 
 
@@ -137,7 +131,7 @@ def main():
         problems.append("audio with no table row: %s" % ", ".join(orphans[:8]))
 
     table_keys = set(keys)
-    for name in ("Phrases.lua", "Actions.lua", "Tags.lua"):
+    for name in ("Phrases.lua", "Actions.lua"):
         unknown = sorted(set(text_keys(name)) - table_keys)
         if unknown:
             problems.append("text/%s references %d keys that are not in the tables: %s"

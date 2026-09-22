@@ -25,9 +25,7 @@
 ## SavedVariables: DBMVPUkrainianTTSDB
 
 text\Phrases.lua
-text\Tags.lua
 text\Actions.lua
 text\Engine.lua
 Options.lua
-Commands.lua
 DBM-VPUkrainianTTS.lua
