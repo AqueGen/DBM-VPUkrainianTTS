@@ -1,17 +1,6 @@
 local _, ns = ...
 
 local ACTION_TEXT = "DBM_VP_UKRAINIANTTS_ACTION_TEXT"
-local FORMAT = "DBM_VP_UKRAINIANTTS_FORMAT"
-local KEEP_BAR_NAMES = "DBM_VP_UKRAINIANTTS_KEEP_BAR_NAMES"
-
-local DEMO_KEY = "aesoon"
-local DEMO_SOUND = "Interface\\AddOns\\DBM-VPUkrainianTTS\\" .. DEMO_KEY .. ".ogg"
-
-local FORMATS = {
-	{"tagphrase", "Тег + фраза"},
-	{"tag", "Тільки тег"},
-	{"phrase", "Тільки фраза"},
-}
 
 StaticPopupDialogs["DBM_VP_UKRAINIANTTS_RELOAD"] = {
 	text = "Зміна набуде чинності після перезавантаження інтерфейсу.",
@@ -23,82 +12,34 @@ StaticPopupDialogs["DBM_VP_UKRAINIANTTS_RELOAD"] = {
 	hideOnEscape = true,
 }
 
-local function OnChanged(_, setting, value)
-	if setting:GetVariable() == ACTION_TEXT and value then
+local function OnChanged(_, _, value)
+	if value then
 		ns.ApplyRenames()
 		if not ns.applied then
 			print(ns.PREFIX .. ns.L.PENDING)
 		elseif not ns.WarningsShowRenames() then
 			print(ns.PREFIX .. ns.L.DBM_RENAMES_OFF)
 		end
-		return
-	end
-	if ns.applied then
+	elseif ns.applied then
 		StaticPopup_Show("DBM_VP_UKRAINIANTTS_RELOAD")
 	end
 end
 
-local function Demo()
-	PlaySoundFile(DEMO_SOUND, "Master")
-	print(ns.PREFIX .. (ns.TextFor(DEMO_KEY) or "?") .. " (1)")
-end
-
 local function Register()
-	local db = ns.DB()
-	local category, layout = Settings.RegisterVerticalLayoutCategory("DBM Voice Ukrainian")
-
-	local actionText = Settings.RegisterAddOnSetting(category, ACTION_TEXT,
-		"actionText", db, Settings.VarType.Boolean, "Текстові підказки", false)
-	Settings.CreateCheckbox(category, actionText,
-		"Замінює назву здібності в попередженнях DBM на дію тим самим текстом, який промовляє озвучка.")
-
-	local format = Settings.RegisterAddOnSetting(category, FORMAT,
-		"format", db, Settings.VarType.String, "Формат підказки", "tagphrase")
-	Settings.CreateDropdown(category, format, function()
-		local container = Settings.CreateControlTextContainer()
-		for _, entry in ipairs(FORMATS) do
-			container:Add(entry[1], entry[2])
-		end
-		return container:GetData()
-	end, "Тег - коротке слово дії: " .. table.concat(ns.TagList(), ", ") .. ". Фраза - те, що каже озвучка.")
-
-	local keepBarNames = Settings.RegisterProxySetting(category, KEEP_BAR_NAMES,
-		Settings.VarType.Boolean, "Не чіпати смуги таймерів", false,
-		function()
-			if DBM and DBM.Options then
-				return not DBM.Options.ShortTimerText
-			end
-			return false
-		end,
-		function(value)
-			if DBM and DBM.Options then
-				DBM.Options.ShortTimerText = not value
-			end
-		end)
-	Settings.CreateCheckbox(category, keepBarNames,
-		"Лишає назви здібностей на смугах таймерів. Це перемикач самого DBM "
-		.. "(Timer Bars - Bar Behavior - Use spell renames on timer text), пак лише вимикає його за вас.")
-
+	local category = Settings.RegisterVerticalLayoutCategory("DBM Voice Ukrainian")
+	local setting = Settings.RegisterAddOnSetting(category, ACTION_TEXT, "actionText", ns.DB(),
+		Settings.VarType.Boolean, "Текстові підказки", false)
+	Settings.CreateCheckbox(category, setting,
+		"Замінює назву здібності в попередженнях DBM на дію тим самим текстом, який промовляє озвучка: "
+		.. "\"АОЕ | Скоро шкода по площі\" замість \"Rage of the Shackled\".")
 	Settings.SetOnValueChangedCallback(ACTION_TEXT, OnChanged)
-	Settings.SetOnValueChangedCallback(FORMAT, OnChanged)
-
-	if layout then
-		layout:AddInitializer(CreateSettingsButtonInitializer("", "Прослухати", Demo,
-			"Програє приклад і друкує в чат, як виглядатиме підказка.", false))
-	end
-
 	Settings.RegisterAddOnCategory(category)
 end
 
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("ADDON_LOADED")
-frame:RegisterEvent("PLAYER_SPECIALIZATION_CHANGED")
-frame:SetScript("OnEvent", function(_, event, arg)
-	if event == "ADDON_LOADED" then
-		if arg == "DBM-VPUkrainianTTS" then
-			Register()
-		end
-	elseif arg == "player" and ns.applied and ns.appliedRoleVariants and ns.appliedRole ~= ns.Role() then
-		StaticPopup_Show("DBM_VP_UKRAINIANTTS_RELOAD")
-	end
+frame:SetScript("OnEvent", function(self, _, addon)
+	if addon ~= "DBM-VPUkrainianTTS" then return end
+	self:UnregisterAllEvents()
+	Register()
 end)
