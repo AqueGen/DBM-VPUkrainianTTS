@@ -40,6 +40,7 @@ function ns.ApplyRenames()
 				local text = object.voiceFile and ns.TextFor(object.voiceFile)
 				if text and type(object.spellId) == "number" then
 					DBM:AddRename(object.spellId, text)
+					ns.applied = true
 				end
 			end
 		end

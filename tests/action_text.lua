@@ -49,9 +49,11 @@ end
 ns.DB().actionText = false
 handler(nil, "PLAYER_LOGIN")
 assert(next(renames) == nil, "nothing may be renamed while the feature is off")
+assert(not ns.applied, "nothing was registered, so the reload flag must stay down")
 
 ns.DB().actionText = true
 handler(nil, "PLAYER_LOGIN")
+assert(ns.applied, "a registered rename must raise the flag the options panel reads")
 assert(renames[1286860] == "АОЕ | Скоро шкода по площі", tostring(renames[1286860]))
 assert(renames[1298367] == "ТАНК | Прожми захист", tostring(renames[1298367]))
 assert(renames[1286895] == "ВІДІЙДИ | Бомба на тобі, відбіжи від групи", tostring(renames[1286895]))

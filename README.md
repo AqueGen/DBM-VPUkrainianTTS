@@ -24,7 +24,7 @@ Off by default. Game menu -> Options -> AddOns -> **DBM Voice Ukrainian**:
 - **Текстові підказки** - turn the on-screen text on
 - **Показувати теги** - keep the leading tag (`АОЕ`, `ТАНК`, `ЗБИЙ`, `РОЗВІЙ`, `ПОГЛИНИ`, `АДДИ`, `ВІДІЙДИ`, `УХИЛЯЙСЯ`, `РОЗІЙДІТЬСЯ`, `ЗБЕРІТЬСЯ`)
 
-Both take effect after `/reload`.
+Switching the text on applies at once. Every other change - switching it off, or changing the tags after the text has already run - needs a reload, and the pack offers one on the spot.
 
 The text replaces the spell name everywhere DBM uses renames, timer bars included. To keep real spell names on the bars, switch off `Use spell renames on timer text` in DBM -> Timer Bars -> Bar Behavior. Renames you make yourself with the **Rename** button in DBM's boss options still win over the pack.
 
