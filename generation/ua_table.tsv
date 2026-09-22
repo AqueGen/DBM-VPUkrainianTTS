@@ -81,6 +81,7 @@ cleaner	cleaner	Прибиральник
 cleave	Cleave	Розсічення
 cntnuemove	keep moving	Продовжуй рух
 coinyou	coin on you	Монета на тобі
+collectghosts	collect ghosts	Збирай духів
 colorchange	color switch	Зміна кольору
 colorchangesoon	color switch soon	Скоро зміна кольору
 com_go	GO GO GO	Вперед, вперед, вперед!
@@ -254,6 +255,7 @@ movetoegg	move to egg	Іди до яйця
 movetofire	move to fire	Іди до вогню
 movetoflamethrower	move to flamethrower	Іди до вогнемета
 movetofrost	move to frost	Іди до морозу
+movetogate	move to gate	Іди до брами
 movetojelly	move to jellyfish	Іди до медузи
 movetomobs	move to mobs	Іди до ворогів
 movetopartner	move to partner	Іди до партнера
