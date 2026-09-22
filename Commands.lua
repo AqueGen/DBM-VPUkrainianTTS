@@ -1,7 +1,5 @@
 local _, ns = ...
 
-local PREFIX = "|cff308530DBM Voice Ukrainian|r: "
-
 SLASH_DBMVPUKRAINIANTTS1 = "/uatext"
 SlashCmdList["DBMVPUKRAINIANTTS"] = function(input)
 	local db = ns.DB()
@@ -13,19 +11,22 @@ SlashCmdList["DBMVPUKRAINIANTTS"] = function(input)
 	elseif argument == "" then
 		db.actionText = not db.actionText
 	else
-		print(PREFIX .. "/uatext, /uatext on, /uatext off")
+		print(ns.PREFIX .. ns.L.USAGE)
 		return
 	end
 
 	if db.actionText then
+		ns.ApplyRenames()
+		print(ns.PREFIX .. ns.L.ON)
 		if not ns.applied then
-			ns.ApplyRenames()
-		end
-		print(PREFIX .. "текстові підказки увімкнено.")
-		if not ns.applied then
-			print(PREFIX .. "потрібне перезавантаження інтерфейсу: /reload")
+			print(ns.PREFIX .. ns.L.PENDING)
+		elseif not ns.WarningsShowRenames() then
+			print(ns.PREFIX .. ns.L.DBM_RENAMES_OFF)
 		end
 	else
-		print(PREFIX .. "текстові підказки вимкнено, потрібне перезавантаження інтерфейсу: /reload")
+		print(ns.PREFIX .. ns.L.OFF)
+		if ns.applied then
+			print(ns.PREFIX .. ns.L.RELOAD)
+		end
 	end
 end

@@ -46,13 +46,39 @@ def text_keys(name):
     keys = []
     with open(path, encoding="utf-8") as fh:
         for line in fh:
-            if re.match(r'\s*\["', line):
-                if name == "Tags.lua":
-                    continue
-                keys.append(re.findall(r'"([^"]+)"', line)[0])
-            elif name == "Tags.lua":
-                keys.extend(re.findall(r'"([^"]+)"', line))
+            quoted = re.findall(r'"([^"]*)"', line)
+            if not quoted:
+                continue
+            if name == "Tags.lua":
+                # A tag header is ["ТЕГ"] = {; the keys are every other quoted string,
+                # on that line or the lines below it.
+                keys.extend(quoted[1:] if re.match(r'\s*\["', line) else quoted)
+            else:
+                keys.append(quoted[0])
     return keys
+
+
+def phrases_on_disk():
+    path = os.path.join(PACK, "text", "Phrases.lua")
+    if not os.path.exists(path):
+        return {}
+    pairs = {}
+    with open(path, encoding="utf-8") as fh:
+        for line in fh:
+            found = re.match(r'\s*\["([^"]+)"\]\s*=\s*"([^"]*)"', line)
+            if found:
+                pairs[found.group(1)] = found.group(2)
+    return pairs
+
+
+def phrases_from_table():
+    pairs = {}
+    with open(os.path.join(HERE, "ua_table.tsv"), encoding="utf-8") as fh:
+        for line in fh:
+            parts = line.rstrip("\n").split("\t")
+            if len(parts) >= 3 and parts[0].strip():
+                pairs[parts[0].strip()] = parts[2].strip()
+    return pairs
 
 
 def clips_on_disk():
@@ -116,10 +142,11 @@ def main():
         if unknown:
             problems.append("text/%s references %d keys that are not in the tables: %s"
                             % (name, len(unknown), ", ".join(unknown[:8])))
-    stale = sorted(set(keys_from_table("ua_table.tsv")) - set(text_keys("Phrases.lua")))
+    expected, shipped = phrases_from_table(), phrases_on_disk()
+    stale = sorted(key for key in expected if expected[key] != shipped.get(key))
     if stale:
         problems.append("text/Phrases.lua is out of date, run generation/build_action_text.py "
-                        "(%d keys missing)" % len(stale))
+                        "(%d rows differ, e.g. %s)" % (len(stale), ", ".join(stale[:4])))
 
     levels = []
     for key in sorted(on_disk):

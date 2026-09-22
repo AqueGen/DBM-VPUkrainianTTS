@@ -5,6 +5,17 @@ local defaults = {
 	format = "tagphrase",
 }
 
+ns.PREFIX = "|cff308530DBM Voice Ukrainian|r: "
+ns.L = {
+	ON = "текстові підказки увімкнено.",
+	OFF = "текстові підказки вимкнено.",
+	RELOAD = "потрібне перезавантаження інтерфейсу: /reload",
+	PENDING = "підказки застосуються, щойно завантажиться бойовий мод - на вході в підземелля чи рейд.",
+	DBM_RENAMES_OFF = "у DBM вимкнено 'Use spell renames on announcement text' (Alerts - Special Announcements), "
+		.. "без нього підказки не з'являться.",
+	USAGE = "/uatext, /uatext on, /uatext off",
+}
+
 function ns.DB()
 	DBMVPUkrainianTTSDB = DBMVPUkrainianTTSDB or {}
 	local db = DBMVPUkrainianTTSDB
@@ -52,6 +63,31 @@ function ns.TextFor(voiceKey)
 	return tag .. " | " .. phrase
 end
 
+function ns.TagList()
+	local seen, tags = {}, {}
+	for _, action in pairs(ns.actionByVoice) do
+		if not seen[action[1]] then
+			seen[action[1]] = true
+			tags[#tags + 1] = action[1]
+		end
+	end
+	for _, tag in pairs(ns.tagByVoice) do
+		if not seen[tag] then
+			seen[tag] = true
+			tags[#tags + 1] = tag
+		end
+	end
+	table.sort(tags)
+	return tags
+end
+
+function ns.WarningsShowRenames()
+	if DBM and DBM.Options then
+		return DBM.Options.SpecialWarningShortText and true or false
+	end
+	return true
+end
+
 function ns.ApplyRenames()
 	if not ns.DB().actionText then return end
 	if not DBM or not DBM.Mods or not DBM.AddRename then return end
@@ -63,6 +99,10 @@ function ns.ApplyRenames()
 					DBM:AddRename(object.spellId, text)
 					ns.applied = true
 					ns.appliedRole = ns.appliedRole or ns.Role()
+					local action = ns.actionByVoice[object.voiceFile]
+					if action and action[3] then
+						ns.appliedRoleVariants = true
+					end
 				end
 			end
 		end

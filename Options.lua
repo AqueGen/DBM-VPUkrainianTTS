@@ -13,8 +13,6 @@ local FORMATS = {
 	{"phrase", "Тільки фраза"},
 }
 
-local barSetting = {}
-
 StaticPopupDialogs["DBM_VP_UKRAINIANTTS_RELOAD"] = {
 	text = "Зміна набуде чинності після перезавантаження інтерфейсу.",
 	button1 = "Перезавантажити",
@@ -26,28 +24,27 @@ StaticPopupDialogs["DBM_VP_UKRAINIANTTS_RELOAD"] = {
 }
 
 local function OnChanged(_, setting, value)
-	if setting:GetVariable() == ACTION_TEXT and value and not ns.applied then
+	if setting:GetVariable() == ACTION_TEXT and value then
 		ns.ApplyRenames()
-		if ns.applied then return end
+		if not ns.applied then
+			print(ns.PREFIX .. ns.L.PENDING)
+		elseif not ns.WarningsShowRenames() then
+			print(ns.PREFIX .. ns.L.DBM_RENAMES_OFF)
+		end
+		return
 	end
-	StaticPopup_Show("DBM_VP_UKRAINIANTTS_RELOAD")
-end
-
-local function OnBarNamesChanged(_, _, value)
-	if DBM and DBM.Options then
-		DBM.Options.ShortTimerText = not value
+	if ns.applied then
+		StaticPopup_Show("DBM_VP_UKRAINIANTTS_RELOAD")
 	end
 end
 
 local function Demo()
 	PlaySoundFile(DEMO_SOUND, "Master")
-	print("|cff308530DBM Voice Ukrainian|r: " .. (ns.TextFor(DEMO_KEY) or "?") .. " (1)")
+	print(ns.PREFIX .. (ns.TextFor(DEMO_KEY) or "?") .. " (1)")
 end
 
 local function Register()
 	local db = ns.DB()
-	barSetting.keepBarNames = not (DBM and DBM.Options and DBM.Options.ShortTimerText)
-
 	local category, layout = Settings.RegisterVerticalLayoutCategory("DBM Voice Ukrainian")
 
 	local actionText = Settings.RegisterAddOnSetting(category, ACTION_TEXT,
@@ -63,18 +60,27 @@ local function Register()
 			container:Add(entry[1], entry[2])
 		end
 		return container:GetData()
-	end, "Тег - коротке слово дії: АОЕ, ТАНК, ЗБИЙ, РОЗВІЙ, ПОГЛИНИ, АДДИ, ВІДІЙДИ, УХИЛЯЙСЯ, "
-		.. "РОЗІЙДІТЬСЯ, ЗБЕРІТЬСЯ. Фраза - те, що каже озвучка.")
+	end, "Тег - коротке слово дії: " .. table.concat(ns.TagList(), ", ") .. ". Фраза - те, що каже озвучка.")
 
-	local keepBarNames = Settings.RegisterAddOnSetting(category, KEEP_BAR_NAMES,
-		"keepBarNames", barSetting, Settings.VarType.Boolean, "Не чіпати смуги таймерів", false)
+	local keepBarNames = Settings.RegisterProxySetting(category, KEEP_BAR_NAMES,
+		Settings.VarType.Boolean, "Не чіпати смуги таймерів", false,
+		function()
+			if DBM and DBM.Options then
+				return not DBM.Options.ShortTimerText
+			end
+			return false
+		end,
+		function(value)
+			if DBM and DBM.Options then
+				DBM.Options.ShortTimerText = not value
+			end
+		end)
 	Settings.CreateCheckbox(category, keepBarNames,
 		"Лишає назви здібностей на смугах таймерів. Це перемикач самого DBM "
 		.. "(Timer Bars - Bar Behavior - Use spell renames on timer text), пак лише вимикає його за вас.")
 
 	Settings.SetOnValueChangedCallback(ACTION_TEXT, OnChanged)
 	Settings.SetOnValueChangedCallback(FORMAT, OnChanged)
-	Settings.SetOnValueChangedCallback(KEEP_BAR_NAMES, OnBarNamesChanged)
 
 	if layout then
 		layout:AddInitializer(CreateSettingsButtonInitializer("", "Прослухати", Demo,
@@ -92,7 +98,7 @@ frame:SetScript("OnEvent", function(_, event, arg)
 		if arg == "DBM-VPUkrainianTTS" then
 			Register()
 		end
-	elseif arg == "player" and ns.applied and ns.appliedRole ~= ns.Role() then
+	elseif arg == "player" and ns.applied and ns.appliedRoleVariants and ns.appliedRole ~= ns.Role() then
 		StaticPopup_Show("DBM_VP_UKRAINIANTTS_RELOAD")
 	end
 end)
