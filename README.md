@@ -19,11 +19,11 @@ DBM-Core must be installed; the pack needs nothing else.
 
 DBM writes the spell name on screen while the pack says what to do. The pack can put the spoken line on screen instead, so the warning reads `АОЕ | Скоро шкода по площі` rather than `Rage of the Shackled`.
 
-One switch, off by default: game menu -> Options -> AddOns -> **DBM Voice Ukrainian** -> **Текстові підказки**.
+Off by default: game menu -> Options -> AddOns -> **DBM Voice Ukrainian** -> **Текстові підказки**. **Формат підказки** next to it picks how the line reads: `Тег + фраза`, `Тільки тег` (`АОЕ`) or `Тільки фраза`.
 
-The line is an action tag plus the phrase you hear: `АОЕ`, `ТАНК`, `ЗБИЙ`, `РОЗВІЙ`, `ПОГЛИНИ`, `АДДИ`, `ВІДІЙДИ`, `УХИЛЯЙСЯ`, `РОЗІЙДІТЬСЯ`, `ЗБЕРІТЬСЯ`, `СХОВАЙСЯ`, `ЙДИ`, `КОНТРОЛЬ`, `ДПС`, `ПРОЖМИ`, `ФАЗА`, `ВІДВЕРНИСЬ`.
+The tags are: `АОЕ`, `ТАНК`, `ЗБИЙ`, `РОЗВІЙ`, `ПОГЛИНИ`, `АДДИ`, `ВІДІЙДИ`, `УХИЛЯЙСЯ`, `РОЗІЙДІТЬСЯ`, `ЗБЕРІТЬСЯ`, `СХОВАЙСЯ`, `ЙДИ`, `КОНТРОЛЬ`, `ДПС`, `ПРОЖМИ`, `ФАЗА`, `ВІДВЕРНИСЬ`.
 
-Switching it on applies at once. Boss mods load per zone, so switching it on in a city means the text arrives with the first boss mod that loads - the pack says so in chat rather than asking for a reload it does not need. Switching it off does need a reload, and the pack offers one on the spot.
+Switching it on applies at once. Boss mods load per zone, so switching it on in a city means the text arrives with the first boss mod that loads - the pack says so in chat rather than asking for a reload it does not need. Switching it off, or changing the format after the text has run, does need a reload, and the pack offers one on the spot.
 
 Two things worth knowing:
 
