@@ -15,6 +15,21 @@ Unpack `DBM-VPUkrainianTTS` into `Interface/AddOns`, then in game:
 
 DBM-Core must be installed; the pack needs nothing else.
 
+## Action text on screen
+
+DBM writes the spell name on screen while the pack says what to do. The pack can put the spoken line on screen instead, so the warning reads `АОЕ | Скоро шкода по площі` rather than `Rage of the Shackled`.
+
+Off by default. Game menu -> Options -> AddOns -> **DBM Voice Ukrainian**:
+
+- **Текстові підказки** - turn the on-screen text on
+- **Показувати теги** - keep the leading tag (`АОЕ`, `ТАНК`, `ЗБИЙ`, `РОЗВІЙ`, `ПОГЛИНИ`, `АДДИ`, `ВІДІЙДИ`, `УХИЛЯЙСЯ`, `РОЗІЙДІТЬСЯ`, `ЗБЕРІТЬСЯ`)
+
+Both take effect after `/reload`.
+
+The text replaces the spell name everywhere DBM uses renames, timer bars included. To keep real spell names on the bars, switch off `Use spell renames on timer text` in DBM -> Timer Bars -> Bar Behavior. Renames you make yourself with the **Rename** button in DBM's boss options still win over the pack.
+
+Warnings the boss mod ships without a voice line keep their spell name.
+
 ## Notes
 
 Warnings are short imperative callouts, because a warning that arrives after the mechanic is useless. Borrowed gaming words are used only where Ukrainian has no equally short equivalent.

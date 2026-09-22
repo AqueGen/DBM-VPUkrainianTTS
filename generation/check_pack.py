@@ -25,14 +25,33 @@ MAX_LEAD_SILENCE = 0.15    # a late warning is the defect this pack exists to av
 LOUDNESS_TOLERANCE = 1.5   # dB around the pack's own median
 
 
-def keys_from_tables():
+def keys_from_table(name):
     keys = []
-    for name in ("ua_table.tsv", "events_table.tsv"):
-        with open(os.path.join(HERE, name), encoding="utf-8") as fh:
-            for line in fh:
-                parts = line.rstrip("\n").split("\t")
-                if len(parts) >= 3 and parts[0].strip():
-                    keys.append(parts[0])
+    with open(os.path.join(HERE, name), encoding="utf-8") as fh:
+        for line in fh:
+            parts = line.rstrip("\n").split("\t")
+            if len(parts) >= 3 and parts[0].strip():
+                keys.append(parts[0])
+    return keys
+
+
+def keys_from_tables():
+    return keys_from_table("ua_table.tsv") + keys_from_table("events_table.tsv")
+
+
+def text_keys(name):
+    path = os.path.join(PACK, "text", name)
+    if not os.path.exists(path):
+        return []
+    keys = []
+    with open(path, encoding="utf-8") as fh:
+        for line in fh:
+            if re.match(r'\s*\["', line):
+                if name == "Tags.lua":
+                    continue
+                keys.append(re.findall(r'"([^"]+)"', line)[0])
+            elif name == "Tags.lua":
+                keys.extend(re.findall(r'"([^"]+)"', line))
     return keys
 
 
@@ -90,6 +109,17 @@ def main():
     orphans = sorted(on_disk - set(keys) - set(ASSEMBLED))
     if orphans:
         problems.append("audio with no table row: %s" % ", ".join(orphans[:8]))
+
+    table_keys = set(keys)
+    for name in ("Phrases.lua", "Actions.lua", "Tags.lua"):
+        unknown = sorted(set(text_keys(name)) - table_keys)
+        if unknown:
+            problems.append("text/%s references %d keys that are not in the tables: %s"
+                            % (name, len(unknown), ", ".join(unknown[:8])))
+    stale = sorted(set(keys_from_table("ua_table.tsv")) - set(text_keys("Phrases.lua")))
+    if stale:
+        problems.append("text/Phrases.lua is out of date, run generation/build_action_text.py "
+                        "(%d keys missing)" % len(stale))
 
     levels = []
     for key in sorted(on_disk):

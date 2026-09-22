@@ -15,6 +15,7 @@ ignore:
   - release-please-config.json
   - .release-please-manifest.json
   - generation
+  - tests
   - assets
   - docs
   - .gitignore
