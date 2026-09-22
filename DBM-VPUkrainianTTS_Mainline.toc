@@ -22,5 +22,12 @@
 ## X-DBM-Voice-Version: 20
 ## X-DBM-Voice-HasCount: 1
 ## X-DBM-Voice-MidnightCompat: 1
+## SavedVariables: DBMVPUkrainianTTSDB
 
+text\Phrases.lua
+text\Tags.lua
+text\Actions.lua
+text\Engine.lua
+Options.lua
+Commands.lua
 DBM-VPUkrainianTTS.lua

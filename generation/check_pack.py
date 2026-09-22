@@ -25,15 +25,60 @@ MAX_LEAD_SILENCE = 0.15    # a late warning is the defect this pack exists to av
 LOUDNESS_TOLERANCE = 1.5   # dB around the pack's own median
 
 
-def keys_from_tables():
+def keys_from_table(name):
     keys = []
-    for name in ("ua_table.tsv", "events_table.tsv"):
-        with open(os.path.join(HERE, name), encoding="utf-8") as fh:
-            for line in fh:
-                parts = line.rstrip("\n").split("\t")
-                if len(parts) >= 3 and parts[0].strip():
-                    keys.append(parts[0])
+    with open(os.path.join(HERE, name), encoding="utf-8") as fh:
+        for line in fh:
+            parts = line.rstrip("\n").split("\t")
+            if len(parts) >= 3 and parts[0].strip():
+                keys.append(parts[0])
     return keys
+
+
+def keys_from_tables():
+    return keys_from_table("ua_table.tsv") + keys_from_table("events_table.tsv")
+
+
+def text_keys(name):
+    path = os.path.join(PACK, "text", name)
+    if not os.path.exists(path):
+        return []
+    keys = []
+    with open(path, encoding="utf-8") as fh:
+        for line in fh:
+            quoted = re.findall(r'"([^"]*)"', line)
+            if not quoted:
+                continue
+            if name == "Tags.lua":
+                # A tag header is ["ТЕГ"] = {; the keys are every other quoted string,
+                # on that line or the lines below it.
+                keys.extend(quoted[1:] if re.match(r'\s*\["', line) else quoted)
+            else:
+                keys.append(quoted[0])
+    return keys
+
+
+def phrases_on_disk():
+    path = os.path.join(PACK, "text", "Phrases.lua")
+    if not os.path.exists(path):
+        return {}
+    pairs = {}
+    with open(path, encoding="utf-8") as fh:
+        for line in fh:
+            found = re.match(r'\s*\["([^"]+)"\]\s*=\s*"([^"]*)"', line)
+            if found:
+                pairs[found.group(1)] = found.group(2)
+    return pairs
+
+
+def phrases_from_table():
+    pairs = {}
+    with open(os.path.join(HERE, "ua_table.tsv"), encoding="utf-8") as fh:
+        for line in fh:
+            parts = line.rstrip("\n").split("\t")
+            if len(parts) >= 3 and parts[0].strip():
+                pairs[parts[0].strip()] = parts[2].strip()
+    return pairs
 
 
 def clips_on_disk():
@@ -90,6 +135,18 @@ def main():
     orphans = sorted(on_disk - set(keys) - set(ASSEMBLED))
     if orphans:
         problems.append("audio with no table row: %s" % ", ".join(orphans[:8]))
+
+    table_keys = set(keys)
+    for name in ("Phrases.lua", "Actions.lua", "Tags.lua"):
+        unknown = sorted(set(text_keys(name)) - table_keys)
+        if unknown:
+            problems.append("text/%s references %d keys that are not in the tables: %s"
+                            % (name, len(unknown), ", ".join(unknown[:8])))
+    expected, shipped = phrases_from_table(), phrases_on_disk()
+    stale = sorted(key for key in expected if expected[key] != shipped.get(key))
+    if stale:
+        problems.append("text/Phrases.lua is out of date, run generation/build_action_text.py "
+                        "(%d rows differ, e.g. %s)" % (len(stale), ", ".join(stale[:4])))
 
     levels = []
     for key in sorted(on_disk):
