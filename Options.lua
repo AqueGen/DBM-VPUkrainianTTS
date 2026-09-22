@@ -48,7 +48,7 @@ local function Register()
 	local db = ns.DB()
 	barSetting.keepBarNames = not (DBM and DBM.Options and DBM.Options.ShortTimerText)
 
-	local category = Settings.RegisterVerticalLayoutCategory("DBM Voice Ukrainian")
+	local category, layout = Settings.RegisterVerticalLayoutCategory("DBM Voice Ukrainian")
 
 	local actionText = Settings.RegisterAddOnSetting(category, ACTION_TEXT,
 		"actionText", db, Settings.VarType.Boolean, "Текстові підказки", false)
@@ -76,9 +76,10 @@ local function Register()
 	Settings.SetOnValueChangedCallback(FORMAT, OnChanged)
 	Settings.SetOnValueChangedCallback(KEEP_BAR_NAMES, OnBarNamesChanged)
 
-	local demo = CreateSettingsButtonInitializer("", "Прослухати", Demo,
-		"Програє приклад і друкує в чат, як виглядатиме підказка.", false)
-	category:GetLayout():AddInitializer(demo)
+	if layout then
+		layout:AddInitializer(CreateSettingsButtonInitializer("", "Прослухати", Demo,
+			"Програє приклад і друкує в чат, як виглядатиме підказка.", false))
+	end
 
 	Settings.RegisterAddOnCategory(category)
 end
