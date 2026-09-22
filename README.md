@@ -21,14 +21,16 @@ DBM writes the spell name on screen while the pack says what to do. The pack can
 
 Off by default. Game menu -> Options -> AddOns -> **DBM Voice Ukrainian**:
 
-- **Текстові підказки** - turn the on-screen text on
-- **Показувати теги** - keep the leading tag (`АОЕ`, `ТАНК`, `ЗБИЙ`, `РОЗВІЙ`, `ПОГЛИНИ`, `АДДИ`, `ВІДІЙДИ`, `УХИЛЯЙСЯ`, `РОЗІЙДІТЬСЯ`, `ЗБЕРІТЬСЯ`)
+- **Текстові підказки** - turn the on-screen text on, or type `/uatext`
+- **Формат підказки** - `Тег + фраза`, `Тільки тег` (`АОЕ`) or `Тільки фраза`. The tags are `АОЕ`, `ТАНК`, `ЗБИЙ`, `РОЗВІЙ`, `ПОГЛИНИ`, `АДДИ`, `ВІДІЙДИ`, `УХИЛЯЙСЯ`, `РОЗІЙДІТЬСЯ`, `ЗБЕРІТЬСЯ`
+- **Не чіпати смуги таймерів** - keeps real spell names on the timer bars
+- **Прослухати** - plays a sample and prints the line the way your settings render it
 
-Switching the text on applies at once. Every other change - switching it off, or changing the tags after the text has already run - needs a reload, and the pack offers one on the spot.
+Switching the text on applies at once. Every other change - switching it off, changing the format after the text has already run, or changing your role - needs a reload, and the pack offers one on the spot.
 
-The text replaces the spell name everywhere DBM uses renames, timer bars included. To keep real spell names on the bars, switch off `Use spell renames on timer text` in DBM -> Timer Bars -> Bar Behavior. Renames you make yourself with the **Rename** button in DBM's boss options still win over the pack.
+Tank, healer and damage specs get different wording where the role changes what you do: a tank reads `ТАНК | Прожми захист`, everyone else reads `ТАНК | Танк під ударом`. Dodges and run-outs read the same for everyone.
 
-Warnings the boss mod ships without a voice line keep their spell name.
+Renames you make yourself with the **Rename** button in DBM's boss options still win over the pack. Warnings the boss mod ships without a voice line keep their spell name.
 
 ## Notes
 

@@ -2,17 +2,31 @@ local _, ns = ...
 
 local defaults = {
 	actionText = false,
-	showTags = true,
+	format = "tagphrase",
 }
 
 function ns.DB()
 	DBMVPUkrainianTTSDB = DBMVPUkrainianTTSDB or {}
+	local db = DBMVPUkrainianTTSDB
+	if db.showTags ~= nil then
+		if db.format == nil then
+			db.format = db.showTags and "tagphrase" or "phrase"
+		end
+		db.showTags = nil
+	end
 	for key, value in pairs(defaults) do
-		if DBMVPUkrainianTTSDB[key] == nil then
-			DBMVPUkrainianTTSDB[key] = value
+		if db[key] == nil then
+			db[key] = value
 		end
 	end
-	return DBMVPUkrainianTTSDB
+	return db
+end
+
+function ns.Role()
+	if not DBM or not DBM.IsTank then return "dps" end
+	if DBM:IsTank() then return "tank" end
+	if DBM:IsHealer() then return "healer" end
+	return "dps"
 end
 
 function ns.TextFor(voiceKey)
@@ -20,15 +34,22 @@ function ns.TextFor(voiceKey)
 	local action = ns.actionByVoice[voiceKey]
 	if action then
 		tag, phrase = action[1], action[2]
+		local byRole = action[3]
+		if byRole then
+			phrase = byRole[ns.Role()] or phrase
+		end
 	else
 		phrase = ns.phraseByVoice[voiceKey]
 		tag = ns.tagByVoice[voiceKey]
 	end
 	if not phrase then return nil end
-	if tag and ns.DB().showTags then
-		return tag .. " | " .. phrase
+	local format = ns.DB().format
+	if not tag or format == "phrase" then
+		return phrase
+	elseif format == "tag" then
+		return tag
 	end
-	return phrase
+	return tag .. " | " .. phrase
 end
 
 function ns.ApplyRenames()
@@ -41,6 +62,7 @@ function ns.ApplyRenames()
 				if text and type(object.spellId) == "number" then
 					DBM:AddRename(object.spellId, text)
 					ns.applied = true
+					ns.appliedRole = ns.appliedRole or ns.Role()
 				end
 			end
 		end
