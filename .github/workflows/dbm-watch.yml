@@ -1,0 +1,49 @@
+name: Watch DBM for new voice keys
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - id: check
+        run: |
+          set +e
+          python generation/check_dbm_keys.py > report.txt 2>&1
+          echo "status=$?" >> "$GITHUB_OUTPUT"
+          cat report.txt
+
+      - if: steps.check.outputs.status != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          body=$'The weekly check against DBM found something the pack has to answer.\n\n```\n'"$(cat report.txt)"$'\n```\n\nRecord the missing lines with `generation/bakeoff.py`, or raise `X-DBM-Voice-Version` if DBM moved its floor.'
+          existing=$(gh issue list --label dbm-watch --state open --limit 1 --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue edit "$existing" --body "$body"
+          else
+            gh label create dbm-watch --description "Raised by the weekly DBM registry check" --color ededed --force
+            gh issue create --title "DBM asks for voice lines the pack does not have" --label dbm-watch --body "$body"
+          fi
+
+      - if: steps.check.outputs.status == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          existing=$(gh issue list --label dbm-watch --state open --limit 1 --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue close "$existing" --comment "The pack now covers everything DBM lists."
+          fi

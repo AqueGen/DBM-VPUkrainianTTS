@@ -56,6 +56,12 @@ A reload is only demanded when renames are already registered. Boss mods are loa
 
 A rename is per spellId, so a spell that carries two different warnings takes the first one registered. Coverage is capped by the boss mod: where its author set no voice key, the spell name stays.
 
+## Watching DBM
+
+`generation/check_dbm_keys.py` reads DBM's own registry rather than ours, because `check_pack.py` compares the pack against `ua_table.tsv` and is therefore blind to a key DBM added and we never recorded - that key is simply silent in a fight. It pulls `DBM-Core/VoicePackSounds.lua` and `DBM-Core/modules/objects/VoicePacks.lua` from `DeadlyBossMods/DBM-Retail`, or from a local DBM-Core with `--local`, and fails when DBM lists a key we do not speak or when `minVoicePackVersion` climbs above the TOC's `X-DBM-Voice-Version`. That second check matters as much as the first: once DBM's floor is higher, the pack is flagged outdated in game and `private.swFilterDisabled` cuts the newer lines.
+
+`.github/workflows/dbm-watch.yml` runs it every Monday and keeps a single issue labelled `dbm-watch` in sync with the result, closing it when the gap is filled. Keys the pack speaks and DBM no longer lists are printed but never fail the run: DBM drops keys as content retires, and the audio costs nothing to keep.
+
 ## What the engine honours, measured
 
 - Word order beats spelling hints. `Аура гніву` was read letter by letter as "а-у-ра"; `Гнівна аура` is read correctly.
