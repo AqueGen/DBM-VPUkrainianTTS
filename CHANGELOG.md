@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/AqueGen/DBM-VPUkrainianTTS/compare/v1.4.0...v1.4.1) (2026-10-08)
+
+
+### Miscellaneous Chores
+
+* release 1.4.1 ([7a0fc55](https://github.com/AqueGen/DBM-VPUkrainianTTS/commit/7a0fc5573c28471ef55cf2ebf4f1e1decbc4be40))
+
 ## [1.4.0](https://github.com/AqueGen/DBM-VPUkrainianTTS/compare/v1.3.0...v1.4.0) (2026-09-22)
 
 
