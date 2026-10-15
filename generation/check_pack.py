@@ -100,10 +100,10 @@ def probe(path):
 
 
 def loudness(path):
-    out = subprocess.run(["ffmpeg", "-i", path, "-af", "volumedetect", "-f", "null", "-"],
-                         capture_output=True, text=True)
-    m = re.search(r"mean_volume: (-?[\d.]+) dB", out.stderr)
-    return float(m.group(1)) if m else None
+    out = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-stream_loop", "3", "-i", path, "-af", "ebur128",
+                          "-f", "null", "-"], capture_output=True, text=True)
+    m = re.findall(r"I:\s+(-?[\d.]+) LUFS", out.stderr)
+    return float(m[-1]) if m else None
 
 
 def lead_silence(path):
@@ -175,7 +175,7 @@ def main():
         for level, key in levels:
             if abs(level - median) > LOUDNESS_TOLERANCE:
                 problems.append("%s is %.1f dB against a median of %.1f" % (key, level, median))
-        print("%d clips, median level %.1f dB" % (len(levels), median))
+        print("%d clips, median level %.1f LUFS" % (len(levels), median))
 
     print("%d keys in the tables, %d files on disk" % (len(keys), len(on_disk)))
     if problems:

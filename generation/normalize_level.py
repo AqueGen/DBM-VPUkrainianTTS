@@ -1,21 +1,24 @@
 #!/usr/bin/env python3
-"""Bring every clip to the same level.
+"""Bring every clip to the loudness of the English DBM pack.
 
-A neural voice varies with what it is saying: across this pack the mean level spreads
-about 5 dB, which in game is heard as one warning shouting and the next mumbling. Each
-clip gets a fixed gain toward the pack's median - a plain volume change, not compression,
-so nothing about the delivery is altered.
+A neural voice varies with what it is saying, and it comes out of Azure near -20 LUFS,
+while DBM-VPVEM sits near -13. Each clip gets the gain that lands it on the target,
+with a limiter catching the peaks that gain pushes over the ceiling.
 
-Run:  python generation/normalize_level.py [target_dB]
+Run:  python generation/normalize_level.py [target_LUFS]
 """
 import os
 import re
+import shutil
 import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PACK = os.path.dirname(HERE)
+TARGET = -13.0
 TOLERANCE = 0.3  # leave a clip alone if it is already this close
+LIMIT = 10 ** (-1.5 / 20)
 
 
 # The assembled countdowns are mostly silence by design, so their mean level says
@@ -32,59 +35,56 @@ def clips():
                 yield os.path.join(root, name)
 
 
-def level(path):
-    out = subprocess.run(["ffmpeg", "-i", path, "-af", "volumedetect", "-f", "null", "-"],
-                         capture_output=True, text=True)
-    mean = re.search(r"mean_volume: (-?[\d.]+) dB", out.stderr)
-    peak = re.search(r"max_volume: (-?[\d.]+) dB", out.stderr)
-    return (float(mean.group(1)) if mean else None,
-            float(peak.group(1)) if peak else None)
+def loudness(path):
+    # Looped, because R128 measures in 400 ms blocks and reads a shorter clip (count/3) as silence.
+    out = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-stream_loop", "3", "-i", path,
+                          "-af", "ebur128", "-f", "null", "-"], capture_output=True, text=True).stderr
+    found = re.findall(r"I:\s+(-?[\d.]+) LUFS", out)
+    level = float(found[-1]) if found else None
+    return level if level is not None and level > -60 else None
 
 
-def apply_gain(path, gain_db):
-    tmp = path + ".gain.ogg"
-    r = subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", path,
-                        "-af", "volume=%.2fdB" % gain_db,
-                        "-c:a", "libvorbis", "-q:a", "4", "-ar", "44100", tmp],
-                       capture_output=True, text=True)
-    if r.returncode != 0:
-        print("FAIL %s: %s" % (path, r.stderr[:160]))
-        if os.path.exists(tmp):
-            os.remove(tmp)
-        return False
-    os.replace(tmp, path)
-    return True
+def normalise(path, target):
+    level = loudness(path)
+    if level is None:
+        print("SKIP %s: no measurable speech" % path)
+        return None
+    if abs(target - level) < TOLERANCE:
+        return level
+    src, tmp = path + ".src.ogg", path + ".gain.ogg"
+    shutil.copyfile(path, src)
+    # The limiter and the encoder each take back part of the gain, so it is tuned on the finished file.
+    gain = target - level
+    try:
+        for _ in range(6):
+            af = "volume=%.2fdB,alimiter=limit=%.4f:level=0:latency=1" % (gain, LIMIT)
+            r = subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, "-af", af,
+                                "-c:a", "libvorbis", "-q:a", "4", "-ar", "44100", tmp],
+                               capture_output=True, text=True)
+            if r.returncode != 0:
+                print("FAIL %s: %s" % (path, r.stderr[:160]))
+                return None
+            level = loudness(tmp)
+            if level is None or abs(target - level) < 0.2:
+                break
+            gain += target - level
+        os.replace(tmp, path)
+        return level
+    finally:
+        for leftover in (src, tmp):
+            if os.path.exists(leftover):
+                os.remove(leftover)
 
 
 def main():
-    measured = []
-    for path in clips():
-        mean, peak = level(path)
-        if mean is not None:
-            measured.append((mean, peak, path))
-    if not measured:
+    target = float(sys.argv[1]) if len(sys.argv) > 1 else TARGET
+    paths = list(clips())
+    if not paths:
         raise SystemExit("no clips found")
-
-    measured.sort()
-    target = float(sys.argv[1]) if len(sys.argv) > 1 else measured[len(measured) // 2][0]
-    print("%d clips, current spread %.1f to %.1f dB, target %.1f"
-          % (len(measured), measured[0][0], measured[-1][0], target))
-
-    changed = clipped = 0
-    for mean, peak, path in measured:
-        gain = target - mean
-        if abs(gain) < TOLERANCE:
-            continue
-        # Never push a clip into clipping: keep at least a little headroom on the peak.
-        if peak is not None and peak + gain > -1.0:
-            gain = -1.0 - peak
-            clipped += 1
-        if abs(gain) >= TOLERANCE and apply_gain(path, gain):
-            changed += 1
-
-    after = sorted(level(p)[0] for _, _, p in measured)
-    print("adjusted %d clips (%d limited by headroom), new spread %.1f to %.1f dB"
-          % (changed, clipped, after[0], after[-1]))
+    with ThreadPoolExecutor(os.cpu_count() or 4) as pool:
+        after = sorted(v for v in pool.map(lambda p: normalise(p, target), paths) if v is not None)
+    print("%d clips at target %.1f LUFS, now %.1f to %.1f, median %.1f"
+          % (len(paths), target, after[0], after[-1], after[len(after) // 2]))
 
 
 if __name__ == "__main__":
