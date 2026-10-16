@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/AqueGen/DBM-VPUkrainianTTS/compare/v1.4.1...v1.4.2) (2026-10-15)
+
+
+### Bug Fixes
+
+* voice as loud as the English DBM pack ([#18](https://github.com/AqueGen/DBM-VPUkrainianTTS/issues/18)) ([eef9da6](https://github.com/AqueGen/DBM-VPUkrainianTTS/commit/eef9da679d44a45cf59aa5f412d973e33909abb2))
+
 ## [1.4.1](https://github.com/AqueGen/DBM-VPUkrainianTTS/compare/v1.4.0...v1.4.1) (2026-10-08)
 
 
