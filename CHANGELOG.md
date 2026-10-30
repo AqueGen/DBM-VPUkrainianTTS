@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/AqueGen/DBM-VPUkrainianTTS/compare/v1.4.2...v1.5.0) (2026-10-30)
+
+
+### Features
+
+* three new voices (Alex, Evgeniy, Solomiya) with a What's new window ([#20](https://github.com/AqueGen/DBM-VPUkrainianTTS/issues/20)) ([f5deda5](https://github.com/AqueGen/DBM-VPUkrainianTTS/commit/f5deda50f754e17c14ee71d5d8b1a658dff796cb))
+
 ## [1.4.2](https://github.com/AqueGen/DBM-VPUkrainianTTS/compare/v1.4.1...v1.4.2) (2026-10-15)
 
 
