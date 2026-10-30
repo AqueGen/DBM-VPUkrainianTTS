@@ -34,9 +34,10 @@ _G.StaticPopup_Show = function() popups = popups + 1 end
 _G.ReloadUI = function() end
 
 local callbacks = {}
+_G.CreateSettingsButtonInitializer = function() return {} end
 _G.Settings = {
 	VarType = {Boolean = "boolean", String = "string"},
-	RegisterVerticalLayoutCategory = function(name) return {name = name} end,
+	RegisterVerticalLayoutCategory = function(name) return {name = name}, {AddInitializer = function() end} end,
 	RegisterAddOnSetting = function(_, variable, key, tbl, _, _, default)
 		if tbl[key] == nil then tbl[key] = default end
 		return {GetVariable = function() return variable end}

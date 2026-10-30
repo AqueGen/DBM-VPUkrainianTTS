@@ -1,0 +1,24 @@
+## Interface: 120100, 120105
+## Category: DBM
+
+## Title:|cffffe00a<|r|cffff7d0aDBM Media|r|cffffe00a>|r |cff308530Voicepack Ukrainian Male (Evgeniy)|r
+
+## Notes: Ukrainian male voice pack for Deadly Boss Mods. Synthetic speech, generated with ElevenLabs.
+## DefaultState: enabled
+## RequiredDeps: DBM-Core
+## Author: Artem
+## X-License: All Rights Reserved
+# x-release-please-start-version
+## Version: 1.4.2
+# x-release-please-end
+## IconTexture: Interface\AddOns\DBM-Core\textures\dbm_airhorn
+## X-DBM-Voice: 1
+## X-DBM-Voice-Name: Ukrainian Male (Evgeniy)
+## X-DBM-Voice-Name-ruRU: Украинский мужской (Evgeniy)
+## X-DBM-Voice-ShortName: UkrainianEvgeniy
+## X-DBM-Voice-Version: 20
+## X-DBM-Voice-HasCount: 1
+## X-DBM-Voice-MidnightCompat: 1
+
+VoiceSync.lua
+DBM-VPUkrainianEvgeniy.lua

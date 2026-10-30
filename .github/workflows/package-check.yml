@@ -1,0 +1,37 @@
+name: Package check
+
+# Builds the zip without uploading and checks that every voice lands as its own top-level addon folder.
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Lua tests
+        run: |
+          sudo apt-get install -y lua5.1 >/dev/null
+          lua5.1 tests/action_text.lua
+          lua5.1 tests/whats_new.lua
+
+      - uses: BigWigsMods/packager@v2
+        with:
+          args: -d -g retail
+
+      - name: Every voice is a top-level folder
+        run: |
+          zip=$(ls .release/*.zip)
+          unzip -l "$zip" > listing.txt
+          for addon in DBM-VPUkrainianTTS DBM-VPUkrainianAlex DBM-VPUkrainianEvgeniy DBM-VPUkrainianSolomiya; do
+            grep -q " $addon/${addon}_Mainline.toc$" listing.txt || { echo "missing $addon"; exit 1; }
+            grep -q " $addon/VoiceSync.lua$" listing.txt || { echo "missing $addon/VoiceSync.lua"; exit 1; }
+          done
+          if grep -q "/voices/" listing.txt; then echo "voices/ left inside the package"; exit 1; fi
+          grep -c "\.ogg$" listing.txt

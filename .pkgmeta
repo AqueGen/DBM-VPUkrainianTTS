@@ -1,5 +1,11 @@
 package-as: DBM-VPUkrainianTTS
 
+# Every voice is its own addon (DBM takes one voice per folder); all of them ship in this one download.
+move-folders:
+  DBM-VPUkrainianTTS/voices/DBM-VPUkrainianAlex: DBM-VPUkrainianAlex
+  DBM-VPUkrainianTTS/voices/DBM-VPUkrainianEvgeniy: DBM-VPUkrainianEvgeniy
+  DBM-VPUkrainianTTS/voices/DBM-VPUkrainianSolomiya: DBM-VPUkrainianSolomiya
+
 manual-changelog:
   filename: RELEASE_NOTES.md
   markup-type: markdown

@@ -2,16 +2,22 @@
 
 Ukrainian voice for [Deadly Boss Mods](https://github.com/DeadlyBossMods/DBM-Retail) in World of Warcraft. Boss warnings, the countdown, and the victory, wipe, pull and engage sounds, all spoken in Ukrainian.
 
-The voice is synthetic: `uk-UA-PolinaNeural` from Azure AI Speech, a voice trained on Ukrainian rather than an English one reading Ukrainian words.
+Four synthetic voices, each a voice trained on Ukrainian rather than an English one reading Ukrainian words: **Polina** and **Solomiya** (female), **Alex** and **Evgeniy** (male).
 
 ## Install
 
-Unpack `DBM-VPUkrainianTTS` into `Interface/AddOns`, then in game:
+The download holds four folders, one per voice: `DBM-VPUkrainianTTS` (Polina), `DBM-VPUkrainianAlex`, `DBM-VPUkrainianEvgeniy` and `DBM-VPUkrainianSolomiya`. Unpack all of them into `Interface/AddOns`. A voice you never want can be switched off in the in-game addon list.
 
-- `/dbm` -> Options -> Countdowns and Voice Packs -> pick **Ukrainian Female TTS** for spoken alerts
-- the same entry appears in the count sound dropdowns
+On the first login a **Що нового** window lists the voices: **Слухати** plays a few lines in that voice, **Обрати** makes it DBM's voice. Open it again with `/dbmua` or from game menu -> Options -> AddOns -> **DBM Voice Ukrainian**.
+
+Picking a voice there, or in `/dbm` -> Options -> Countdowns and Voice Packs, also moves the countdowns and the victory, wipe, pull and engage sounds that were set to one of these voices. Settings that point anywhere else stay as they are.
+
+By hand:
+
+- `/dbm` -> Options -> Countdowns and Voice Packs -> pick **Ukrainian Female (Polina)**, **Ukrainian Male (Alex)**, **Ukrainian Male (Evgeniy)** or **Ukrainian Female (Solomiya)** for spoken alerts
+- the same entries appear in the count sound dropdowns
 - victory and wipe live under Alerts -> Event Sounds
-- the pull timer and engage sounds under Timer Bars -> Pull & Break, as "Ukrainian: ..."
+- the pull timer and engage sounds under Timer Bars -> Pull & Break, as "Ukrainian Polina: ...", "Ukrainian Alex: ..." and so on
 
 DBM-Core must be installed; the pack needs nothing else.
 

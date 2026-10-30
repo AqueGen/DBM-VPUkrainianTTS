@@ -1,7 +1,7 @@
 ## Interface: 120100, 120105
 ## Category: DBM
 
-## Title:|cffffe00a<|r|cffff7d0aDBM Media|r|cffffe00a>|r |cff308530Voicepack Ukrainian Female TTS|r
+## Title:|cffffe00a<|r|cffff7d0aDBM Media|r|cffffe00a>|r |cff308530Voicepack Ukrainian Female (Polina)|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Media|r|cffffe00a>|r |cff308530Слава Україні!|r
 
 ## Notes: Ukrainian female voice pack for Deadly Boss Mods. Synthetic speech, generated with Azure AI Speech (uk-UA-PolinaNeural).
@@ -16,8 +16,8 @@
 ## X-Wago-ID: 96d2rlGO
 ## IconTexture: Interface\AddOns\DBM-Core\textures\dbm_airhorn
 ## X-DBM-Voice: 1
-## X-DBM-Voice-Name: Ukrainian Female TTS
-## X-DBM-Voice-Name-ruRU: Украинский женский TTS
+## X-DBM-Voice-Name: Ukrainian Female (Polina)
+## X-DBM-Voice-Name-ruRU: Украинский женский (Polina)
 ## X-DBM-Voice-ShortName: UkrainianTTS
 ## X-DBM-Voice-Version: 20
 ## X-DBM-Voice-HasCount: 1
@@ -27,5 +27,7 @@
 text\Phrases.lua
 text\Actions.lua
 text\Engine.lua
+WhatsNew.lua
 Options.lua
+VoiceSync.lua
 DBM-VPUkrainianTTS.lua

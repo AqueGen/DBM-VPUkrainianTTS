@@ -8,6 +8,18 @@
         {
           "type": "generic",
           "path": "DBM-VPUkrainianTTS_Mainline.toc"
+        },
+        {
+          "type": "generic",
+          "path": "voices/DBM-VPUkrainianAlex/DBM-VPUkrainianAlex_Mainline.toc"
+        },
+        {
+          "type": "generic",
+          "path": "voices/DBM-VPUkrainianEvgeniy/DBM-VPUkrainianEvgeniy_Mainline.toc"
+        },
+        {
+          "type": "generic",
+          "path": "voices/DBM-VPUkrainianSolomiya/DBM-VPUkrainianSolomiya_Mainline.toc"
         }
       ]
     }
