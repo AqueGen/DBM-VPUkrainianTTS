@@ -18,6 +18,7 @@ _G.DBM = {
 	VoiceVersions = {UkrainianTTS = 20, UkrainianAlex = 20},
 	Options = {
 		ChosenVoicePack2 = "UkrainianTTS", PullVoice = "VP: UkrainianTTS", CountdownVoice = "Corsica",
+		CountdownVoice2 = "VP: UkrainianAlex",
 		EventSoundWipe = "Interface\\AddOns\\DBM-VPUkrainianTTS\\events\\wipe.ogg", EventSoundPullTimer = "None",
 	},
 	CheckVoicePackVersion = function() end,
@@ -45,13 +46,27 @@ assert(ns.VoiceState("UkrainianTTS") == "chosen")
 assert(ns.VoiceState("UkrainianAlex") == "ready")
 assert(ns.VoiceState("UkrainianEvgeniy") == "off", "a pack switched off in the addon list cannot be picked")
 
-ns.ChooseVoice("UkrainianAlex")
 local o = DBM.Options
+-- DBM checks every pack at login and again 10 s later; that must not undo a mix the player chose.
+for _ = 1, 2 do
+	DBM:CheckVoicePackVersion("UkrainianTTS")
+	DBM:CheckVoicePackVersion("UkrainianAlex")
+end
+assert(o.CountdownVoice2 == "VP: UkrainianAlex", "a login check must not move anything")
+assert(o.PullVoice == "VP: UkrainianTTS")
+
+ns.ChooseVoice("UkrainianAlex")
 assert(o.ChosenVoicePack2 == "UkrainianAlex")
 assert(o.PullVoice == "VP: UkrainianAlex", "our countdown follows the voice")
 assert(o.CountdownVoice == "Corsica", "a countdown the player took from elsewhere stays")
 assert(o.EventSoundWipe == "Interface\\AddOns\\DBM-VPUkrainianAlex\\events\\wipe.ogg")
 assert(o.EventSoundPullTimer == "None", "a sound the player switched off stays off")
+
+-- From a foreign pack to ours is a change too.
+o.ChosenVoicePack2 = "VEM"
+DBM:CheckVoicePackVersion("VEM")
+ns.ChooseVoice("UkrainianTTS")
+assert(o.PullVoice == "VP: UkrainianTTS" and o.CountdownVoice2 == "VP: UkrainianTTS")
 
 local function read(path)
 	local f = assert(io.open(path, "rb"), "missing " .. path)

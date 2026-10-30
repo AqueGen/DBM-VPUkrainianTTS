@@ -31,7 +31,7 @@ local function Refresh()
 	if not (window and window:IsShown()) then return end
 	for _, row in ipairs(rows) do
 		local state = ns.VoiceState(row.short)
-		row.listen:SetEnabled(state ~= "off")
+		row.listen:SetShown(state ~= "off")
 		row.listen:SetText(playing and playing.short == row.short and "Стоп" or "Слухати")
 		row.choose:SetShown(state == "ready")
 		row.status:SetShown(state ~= "ready")

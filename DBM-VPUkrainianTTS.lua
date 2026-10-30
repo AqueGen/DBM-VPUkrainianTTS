@@ -15,4 +15,7 @@ local LSM = LibStub and LibStub("LibSharedMedia-3.0", true)
 if LSM then
 	LSM:Register("sound", "Ukrainian Polina: Pull", PATH .. "pull.ogg")
 	LSM:Register("sound", "Ukrainian Polina: Engage", PATH .. "engage.ogg")
+	-- Names from 1.4 and earlier: other addons store the media name, not the path.
+	LSM:Register("sound", "Ukrainian: Pull", PATH .. "pull.ogg")
+	LSM:Register("sound", "Ukrainian: Engage", PATH .. "engage.ogg")
 end
