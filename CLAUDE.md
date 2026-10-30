@@ -1,6 +1,15 @@
 # DBM-VPUkrainianTTS
 
-Ukrainian female TTS voice pack for Deadly Boss Mods, generated with Azure AI Speech (`uk-UA-PolinaNeural`).
+Ukrainian TTS voice packs for Deadly Boss Mods. Polina (this folder) is Azure AI Speech `uk-UA-PolinaNeural`; Alex, Evgeniy and Solomiya under `voices/` are ElevenLabs `eleven_v4` library voices, rendered on the paid Starter plan. Player-facing text (README, the What's new window) does not name the engines.
+
+## One download, four addons
+
+DBM takes exactly one voice per addon folder (`Interface\AddOns\DBM-VP<ShortName>\`, ShortName from the TOC), so every voice is its own addon. `voices/DBM-VPUkrainian<Name>/` hold the three extra ones; `.pkgmeta` `move-folders` lifts them to the top level of the same zip, and `release-please-config.json` bumps their TOC versions together with Polina's. `package-check.yml` builds the zip on every PR without uploading and fails if a voice is not a top-level folder. Locally the three top-level folders in `AddOns` are junctions to `voices/`, so the game loads the working copy.
+
+- Never rename this folder or ShortName `UkrainianTTS`: existing players' `ChosenVoicePack2` points at it.
+- `VoiceSync.lua` - an identical copy in every voice folder (the test enforces it); the first loaded hooks `DBM:CheckVoicePackVersion`, which DBM's voice dropdown calls right after setting `ChosenVoicePack2`. DBM also calls it for every pack at login and 10 s later, so the hook acts only when `ChosenVoicePack2` really changed; otherwise a mix the player set (Polina warnings, Alex countdown) would reset each login. When the new pack is one of ours, every countdown (`VP: <ShortName>`) and event sound path that pointed at one of our packs moves to it. Anything else, `None` included, is left alone.
+- `WhatsNew.lua` - the window shown once per `NOTES_VERSION` after login (also `/dbmua` and a button on the settings page): one row per voice, **Слухати** plays `kite`, `kickcast` and `count/3..1` of that pack, **Обрати** makes the same two calls as DBM's dropdown. A pack switched off in the addon list has no `DBM.VoiceVersions` entry and shows greyed out. `lua tests/whats_new.lua` covers show-once, the voice states, the switch and the copies.
+- `generation/judge/` - the Gemini listening judge and the re-render loop that produced the ElevenLabs packs (`judge_pack.py`, `fix_loop.py`, `fix_respell.py`), with their TSV logs. Point `normalize_level.py`, `build_countdown.py` and `check_pack.py` at a voice with `DBM_VP_PACK=voices/DBM-VPUkrainian<Name>`.
 
 The Azure resource must stay on the **Standard (S0)** tier. The free tier synthesises the same audio, but Microsoft's terms grant the right to use the output only on a paid tier - and this pack is published. S0 includes 500,000 characters of neural TTS per month at no cost against roughly 9,000 for a full regeneration, so the tier costs nothing and settles the licence.
 

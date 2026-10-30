@@ -1,0 +1,12 @@
+key	candidate	verdict	problems
+1695gorak	Gorak на човні seed 401	fail	Wrong stress on the word 'човні' (the speaker says 'чОвні' instead of the correct standard 'човнІ')
+1695gorak	Gorak на човні seed 402	fail	The first sound is pronounced as 'Г' [ɦ] instead of the required 'Ґ' [g].
+1695gorak	Gorak на човні! seed 401	fail	The first word is pronounced with 'Г' (/ɦ/) instead of the requested 'Ґ' (/g/).
+1695gorak	Gorak на човні! seed 402	pass	
+purpleyou	/fʲioˈlɛtoʋɪj na toˈbʲi/ seed 401	fail	Russian pronunciation of 'Фіолетовий' (sounds like Russian 'фиолетовый' with akanye and Russian vowels) | The last word is pronounced as 'тебе' or 'табе' instead of 'тобі'
+purpleyou	/fʲioˈlɛtoʋɪj na toˈbʲi/ seed 402	fail	The speaker says the Russian phrase 'Фиолетовый на тебе' instead of the Ukrainian 'Фіолетовий на тобі' | Pronunciation is entirely Russian, including akanye and the use of Russian 'ы' instead of Ukrainian 'и'
+purpleyou	Фіолетовий /na toˈbʲi/! seed 401	fail	Unnatural pause between 'Фіолетовий' and 'на тобі' | Disjointed intonation, lacks the urgency of a short in-game callout
+purpleyou	Фіолетовий /na toˈbʲi/! seed 402	fail	Unnatural pause between 'Фіолетовий' and 'на тобі' | The delivery is too slow and disjointed, lacking the urgency required for a quick in-game callout
+redyou	/t͡ʃerˈʋɔnɪj na toˈbʲi/ seed 401	fail	The word 'Червоний' is mispronounced as 'Червоній' or 'Червоні' (the 'и' sound is replaced with 'і' and the 'н' is softened).
+redyou	/t͡ʃerˈʋɔnɪj na toˈbʲi/ seed 402	fail	The first word is pronounced as 'Червоні' or 'Червоній' instead of 'Червоний' (the ending 'ий' is replaced with an 'і' sound)
+redyou	Червоний /na toˈbʲi/! seed 401	pass	

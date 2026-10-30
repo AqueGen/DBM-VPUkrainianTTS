@@ -7,12 +7,15 @@
 local PATH = "Interface\\AddOns\\DBM-VPUkrainianTTS\\events\\"
 
 if DBM then
-	DBM:AddVictorySound("Ukrainian: Victory", PATH .. "victory.ogg", 2)
-	DBM:AddDefeatSound("Ukrainian: Wipe", PATH .. "wipe.ogg", 2)
+	DBM:AddVictorySound("Ukrainian Polina: Victory", PATH .. "victory.ogg", 2)
+	DBM:AddDefeatSound("Ukrainian Polina: Wipe", PATH .. "wipe.ogg", 2)
 end
 
 local LSM = LibStub and LibStub("LibSharedMedia-3.0", true)
 if LSM then
+	LSM:Register("sound", "Ukrainian Polina: Pull", PATH .. "pull.ogg")
+	LSM:Register("sound", "Ukrainian Polina: Engage", PATH .. "engage.ogg")
+	-- Names from 1.4 and earlier: other addons store the media name, not the path.
 	LSM:Register("sound", "Ukrainian: Pull", PATH .. "pull.ogg")
 	LSM:Register("sound", "Ukrainian: Engage", PATH .. "engage.ogg")
 end

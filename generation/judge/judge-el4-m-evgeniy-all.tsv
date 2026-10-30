@@ -1,0 +1,454 @@
+key	verdict	text	problems
+1695gorak	fail	Ґорак на човні	The first word is pronounced with a fricative 'Г' instead of the required plosive 'Ґ'.
+1695uktar	pass	Уктар на човні	
+1695ukurogg	fail	Укуроґ на човні	The speaker says 'Укурок' (with a 'к' at the end) instead of the required 'Укуроґ' (with a 'ґ').
+absorbyou	pass	Поглинання на тобі	
+aesoon	pass	Скоро шкода по площі	
+arrowyou	pass	Стріла на тобі	
+artillery	pass	Артилерія	
+attackblood	pass	Атакуй кулю крові	
+attackbloodthirster	pass	Атакуй кровожера	
+attackcannon	pass	Атакуй гармату	
+attackdeathcaller	pass	Атакуй закликача смерті	
+attackdoomfire	fail	Атакуй вогняний дух	Incorrect stress on the word 'вогняний' (the audio stresses the first syllable 'вОгняний' instead of the correct second syllable 'вогня́ний')
+attackfelblood	pass	Атакуй кулю скверни	
+attackflesheater	pass	Атакуй пожирача плоті	
+attackhulkingterror	fail	Атакуй жахіття	The delivery is too calm, measured, and lacks the necessary energy for a short, urgent in-game callout. | The pacing feels slightly sluggish rather than sharp and commanding.
+attackmindfungus	pass	Атакуй гриб розуму	
+attackshield	pass	Атакуй щит	
+attacksporeshooter	pass	Атакуй стрільця спор	
+attacktank	pass	Атакуй танк	
+attacktotem	pass	Атакуй тотем	
+attackturret	pass	Атакуй турель	
+attbomb	pass	Атакуй бомбу	
+attleft	pass	Атакуй зліва	
+attmid	pass	Атакуй в центрі	
+attright	pass	Атакуй справа	
+backcenter	pass	Іди назад у центр	
+backleft	pass	Іди назад ліворуч	
+backright	pass	Іди назад праворуч	
+backtowhereyouwere	pass	Повернись на місце	
+backward	pass	Відвернись	
+bait	pass	Приманюй зараз	
+banishment	fail	Вигнання на тобі	There is an unnatural pause and intonational break between 'Вигнання' and 'на тобі' | The delivery is too calm, sluggish, and detached for an urgent in-game warning
+barrageonway	pass	Обстріл, тікай	
+barrieryou	pass	Бар'єр на тобі	
+beamincoming	pass	Скоро промінь	
+beamyou	pass	Промінь на тобі	
+behindboss	pass	За босом	
+behindice	pass	Сховайся за льодом	
+behindmob	pass	За ворогом	
+bigball	pass	Велика куля	
+bigmob	pass	Великий ворог	
+bigmobsoon	fail	Скоро великий ворог	Unnatural pause between 'Скоро' and 'великий' | The delivery is too slow, sluggish, and lacks the urgency needed for a boss warning
+bitenow	pass	Кусай зараз	
+bleedyou	pass	Кровотеча на тобі	
+bloodfeast	pass	Кривавий бенкет	
+bluemushroomcoming	pass	Скоро синій гриб	
+blueyou	pass	Синій на тобі	
+bombnow	pass	Скоро вибух	
+bombrun	pass	Бомба на тобі, тікай	
+bombsoon	pass	Скоро бомба	
+bombyou	pass	Бомба на тобі	
+bossout	pass	Виведи боса	
+bosstobeam	fail	Веди боса до променя	The word 'Веди' is pronounced with Russian phonetics ('вєді' instead of 'веди' with a hard 'е' and 'и')
+bouncer	pass	Викидайло	
+boundingcleave	pass	Скоро стрибучий розтин	
+breakchain	pass	Розірви ланцюг	
+breakcoral	pass	Зламай корал	
+breaklos	pass	Сховайся за перешкоду	
+breaktormentfirst	fail	Розбивай муку першим	Wrong stress on the word 'муку': pronounced as 'мукУ' (flour) instead of 'мУку' (torment/agony) | The delivery is sluggish, drawn out, and lacks the urgency required for a boss warning
+breaktormentsecond	fail	Розбивай муку другим	Wrong stress on the word 'другим': it is pronounced with Russian stress on the second syllable ('другИм') instead of the correct Ukrainian stress on the first syllable ('дрУгим') | The delivery is flat, slow, and disjointed, lacking the natural urgency required for a boss-warning callout
+breaktormentthird	fail	Розбивай муку третім	Incorrect stress on the word 'муку': it is pronounced 'мукУ' (which means 'flour'), instead of the correct 'мУку' (which means 'torment/agony', fitting for a WoW boss mechanic).
+breakvine	pass	Розірви лозу	
+breathsoon	pass	Скоро подих	
+bringlighttomob	pass	Неси світло до ворога	
+bringlighttoshadow	fail	Неси світло до тіней	The word 'світло' is mispronounced as 'свікло' (the 'т' sound is replaced with 'к').
+carefly	pass	Відкидання	
+catchballs	pass	Лови кулі	
+center	pass	Центр	
+centerleft	pass	Іди в центр ліворуч	
+centerright	pass	Іди в центр праворуч	
+chainboss	pass	Прикуй боса	
+changecolor	fail	Зміни колір	Wrong stress on the word 'Зміни': it is pronounced with the stress on the first syllable ('змІни', which is a noun meaning 'changes'), but it should be stressed on the second syllable ('змінИ') as it is an imperative verb meaning 'change'.
+changemoon	fail	Зміни місяць	Wrong stress on the word 'Зміни': the speaker stresses the first syllable ('ЗмІни', which is a noun meaning 'changes'), but as an imperative verb ('change'), the stress must be on the last syllable ('ЗмінИ') | There is an unnatural pause between the two words | The intonation sounds like reading a list rather than an urgent in-game command
+changemt	pass	Зміна танка	
+changeplatform	pass	Зміни платформу	
+changetarget	fail	Зміни ціль	Wrong stress on the word 'Зміни': it is stressed on the first syllable (like the noun 'змІни' - changes) instead of the second syllable (the imperative verb 'змінИ' - change) | The intonation is too calm and lacks the urgency required for a boss warning
+chargemove	pass	Ривок, рухайся	
+chargethroughbomb	pass	Спрямуй ривок крізь бомбу	
+checkhp	fail	Увага, здоров'я!	The intonation is too calm and relaxed for an urgent in-game callout | There is an unnatural pause between the words, making it sound sluggish rather than urgent
+cleaner	pass	Прибиральник	
+cleave	pass	Розсічення	
+cntnuemove	pass	Продовжуй рух	
+coinyou	pass	Монета на тобі	
+collectghosts	pass	Збирай духів	
+colorchange	pass	Зміна кольору	
+colorchangesoon	pass	Скоро зміна кольору	
+com_go	fail	Вперед, вперед, вперед!	Russian pronunciation: the speaker says 'вперёд' (vperyod) instead of the Ukrainian 'вперед' (vpered). | The initial 'в' is devoiced to 'ф', which is a Russian phonetic feature, not Ukrainian.
+crowdcontrol	pass	Контролюй	
+crusher	fail	Трощитель	Russian pronunciation: the letter 'щ' is pronounced as a soft Russian sound instead of the hard Ukrainian 'шч' | Russian pronunciation: the letter 'и' is pronounced as a Russian 'и' [i] instead of the Ukrainian 'и' [ɪ] | Russian pronunciation: the 'т' before 'е' is softened ('тель' sounds like Russian), whereas in Ukrainian it should be hard
+curseyou	pass	Прокляття на тобі	
+darknessyou	fail	Темрява на тобі	There is an unnatural pause between 'Темрява' and 'на тобі' | The delivery is too slow, calm, and sluggish for an urgent in-game warning
+dawncrystal	pass	Кристал світанку	
+debuffyou	pass	Дебаф на тобі	
+defensive	pass	Захист	
+demolisher	pass	Руйнівник	
+devotionaura	fail	Віддана аура	Incorrect stress in the word 'Віддана': the speaker stresses the second syllable ('Відда́на') instead of the correct first syllable ('Ві́ддана'). | The delivery is a bit sluggish and lacks the urgency expected for a quick in-game callout.
+di	pass	Ді	
+didi	pass	Ді-ді	
+dispelboss	pass	Знімай з боса	
+dispelnow	pass	Розвіюй	
+dontmove	pass	Не рухайся	
+dotyou	fail	Дот на тобі	Russian-sounding pronunciation (akanye): the 'о' in 'тобі' is pronounced as 'а' ('табі' instead of 'тобі').
+doubleat	pass	Молотіння	
+dpshard	fail	DPS на повну	DPS is pronounced as 'Ді-пе-ес' instead of the requested English 'dee-pee-ess' | The acronym is read slowly rather than quickly as one unit | There is an unnatural pause between 'DPS' and 'на повну' | The overall delivery is sluggish and lacks the urgency of a short in-game callout
+dpsmore	fail	Більше DPS	Unnatural pause between 'Більше' and 'DPS' | Lacks the urgency and continuous flow expected for a short in-game callout
+dpsslow	fail	Повільніше DPS	The acronym 'DPS' is read very slowly letter by letter with distinct pauses between each letter. | There is an unnatural pause between 'Повільніше' and the acronym. | The overall delivery is sluggish and lacks the urgency required for a short in-game callout.
+dpsstop	fail	Стоп DPS	Unnatural pause between 'Стоп' and 'DPS' | The acronym 'DPS' is read too slowly and deliberately rather than quickly as one unit | Lacks the urgent, fast-paced intonation required for an in-game callout
+dragonnow	pass	Дракон вийшов	
+droptorch	pass	Кинь смолоскип	
+dshigh	pass	Багато стаків	
+east	pass	Схід	
+eggyou	pass	Яйце на тобі	
+end	pass	Кінець	
+energyhigh	pass	Багато енергії	
+enfeeblingroar	pass	Ослаблюючий рик	
+engineercoming	pass	Іде інженер	
+enrage	pass	Зніми лють	
+enteringcombat	pass	Початок бою	
+entertainer	pass	Артист	
+failed	fail	Провал	Russian akanye: the unstressed 'о' is pronounced as 'а' (Правал instead of Провал) | The delivery is drawn out and sluggish, lacking the urgency of a short callout
+farfromline	pass	Тримайся далі від ліній	
+fearsoon	pass	Скоро страх	
+fearyou	pass	Страх на тобі	
+felinfusion	pass	Вливання скверни на тобі	
+findclearvent	pass	Знайди вільний отвір	
+findcrab	pass	Знайди краба	
+finddragon	pass	Знайди дракона	
+findflamejet	fail	Знайди вогняний струмінь	The delivery is too slow and calm for an urgent boss warning | There are unnatural pauses between the words, making the phrase sound robotic and disconnected
+findhunter	pass	Знайди мисливця	
+findmc	pass	Контроль розуму	
+findshadow	fail	Сховайся в тіні	Incorrect stress on the word 'тіні' (the speaker stresses the last syllable 'тінІ' instead of the first 'тІні') | The delivery is too calm, slow, and relaxed, lacking the urgency required for a short in-game boss warning
+findshelter	pass	Знайди укриття	
+findshield	pass	Знайди щит	
+findwolf	pass	Знайди вовка	
+firecallercoming	pass	Іде закликач вогню	
+firecircle	fail	Вогняне коло	Wrong stress in the word 'Вогняне' (the speaker stresses the last syllable 'не' instead of the correct 'я')
+firerun	pass	Вогонь на тобі, тікай	
+firewall	pass	Стіна вогню	
+fixateyou	pass	Фіксація на тобі	
+flamebelcher	pass	Вогнеплюй	
+flamejet	pass	Вогняний струмінь	
+flameyou	fail	Полум'я на тобі	The delivery is too slow, sluggish, and drawn out | The intonation is too calm and lacks the urgency required for a boss-warning callout
+focusedchaosyou	pass	Сфокусований хаос, тікай	
+forcenovacoming	pass	Скоро силова хвиля	
+frenzy	pass	Шаленство	
+frontal	pass	Конус	
+frontalyou	pass	Конус на тобі	
+frontcenter	pass	Іди вперед у центр	
+frontleft	fail	Іди вперед ліворуч	The speaker says 'І бив' instead of the required word 'Іди'.
+frontright	pass	Іди вперед праворуч	
+frost	pass	Мороз	
+frostyou	pass	Мороз на тобі	
+gather	pass	Зберіться	
+gatheritem	pass	Підбери предмет	
+getboned	pass	Візьми кістку	
+getinyellowrunes	pass	Стань у жовті руни	
+getknockedup	pass	Підкидання	
+getupwind	pass	Іди проти вітру	
+ghostsoon	pass	Скоро дух	
+giftofearth	pass	Дар землі	
+gloomincoming	pass	Скоро морок	
+gloomyou	pass	Морок на тобі	
+graspyou	pass	Захват на тобі	
+greenmushroomcoming	pass	Скоро зелений гриб	
+greenyou	pass	Зелений на тобі	
+group1	pass	Група один	
+group2	pass	Група два	
+group3	pass	Група три	
+group4	pass	Група чотири	
+group5	pass	Група п'ять	
+harmonic	pass	Гармонія	
+healall	pass	Лікуй команду	
+healfull	pass	Відлікуй до повного	
+helpdispel	pass	Розвіюй	
+helpkick	pass	Збий закляття	
+helpme	pass	Допоможіть	
+helpme2	pass	Допоможіть мені	
+helpsoak	pass	Допоможи поглинути	
+helpspirit	pass	Допоможи з духом	
+holdingdeadlyorb	pass	Тримаєш смертельну сферу	
+holdingorb	pass	Тримаєш сферу	
+holdit	pass	Тримайся	
+iceorbmove	pass	Крижана сфера, рухайся	
+incomingdebuff	fail	Скоро дебаф	Unnatural pause between the words | Downward intonation on 'Скоро' makes it sound like two isolated words rather than a single cohesive phrase | Lacks the urgency and natural flow expected for a quick in-game callout
+inhalegetinpuddle	pass	Вдих, стань у калюжу	
+inktoshark	pass	Неси чорнило до акули	
+interruptbyeye	pass	Збий закляття оком	
+interruptingshout	pass	Крик переривання	
+interruptsoon	pass	Готуйся переривати	
+jumpinpit	pass	Стрибай у яму	
+jumpnow	pass	Стрибай зараз	
+justrun	pass	Біжи	
+keepjump	pass	Продовжуй стрибати	
+keepmove	pass	Продовжуй рухатись	
+kick1r	pass	Збий один	
+kick2r	pass	Збий два	
+kick3r	pass	Збий три	
+kick4r	pass	Збий чотири	
+kick5r	pass	Збий п'ять	
+kickcast	pass	Збий закляття	
+kickorstopcast	pass	Збий або зупини закляття	
+killbigmob	pass	Вбий великого ворога	
+killmine	pass	Атакуй міну	
+killmob	pass	Вбивай ворогів	
+killspirit	pass	Атакуй духа	
+kite	pass	Відбігай	
+laserrun	pass	Лазер на тобі, тікай	
+leapyou	pass	Стрибок на тобі	
+leavecenter	pass	Залиш центр	
+leavemind	pass	Покинь розум	
+leavingcombat	pass	Кінець бою	
+left	pass	Ліворуч	
+lightinfusion	pass	Вливання світла на тобі	
+lightrifts	fail	Розломи світла	Incorrect stress on the word 'розломи': it is pronounced with the stress on the second syllable ('розлОми', which sounds like the imperative verb 'to break'), but as a noun meaning 'rifts', the stress must be on the first syllable ('рОзломи').
+lightsoak	pass	Поглинь світло	
+lightstorm	pass	Буря блискавок	
+lightyou	pass	Світло на тобі	
+lineapart	pass	Лінія, розійдіться	
+linegather	fail	Лінія, зберіться	Unnatural pronunciation of the '-ться' ending in 'зберіться': it is pronounced as separate 'т' and 'ся' instead of the native assimilated [ц':а] (цця) | The delivery is too calm and detached, with an unnatural pause between the words, lacking the urgency needed for a boss warning
+linesoon	fail	Скоро лінія	There is an unnatural pause between the words | The delivery is too slow, calm, and sluggish for a short, urgent in-game callout
+lineyou	fail	Лінія на тобі	Unnatural pause between 'Лінія' and 'на тобі' | Delivery is too calm and sluggish, lacking the urgency required for a boss warning
+lowsanity	pass	Низький розсудок	
+markedfordeath	pass	Мітка смерті	
+markyou	pass	Мітка на тобі	
+mblue	pass	Іди на синій	
+mediumball	pass	Середня куля	
+melodic	pass	Мелодія	
+meteorrun	pass	Метеор, тікай!	
+mgreen	pass	Іди на зелений	
+mm1	pass	Іди на зірку	
+mm2	pass	Іди на коло	
+mm3	pass	Іди на ромб	
+mm4	pass	Іди на трикутник	
+mm5	pass	Іди на місяць	
+mm6	pass	Іди на квадрат	
+mm7	pass	Іди на хрест	
+mm8	pass	Іди на череп	
+mobenough	pass	Енергія повна, тримайся далі від ворогів	
+mobkill	pass	Вбивай ворогів	
+mobout	pass	Витягни ворогів	
+mobsoon	pass	Скоро вороги	
+morange	pass	Іди на помаранчевий	
+moveboss	pass	Пересунь боса	
+movecenter	pass	Рухайся в центр	
+moveleft	pass	Рухайся ліворуч	
+movemelee	pass	Іди в ближній бій	
+moveright	pass	Рухайся праворуч	
+movesoon	pass	Рухайся	
+movetimebubble	pass	Іди в бульбашку часу	
+movetoarrow	pass	Іди до стріли	
+movetobeam	pass	Іди до променя	
+movetoboss	pass	Іди до боса	
+movetoegg	pass	Іди до яйця	
+movetofire	pass	Іди до вогню	
+movetoflamethrower	pass	Іди до вогнемета	
+movetofrost	pass	Іди до морозу	
+movetogate	pass	Іди до брами	
+movetojelly	pass	Іди до медузи	
+movetomobs	pass	Іди до ворогів	
+movetopartner	pass	Іди до партнера	
+movetopillar	pass	Іди до колони	
+movetopool	pass	Іди до калюжі	
+movetostatue	pass	Іди до статуї	
+movetotank	pass	Іди до танка	
+movetotendrils	pass	Іди до щупалець	
+movetoweb	pass	Іди до павутиння	
+movetoyelloworb	pass	Іди до жовтої сфери	
+mpurple	pass	Іди на фіолетовий	
+myellow	pass	Іди на жовтий	
+negative	pass	Мінус	
+newmatrix	pass	Матриця на тобі	
+newportal	pass	Новий портал	
+north	pass	Північ	
+northeast	pass	Північний схід	
+northwest	pass	Північний захід	
+orangeyou	pass	Помаранчевий на тобі	
+orbrun	pass	Сфера, тікай	
+orbsincoming	fail	Скоро сфери	Russian-sounding pronunciation: the word 'сфери' is pronounced as 'сфєрі' with a soft 'ф' and an 'і' sound at the end instead of a hard 'ф' and a clear Ukrainian 'и'.
+otherin	pass	Гравець зайшов	
+otherout	pass	Гравець вийшов	
+paranoiayou	pass	Параноя на тобі	
+peaceaura	pass	Мирна аура	
+pfive	pass	П'ята фаза	
+pfour	pass	Четверта фаза	
+phasechange	pass	Зміна фази	
+poisonyou	pass	Отрута на тобі	
+polarityshift	pass	Зміна полярності	
+pone	pass	Перша фаза	
+poolyou	fail	Калюжа на тобі	Unnatural pause between 'Калюжа' and 'на тобі' | Disjointed intonation, lacks the urgency of a single callout
+positive	pass	Плюс	
+pthree	pass	Третя фаза	
+ptran	pass	Перехідна фаза	
+ptwo	pass	Друга фаза	
+pullin	pass	Притягування	
+pulverize	pass	Подрібнення	
+purpleyou	fail	Фіолетовий на тобі	Russian pronunciation of 'фіолетовий' (sounds like Russian 'фиолетовый' with akanye and 'ый' ending) | Russian pronunciation of 'тобі' (akanye, sounds like 'табі') | Unnatural pause between 'Фіолетовий' and 'на тобі' | Sluggish delivery lacking the urgency of an in-game callout
+pushbackincoming	pass	Скоро відштовхування	
+quake	pass	Землетрус	
+rageyou	fail	Лють на тобі	Unnatural pause between 'Лють' and 'на тобі' | The delivery is drawn out and lacks the urgency expected for a boss warning
+raidsplit	pass	Поділ рейду	
+range5	pass	Дистанція п'ять	
+redyou	fail	Червоний на тобі	Unnatural pause between 'Червоний' and 'на тобі' | Sluggish delivery that lacks the urgency required for a short in-game callout
+riftdispel	pass	Розвіюй біля розлому	
+riftyou	pass	Розлом на тобі	
+right	pass	Праворуч	
+rollincoming	fail	Скоро коток	Russian akanye: the word 'коток' is pronounced as 'каток' (the unstressed 'о' is incorrectly pronounced as 'а') | The delivery is too slow and detached, lacking the urgency needed for a boss warning
+runaway	pass	Тікай	
+runesincoming	pass	Скоро руни	
+runeyou	pass	Руна на тобі	
+runin	pass	Забігай	
+runintofire	pass	Біжи у вогонь	
+runout	pass	Вибігай	
+runoverflowers	pass	Пробіжи по квітах	
+runovermobs	pass	Пробіжи по ворогах	
+runtoedge	pass	Біжи до краю	
+runtotrap	pass	Іди до пастки	
+safenow	pass	Тепер безпечно	
+scatter	pass	Розійдіться	
+scattersoon	pass	Скоро розходитись	
+screwup	pass	Ти невдаха	
+securityguardcoming	pass	Іде охоронець	
+seedyou	pass	Насіння на тобі	
+server	pass	Офіціант	
+shadowrun	fail	Тінь на тобі, тікай	There is an unnatural, dramatic pause between 'тобі' and 'тікай' | The delivery is too theatrical and drawn out for a short, urgent in-game callout
+shadowyou	pass	Тінь на тобі	
+shareone	fail	Група один, діліть	Russian pronunciation of 'один' (pronounced with akanye as 'адин' and a Russian 'и') | The word 'діліть' is pronounced as the Russian word 'делить'
+sharetwo	pass	Група два, діліть	
+shieldcharge	pass	Ривок зі щитом	
+shieldover	pass	Щит зник	
+shockwave	pass	Ударна хвиля	
+shockyou	pass	Шок на тобі	
+silencesoon	fail	Скоро німота	Wrong stress on the word 'німота' (the speaker says 'німо́та' instead of the standard 'німота́') | There is an unnatural pause between the words, making it sound too sluggish for an urgent in-game callout
+silenceyou	pass	Німота на тобі	
+slagelementalcoming	pass	Іде шлаковий елементаль	
+slamincoming	fail	Скоро удар	Russian-sounding pronunciation (akanye): the final 'о' in 'Скоро' is reduced and sounds like 'а' | Lacks urgency: the delivery is too calm, slow, and has a slight pause between words, making it unnatural for a quick boss warning
+slowyou	pass	Сповільнення на тобі	
+soakbeam	fail	Поглинь промінь	The delivery is too calm and sluggish for an urgent in-game callout | There is a noticeable pause between the words that disrupts the rhythm of a quick warning
+soakincoming	pass	Скоро поглинання	
+soulcleave	pass	Розсічення душі	
+south	pass	Південь	
+southeast	pass	Південний схід	
+southwest	pass	Південний захід	
+sparktowater	fail	Веди іскру до води	The word 'Веди' is pronounced with a Russian accent, using a soft 'д' and an 'і' sound at the end instead of the Ukrainian hard 'д' and 'и' (sounds like Russian 'веди' instead of Ukrainian 'веди').
+spear	fail	Спис	The speaker says 'Списка' instead of the requested 'Спис'. | Added extra sounds/syllable at the end of the word.
+specialsoon	pass	Скоро спецатака	
+speedup	pass	Прискорся	
+speedyou	pass	Прискорення на тобі	
+stackhigh	pass	Багато стаків	
+stepring	fail	Стань у кільця	Wrong stress on the word 'кільця': the speaker stresses the last syllable ('кільцЯ', which is genitive singular) instead of the first syllable ('кІльця', which is the correct accusative plural for this context)
+stilldanger	pass	Небезпека, небезпека	
+stompsoon	pass	Скоро струс	
+stompstart	pass	Струс почався	
+stopatk	pass	Припини атакувати	
+stopattack	pass	Припини атаку	
+stopcast	pass	Зупини закляття	
+stopchargewithline	pass	Зупини ривок лінією	
+stopmove	pass	Зупинись	
+stunsoon	pass	Скоро оглушення	
+stunyou	pass	Оглушення на тобі	
+sunderhigh	pass	Багато розколів	
+swapsoon	pass	Скоро зміна	
+switchphase	pass	Перемкни фазу	
+takedamage	pass	Прийми шкоду	
+tankcombo	pass	Танкове комбо	
+tankheal	pass	Лікуй танка	
+targetchange	pass	Зміна цілі	
+targetyou	fail	Ціль на тобі	The word 'тобі' is completely mispronounced as the Russian word 'тебе' (sounds like 'табє'). | Strong Russian accent/pronunciation.
+tauntboss	fail	Забери боса	Russian pronunciation of 'забери': the final syllable is pronounced with a soft 'р' and an 'і' sound instead of the Ukrainian hard 'р' and 'и' (sounds like 'забері' instead of 'забери')
+telesoon	fail	Скоро телепорт	Pronounced 'Скоро' as 'Скора' (Russian akanye, unstressed 'о' reduced to 'а') | Russian-sounding pronunciation of 'телепорт' with vowel reduction
+teleyou	fail	Телепорт на тобі	Incorrect stress on the word 'тобі' (pronounced as 'тОбі' instead of the standard 'тобІ') | Russian-sounding pronunciation of 'Телепорт' (the consonants before 'е' are overly softened, sounding like 'Тєлєпорт')
+thanks	pass	Дякую	
+throweyedebuff	fail	Кинь око гравцю з дебафом	The first word is mispronounced as 'Крінь' instead of 'Кинь' (an extra 'р' sound is added).
+throweyehealer	fail	Кинь око хілеру	The first word is pronounced as 'Крінь' instead of 'Кинь' (added 'р' sound)
+throweyetank	pass	Кинь око танку	
+tosscoming	pass	Скоро кидок	
+tossonyou	pass	Кидок на тобі	
+touchwhiteshrooms	pass	Торкнись білих рун	
+toxic	pass	Токсичний	
+trannow	pass	Транквілізатор зараз	
+transplague	pass	Перенеси душу	
+transporter	fail	Транспортер	Russian pronunciation: the last syllable is pronounced with a 'ё' (yo) sound ('тёр') instead of the Ukrainian 'е' ('тер') | Akanye: the 'о' in the second syllable is reduced to an 'а' sound
+trapsincoming	pass	Скоро пастки	
+turnaway	pass	Відвернись	
+useextraaction	pass	Використай додаткову дію	
+usegate	pass	Використай браму	
+useitem	pass	Використай предмет	
+uu	pass	Твоє	
+voidsoak	pass	Поглинь порожнечу	
+voidyou	pass	Порожнеча на тобі	
+watchfeet	pass	Дивись під ноги	
+watchimpale	pass	Пронизування	
+watchorb	pass	Стеж за сферою	
+watchstep	pass	Дивись, куди стаєш	
+watchwave	pass	Стеж за хвилею	
+west	pass	Захід	
+whirlwind	pass	Вихор	
+wrathaura	fail	Гнівна аура	Wrong stress on the word 'Гнівна' (the speaker says 'ГнІвна' instead of the correct 'ГнівнА')
+wroughtchaosyou	pass	Хаос на тобі, тікай	
+wwsoon	pass	Скоро буревій	
+yellowyou	pass	Жовтий на тобі	
+count/1	pass	Один	
+count/10	fail	Десять	Russian pronunciation: the 'д' is pronounced soft before 'е' ([dʲe] instead of the standard Ukrainian hard [dɛ])
+count/11	pass	Одинадцять	
+count/2	pass	Два	
+count/3	pass	Три	
+count/4	pass	Чотири	
+count/5	pass	П'ять	
+count/6	pass	Шість	
+count/7	pass	Сім	
+count/8	pass	Вісім	
+count/9	pass	Дев'ять	
+Thogar/A1	fail	Колія один: експрес	Incorrect stress in the word 'колія' (pronounced 'кОлія' instead of the standard 'колІя') | Unnatural pause between 'один' and 'експрес' | The delivery is too slow and detached for an urgent in-game callout
+Thogar/A14	pass	Колії один і чотири: експреси	
+Thogar/A2	fail	Колія два: експрес	The word 'Колія' is pronounced with Russian akanye as 'Калія' (the unstressed 'о' is pronounced as 'а')
+Thogar/A23	pass	Колії два і три: експреси	
+Thogar/A3	fail	Колія три: експрес	Incorrect stress on the word 'Колія' (the speaker stresses the second syllable 'колІя' instead of the correct first syllable 'кОлія') | Unnatural pause between 'три' and 'експрес' breaks the flow of a short, urgent callout
+Thogar/A4	fail	Колія чотири: експрес	Unnatural pause between 'чотири' and 'експрес' | The intonation drops completely on 'чотири', making 'експрес' sound disconnected | The delivery is too slow and lacks the urgency required for an in-game boss warning
+Thogar/AX	pass	Випадковий експрес	
+Thogar/B1	pass	Колія один: підкріплення	
+Thogar/B1E4	fail	Колія один: підкріплення, колія чотири: лісоруб	Incorrect stress on the word 'колія': the speaker stresses the second syllable ('колІя') instead of the correct first syllable ('кОлія') | The pacing is too slow, deliberate, and sluggish for an urgent in-game combat warning
+Thogar/B2	pass	Колія два: підкріплення	
+Thogar/B23	pass	Колії два і три: підкріплення	
+Thogar/B2A4	pass	Колія два: підкріплення, колія чотири: експрес	
+Thogar/B2D3	pass	Колія два: підкріплення, колія три: воїни	
+Thogar/B3	pass	Колія три: підкріплення	
+Thogar/B4	fail	Колія чотири: підкріплення	The word 'підкріплення' is mispronounced (the initial 'п' is missing or replaced, sounding like 'відкріплення' or 'іткріплення') | Unnatural pause between 'чотири' and the final word
+Thogar/BX	pass	Випадкове підкріплення	
+Thogar/C1	pass	Колія один: гармата	
+Thogar/C14	fail	Колії один і чотири: гармати	The word "Колії" is mispronounced as "Колиї" (hard 'л' and 'и' instead of soft 'л' and 'і') | There is an unnatural pause before "гармати"
+Thogar/C1D4	fail	Колія один: гармата, колія чотири: воїни	Incorrect stress on the word 'колія' (the speaker says 'кОлія' instead of the standard 'колІя') | The delivery is too slow and contains unnatural pauses, lacking the urgency required for a boss-warning callout
+Thogar/C2	fail	Колія два: гармата	The word 'Колія' is pronounced with Russian-style akanye as 'Калія' (the unstressed 'о' is said as 'а'). | The delivery is slightly slow and features a noticeable pause in the middle, lacking the urgency needed for a boss-warning callout.
+Thogar/C3	pass	Колія три: гармата	
+Thogar/C4	pass	Колія чотири: гармата	
+Thogar/CX	pass	Випадкова гармата	
+Thogar/D1	fail	Колія один: воїни	Wrong stress in the word 'колія' (pronounced as 'колІя' instead of the standard 'кОлія')
+Thogar/D1C4	fail	Колія один: воїни, колія чотири: гармата	The word 'колія' is mispronounced as two words 'коли я' with incorrect stress (колИ я instead of кОлія) | The pacing is slow, disjointed, and lacks the urgency required for a boss-warning callout
+Thogar/D2	fail	Колія два: воїни	Wrong stress in the word 'Колія' (pronounced with stress on the second syllable 'колІя' instead of the standard first syllable 'кОлія')
+Thogar/D2B3	fail	Колія два: воїни, колія три: підкріплення	The word 'колія' is mispronounced as 'коли я' (with an 'и' sound instead of 'і')
+Thogar/D2C4	fail	Колія два: воїни, колія чотири: гармата	The word 'колія' is misread as two separate words 'коли я' (ko-ly-ya instead of ko-li-ya) | The delivery is too slow and disjointed for an urgent callout
+Thogar/D3	pass	Колія три: воїни	
+Thogar/D4	pass	Колія чотири: воїни	
+Thogar/DX	pass	Випадкові воїни	
+Thogar/E1	pass	Колія один: лісоруб	
+Thogar/E1A23	fail	Колія один: лісоруб, колії два і три: експреси	The delivery is too slow and sluggish for an urgent in-game callout | There are unnaturally long pauses between the phrases, making the line sound disjointed
+Thogar/E2	pass	Колія два: лісоруб	
+Thogar/E23	fail	Колії два і три: лісоруби	The delivery is too slow and sluggish for an urgent in-game callout | There is an unnaturally long pause before 'лісоруби'
+Thogar/E3	pass	Колія три: лісоруб	
+Thogar/E4	pass	Колія чотири: лісоруб	
+Thogar/F	pass	Три випадкові колії	
+events/victory	pass	Перемога!	
+events/wipe	pass	Поразка	
+events/pull	pass	Пулимо	
+events/engage	pass	Рушаймо	

@@ -11,7 +11,8 @@
 import os, subprocess, sys
 
 SP = os.path.dirname(os.path.abspath(__file__))
-COUNT = os.path.join(os.path.dirname(SP), "count")
+# DBM_VP_PACK points at another voice's addon folder; the default is this one.
+COUNT = os.path.join(os.environ.get("DBM_VP_PACK") or os.path.dirname(SP), "count")
 RATE = 44100
 
 # (output, leading silence in seconds, numbers spoken in order)

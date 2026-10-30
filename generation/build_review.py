@@ -3,13 +3,14 @@
 with its English source line, the Ukrainian line, and play buttons for both this pack
 and the reference English pack (DBM-VPVEM).
 
-Run:  python generation/build_review.py
+Run:  python generation/build_review.py [variant ...]   (default: every bake-off variant)
 Then open generation/review.html in a browser.
 """
 import json
 import os
 import re
 import subprocess
+import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PACK = os.path.dirname(HERE)                      # DBM-VPUkrainianTTS
@@ -45,8 +46,11 @@ def load_variants():
             raw = json.load(fh)
     except OSError:
         return []
+    wanted = sys.argv[1:]
     out = []
     for vid, entry in raw.items():
+        if wanted and vid not in wanted:
+            continue
         texts, secs = {}, {}
         for key, text in entry.get("texts", {}).items():
             ogg = os.path.join(HERE, "variants", vid, key + ".ogg")
@@ -59,6 +63,11 @@ def load_variants():
             # play the column straight through.
             out.append({"id": vid, "label": entry.get("label", vid),
                         "texts": texts, "secs": secs, "full": len(texts) > 100})
+    if wanted:
+        # Variants named on the command line are a ranking: keep that order, number it.
+        out.sort(key=lambda v: wanted.index(v["id"]))
+        for i, v in enumerate(out, 1):
+            v["label"] = "%d. %s" % (i, v["label"])
     return out
 
 

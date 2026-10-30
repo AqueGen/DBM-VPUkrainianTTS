@@ -34,7 +34,8 @@ end
 
 local function Register()
 	local db = ns.DB()
-	local category = Settings.RegisterVerticalLayoutCategory("DBM Voice Ukrainian")
+	local category, layout = Settings.RegisterVerticalLayoutCategory("DBM Voice Ukrainian")
+	layout:AddInitializer(CreateSettingsButtonInitializer("Голоси", "Що нового", ns.ShowWhatsNew, nil, false))
 
 	local actionText = Settings.RegisterAddOnSetting(category, ACTION_TEXT, "actionText", db,
 		Settings.VarType.Boolean, "Текстові підказки", false)

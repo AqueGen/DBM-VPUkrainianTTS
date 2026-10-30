@@ -1,0 +1,11 @@
+key	verdict	text	problems
+aesoon	fail	Скоро шкода по площі	Wrong stress on the word 'шкода'. The speaker stresses the first syllable ('шкОда', which means 'it's a pity'), but for the noun meaning 'damage', the stress must be on the second syllable ('шкодА').
+bait	pass	Приманюй зараз	
+crowdcontrol	pass	Контролюй	
+defensive	pass	Захист	
+harmonic	pass	Гармонія	
+interruptbyeye	pass	Збий закляття оком	
+kite	pass	Відбігай	
+thanks	pass	Дякую	
+uu	pass	Твоє	
+Thogar/B2D3	pass	Колія два: підкріплення, колія три: воїни	

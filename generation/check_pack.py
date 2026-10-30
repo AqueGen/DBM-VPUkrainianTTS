@@ -14,7 +14,8 @@ import subprocess
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-PACK = os.path.dirname(HERE)
+# DBM_VP_PACK points at another voice's addon folder; the default is this one.
+PACK = os.environ.get("DBM_VP_PACK") or os.path.dirname(HERE)
 
 # Assembled by build_countdown.py rather than synthesised, and deliberately long.
 ASSEMBLED = {"count/fivecount": 5.0, "count/threecount": 5.0,
@@ -131,13 +132,14 @@ def main():
         problems.append("audio with no table row: %s" % ", ".join(orphans[:8]))
 
     table_keys = set(keys)
-    for name in ("Phrases.lua", "Actions.lua"):
+    # a voice-only folder ships audio and leaves the text features to the main addon
+    for name in ("Phrases.lua", "Actions.lua") if os.path.isdir(os.path.join(PACK, "text")) else ():
         unknown = sorted(set(text_keys(name)) - table_keys)
         if unknown:
             problems.append("text/%s references %d keys that are not in the tables: %s"
                             % (name, len(unknown), ", ".join(unknown[:8])))
     expected, shipped = phrases_from_table(), phrases_on_disk()
-    stale = sorted(key for key in expected if expected[key] != shipped.get(key))
+    stale = sorted(key for key in expected if expected[key] != shipped.get(key)) if shipped else []
     if stale:
         problems.append("text/Phrases.lua is out of date, run generation/build_action_text.py "
                         "(%d rows differ, e.g. %s)" % (len(stale), ", ".join(stale[:4])))

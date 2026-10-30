@@ -1,0 +1,86 @@
+key	candidate	verdict	problems
+1695ukurogg	Ukurogg на човні seed 201	fail	Replaced sound: pronounced 'г' (/ɦ/) instead of the required 'ґ' (/g/) in 'Укуроґ' | The intonation is flat and robotic, lacking the urgency needed for an in-game warning
+1695ukurogg	Ukurogg на човні seed 202	pass	
+bosstobeam	Веди боса до променя! seed 201	fail	Russian pronunciation of the first word: said as 'Вєді' instead of 'Веди' (soft 'в' and 'і' at the end instead of 'и')
+bosstobeam	Веди боса до променя! seed 202	fail	The first word 'Веди' is pronounced with Russian phonetics as 'Вєді' or 'Віді' (with a soft 'd' and 'i' sound at the end instead of a hard 'd' and Ukrainian 'и').
+bosstobeam	Веди боса до променя. seed 201	fail	Russian pronunciation of the word 'Веди': it is pronounced as 'вєді' with a soft 'д' and an 'і' sound at the end, instead of the correct Ukrainian hard 'д' and 'и' sound.
+bosstobeam	Веди боса до променя. seed 202	fail	The word 'Веди' is pronounced with Russian phonetics (sounds like 'вєді' with palatalized consonants and an 'і' sound at the end instead of a hard Ukrainian 'и')
+breaktormentfirst	Розбивай /ˈmuku/ першим seed 201	pass	
+breaktormentthird	Розбивай /ˈmuku/ третім seed 201	pass	
+changecolor	/zmʲiˈnɪ/ колір seed 201	fail	The first word is pronounced as 'зміні' instead of 'зміни' (it ends with a soft 'н' and an 'і' sound instead of a hard 'н' and an 'и' sound).
+changecolor	/zmʲiˈnɪ/ колір seed 202	fail	Wrong stress on the word 'зміни'. The imperative verb should be stressed on the last syllable ('змінИ'), but the speaker stresses the first syllable ('змІни', which sounds like the noun 'changes').
+changecolor	/zmʲiˈnɪ/ колір! seed 201	fail	The word 'Зміни' is pronounced incorrectly as 'Зміні' (the final vowel is pronounced as 'і' instead of 'и')
+changecolor	/zmʲiˈnɪ/ колір! seed 202	fail	Wrong stress: the imperative verb 'зміни' must be stressed on the second syllable (змінИ), but the speaker stresses the first syllable. | Incorrect vowels: the word 'зміни' is pronounced with an 'і' at the end instead of 'и', and the first vowel sounds like 'є' (sounds like 'змєні' or 'зміні'). | Russian-sounding pronunciation in the first word.
+changemoon	/zmʲiˈnɪ/ місяць seed 201	fail	Wrong stress on the word 'Зміни': it is pronounced with stress on the first syllable (like the noun 'змІни'), but as an imperative verb it should be stressed on the last syllable ('змінИ').
+changemoon	/zmʲiˈnɪ/ місяць seed 202	fail	Wrong stress on the word 'зміни' (pronounced as the noun 'змІни' instead of the imperative verb 'змінИ')
+changemoon	/zmʲiˈnɪ/ місяць! seed 201	fail	Incorrect stress on the word 'Зміни'. The speaker stresses the first syllable ('ЗМІ-ни', which is the noun 'changes'), but it must be stressed on the second syllable ('змі-НИ') to be the imperative verb 'change'.
+changemoon	/zmʲiˈnɪ/ місяць! seed 202	pass	
+changetarget	/zmʲiˈnɪ/ ціль seed 201	fail	The speaker says 'Змініть' instead of the required 'Зміни'.
+changetarget	/zmʲiˈnɪ/ ціль seed 202	fail	The speaker says 'Змініть' instead of the required 'Зміни' (added 'ть' at the end of the first word).
+changetarget	/zmʲiˈnɪ/ ціль! seed 201	fail	The word 'Зміни' is pronounced incorrectly as 'Зміні' (with a soft 'н' and an 'і' sound at the end instead of a hard 'н' and 'и').
+changetarget	/zmʲiˈnɪ/ ціль! seed 202	fail	The word 'Зміни' is mispronounced as 'Зміні' (an 'і' sound is used at the end instead of 'и')
+com_go	Впе-ред, впе-ред, впе-ред! seed 201	fail	Heavy Russian accent and phonology applied to the word | Initial 'в' is incorrectly devoiced to 'ф' (sounds like 'фперед') | Consonants are incorrectly palatalized before 'е' (sounds like 'пєрєд' instead of 'перед') | Final 'д' is incorrectly devoiced to 'т' (sounds like 'вперет')
+com_go	Впе-ред, впе-ред, впе-ред! seed 202	fail	Russian-style devoicing of the initial 'в' to 'ф' (sounds like 'фперед' instead of 'вперед') | Russian-style devoicing of the final 'д' to 'т' (sounds like 'фперет'), which is incorrect for Ukrainian where final voiced consonants must remain voiced
+com_go	Вперед! Вперед! Вперед! seed 201	fail	Russian pronunciation used ('вперёд' instead of 'вперед')
+com_go	Вперед! Вперед! Вперед! seed 202	fail	The speaker uses the Russian pronunciation 'вперёд' (vperyod) instead of the correct Ukrainian 'вперед' (vpered).
+crusher	error	error	gave up
+dpsmore	Більше DPS! seed 201	pass	
+dpsslow	Повільніше DPS! seed 201	fail	The acronym 'DPS' is read very slowly letter by letter with unnatural pauses between each letter, violating the instruction to say it quickly as one unit.
+dpsslow	Повільніше DPS! seed 202	fail	The acronym 'DPS' is read very slowly letter by letter with pauses, instead of quickly as one unit | There is an unnatural pause between 'Повільніше' and the acronym | The overall delivery is too sluggish for an urgent in-game callout
+dpsslow	Повільніше DPS. seed 201	fail	The acronym 'DPS' is read slowly letter by letter with unnatural pauses instead of quickly as one unit.
+dpsslow	Повільніше DPS. seed 202	fail	The acronym 'DPS' is read slowly letter by letter with pauses, rather than quickly as one unit.
+dpsstop	Стоп DPS! seed 201	fail	The acronym 'DPS' is read slowly letter by letter with unnatural pauses between them, rather than as a single quick unit | The intonation is flat and robotic, lacking the urgency of an in-game callout
+dpsstop	Стоп DPS! seed 202	fail	The word 'Стоп' is pronounced with a strong English accent, featuring an alveolar 't' and an aspirated 'p', rather than standard Ukrainian phonetics | The overall intonation and pronunciation sound like an English text-to-speech voice reading the phrase
+dpsstop	Стоп DPS. seed 201	fail	The acronym 'DPS' is read slowly letter by letter instead of quickly as one unit | There is an unnatural pause between 'Стоп' and 'DPS' | The delivery is sluggish and lacks the urgency required for a boss-warning callout
+dpsstop	Стоп DPS. seed 202	fail	There is an unnatural pause between 'Стоп' and 'DPS' | The intonation is too calm and detached, lacking the urgency required for a boss warning callout
+gathershare	error	error	gave up
+orbsincoming	Скоро сфери! seed 201	fail	Russian-sounding pronunciation of the word 'сфери': it is pronounced as 'сфєрі' with soft consonants and an 'і' sound at the end instead of the hard Ukrainian 'р' and 'и'.
+orbsincoming	Скоро сфери! seed 202	fail	The word 'сфери' is pronounced with a strong Russian accent as 'сфєрі' (with a soft 'р' and an 'і' sound at the end instead of a hard 'р' and 'и').
+orbsincoming	Скоро сфери. seed 201	fail	The word 'сфери' is mispronounced as 'сфері' (with a soft 'р' and an 'і' sound at the end instead of the Ukrainian 'и'). | Russian-sounding pronunciation (reading the Ukrainian letter 'и' as the Russian 'и', which sounds like Ukrainian 'і').
+orbsincoming	Скоро сфери. seed 202	fail	The word 'сфери' is pronounced incorrectly, sounding like Russian 'сфере' or 'сфєрі'. | The 'ф' is palatalized (sounds like 'фє' instead of a hard 'фе'), and the final vowel sounds like 'е' or 'і' instead of the hard Ukrainian 'и'.
+purpleyou	Фіолетовий /na toˈbʲi/! seed 201	fail	The word 'Фіолетовий' is mispronounced as 'Фьолєтовий' | Missing the distinct 'і' vowel in the first syllable (merged into 'фьо') | Russian-influenced palatalization of 'л' (pronounced as 'лє' instead of the hard 'ле')
+purpleyou	Фіолетовий /na toˈbʲi/! seed 202	fail	Russian-sounding pronunciation: the 'л' in 'фіолетовий' is palatalized (sounds like 'фіолєтовий' instead of the standard hard 'л' before 'е')
+purpleyou	Фіолетовий /na toˈbʲi/. seed 201	fail	Unnatural pause between 'Фіолетовий' and 'на тобі' | The intonation drops after the first word, making it sound like two separate sentences rather than a single cohesive phrase | Lacks the urgency and fluid rhythm required for a quick in-game callout
+purpleyou	Фіолетовий /na toˈbʲi/. seed 202	fail	Russian-sounding pronunciation of 'фіолетовий' (pronounced as 'фіолєтовий' with a soft 'л' and 'є' instead of a hard 'л' and 'е') | Unnatural pause between 'Фіолетовий' and 'на тобі' | Sluggish and drawn-out delivery that lacks the urgency of an in-game callout
+silencesoon	Скоро німота! seed 201	pass	
+slamincoming	Скоро удар! seed 201	fail	The final 'о' in 'Скоро' is pronounced as 'а' (Russian akanye), which is incorrect for standard Ukrainian.
+slamincoming	Скоро удар! seed 202	fail	Russian akanye: the final 'о' in 'Скоро' is pronounced as 'а' (Скора instead of Скоро)
+slamincoming	Скоро удар. seed 201	pass	
+sparktowater	Веди іскру до води! seed 201	fail	Russian pronunciation of 'веди' (soft 'д' and Russian 'и' sound instead of hard 'д' and Ukrainian 'и') | Russian akanye in 'до води' (pronounced like 'да вады' instead of clear 'о' sounds)
+sparktowater	Веди іскру до води! seed 202	fail	The word 'Веди' is pronounced with a Russian accent, sounding like 'Вєді' (with a soft 'д' and 'і' sound) instead of the correct Ukrainian 'Веди' (with a hard 'д' and 'и' sound).
+sparktowater	Веди іскру до води. seed 201	fail	The first word 'Веди' is pronounced with a soft 'д' and an 'і' sound at the end (like the Russian 'веди' / 'вєді'), instead of the correct Ukrainian pronunciation with a hard 'д' and 'и' ([veˈdɪ]).
+sparktowater	Веди іскру до води. seed 202	fail	The word 'Веди' is pronounced with Russian phonetics (soft 'd' and 'i' at the end instead of hard 'd' and 'y' /и/) | The first vowel in 'Веди' is reduced to an 'i' sound, making it sound like 'Віді' or 'Вєді'
+spear	Спис! seed 201	fail	The vowel 'и' is pronounced incorrectly as 'і' (sounds like 'спіс' instead of 'спис')
+spear	Спис! seed 202	fail	The vowel 'и' is mispronounced as 'і' (sounds like 'спіс' instead of 'спис') | Strong foreign (English) accent
+spear	Спис. seed 201	fail	The audio says 'Списка' instead of the requested 'Спис'.
+spear	Спис. seed 202	fail	Says 'Списка' instead of 'Спис' | Added extra syllables at the end of the word
+stepring	Стань у кільця! seed 201	fail	Wrong stress on the word 'кільця'. The speaker stresses the last syllable ('кільцЯ'), but for the plural form (meaning 'rings') the standard Ukrainian stress falls on the first syllable ('кІльця').
+stepring	Стань у кільця! seed 202	fail	Wrong stress on the word 'кільця': the speaker stresses the last syllable ('кільцЯ', which is genitive singular), but in the context of 'standing in the rings' (accusative plural), the stress must be on the first syllable ('кІльця').
+stepring	Стань у кільця. seed 201	fail	Wrong stress on the word 'кільця': it is stressed on the last syllable ('кільцЯ', which is genitive singular) instead of the first syllable ('кІльця', which is the correct accusative plural for 'rings')
+stepring	Стань у кільця. seed 202	fail	Wrong stress on the word 'кільця': the speaker stresses the last syllable ('кільцЯ' - genitive singular), but for the plural accusative it should be stressed on the first syllable ('кІльця')
+tauntboss	Забери боса! seed 201	fail	The word 'Забери' is pronounced with a soft 'р' and an 'і' sound at the end (Russian-style 'забери'), instead of the standard Ukrainian hard 'р' and 'и' sound.
+tauntboss	Забери боса! seed 202	fail	Russian-sounding pronunciation: 'Забери' is pronounced with a soft 'р' and an 'і' sound at the end ('забері' or 'забєрі'). In Ukrainian, it must be pronounced with a hard 'р' and a clear 'и' sound.
+tauntboss	Забери боса. seed 201	fail	Russian pronunciation: 'забери' is pronounced with a soft 'р' and Russian 'и' (sounds like Ukrainian 'забері') | Russian-style vowel reduction (akanye/schwa) at the end of 'боса'
+tauntboss	Забери боса. seed 202	fail	Russian pronunciation: the word 'Забери' is pronounced with a soft 'р' and a Russian 'и' [i] at the end, instead of the Ukrainian hard 'р' and 'и' [rɪ]. | Russian vowel reduction (ikan'ye) is present in the unstressed syllables.
+telesoon	Скоро телепорт! seed 201	fail	Russian-sounding pronunciation: 'Скоро' is pronounced with akanye as 'Скора' | Russian-sounding vowel reduction in the word 'телепорт' (the 'е' sounds are reduced)
+telesoon	Скоро телепорт! seed 202	fail	Russian akanye: 'Скоро' is pronounced as 'Скора' with an 'а' at the end | Russian pronunciation of 'телепорт' with soft consonants before 'е' instead of the hard Ukrainian 'е'
+telesoon	Скоро телепорт. seed 201	fail	Russian-sounding pronunciation (akanye): the final 'о' in 'Скоро' is pronounced as 'а' | Russian-sounding vowel reduction and consonant softening in 'телепорт' (sounds closer to 'тилипорт' instead of the clear Ukrainian 'те-ле-порт')
+telesoon	Скоро телепорт. seed 202	fail	The word 'Скоро' is pronounced with Russian akanye as 'Скора' (the final unstressed 'о' is pronounced as 'а'). | The pronunciation of 'телепорт' has Russian-style vowel reduction.
+teleyou	Телепорт /na toˈbʲi/! seed 201	fail	Russian-sounding pronunciation of 'Телепорт' (consonants 'т' and 'л' are incorrectly softened before 'е') | Unnatural pause between 'Телепорт' and 'на тобі', breaking the flow of an urgent callout
+teleyou	Телепорт /na toˈbʲi/! seed 202	fail	Russian akanye: 'тобі' is pronounced as 'табі' | Russian vowel reduction: 'Телепорт' is pronounced with reduced 'і'-like sounds instead of clear 'е' sounds
+teleyou	Телепорт /na toˈbʲi/. seed 201	fail	Russian-sounding pronunciation of 'Телепорт': the 'т' is pronounced soft and the 'е' vowels are reduced, making it sound like 'тіліпорт' instead of having a hard 'т' and clear 'е' | Unnatural pause between 'Телепорт' and 'на тобі'
+teleyou	Телепорт /na toˈbʲi/. seed 202	fail	Russian-sounding pronunciation of 'Телепорт': the consonants 'т' and 'л' are heavily palatalized (softened) before 'е', making it sound like 'Тєлєпорт' or 'Цєлєпорт'. In standard Ukrainian, consonants before 'е' should remain hard.
+transporter	Транспортер! seed 201	fail	Russian pronunciation: the speaker says 'транспортёр' (with a 'yo' sound) instead of the correct Ukrainian 'транспортер' (with an 'e' sound).
+transporter	Транспортер! seed 202	fail	Russian pronunciation: the ending is pronounced as '-тьор' (like Russian '-тёр') instead of the standard Ukrainian '-тер'
+transporter	Транспортер. seed 201	fail	Russian pronunciation: the speaker says 'транспортёр' (with a 'yo' sound) instead of the Ukrainian 'транспортер' (with a hard 't' and 'e' sound) | Russian vowel reduction (akanye) is present in the unstressed syllables
+transporter	Транспортер. seed 202	fail	Russian pronunciation: the word is pronounced as 'транспортёр' with a 'ё' sound instead of the standard Ukrainian 'транспортер' with an 'е' sound
+count/10	Десять! seed 201	fail	Russian pronunciation: the 'д' is softened before 'е' (sounds like Russian 'десять'). In Ukrainian, the 'д' before 'е' must be hard.
+count/10	Десять! seed 202	fail	Russian pronunciation: the 'д' is pronounced soft before 'е' (sounds like 'дєсять' instead of 'десять' with a hard 'д') | Russian vowel reduction on the unstressed syllable
+count/10	Десять. seed 201	pass	
+Thogar/C2	/ˈkɔlija/ два: гармата! seed 201	pass	
+Thogar/D2B3	/ˈkɔlija/ два: воїни, /ˈkɔlija/ три: підкріплення! seed 201	pass	
+Thogar/D2C4	/ˈkɔlija/ два: воїни, /ˈkɔlija/ чотири: гармата! seed 201	fail	The word 'колія' is mispronounced as 'коли я' (with an 'и' sound instead of 'і')
+Thogar/D2C4	/ˈkɔlija/ два: воїни, /ˈkɔlija/ чотири: гармата! seed 202	fail	The word 'Колія' is mispronounced as two separate words 'коли я' (koly ya) | Incorrect stress on 'Колія' (should be on the first syllable 'кОлія', but sounds like 'колИ я')
+Thogar/D2C4	/ˈkɔlija/ два: воїни, /ˈkɔlija/ чотири: гармата. seed 201	fail	The word 'колія' is mispronounced as two words 'коли я' with incorrect stress (standard stress is on the first syllable 'КО-лі-я'). | The delivery is drawn out and sluggish with unnatural pauses between the phrases, lacking the urgency required for a combat callout.
+Thogar/D2C4	/ˈkɔlija/ два: воїни, /ˈkɔlija/ чотири: гармата. seed 202	fail	Wrong stress in the word 'колія' (pronounced as 'колІя' instead of the correct 'кОлія') | The delivery is too slow, drawn out, and has unnatural pauses for an urgent in-game callout
+Thogar/E1A23	/ˈkɔlija/ один: лісоруб, /ˈkɔliji/ два і три: експреси! seed 201	pass	

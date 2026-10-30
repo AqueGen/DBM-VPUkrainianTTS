@@ -1,0 +1,29 @@
+key	candidate	verdict	problems
+changecolor	/zmʲiˈnɪ/ колір seed 301	pass	
+breakvine	Розірви лозу! seed 301	pass	
+1695gorak	Gorak на човні seed 301	fail	Wrong stress on the word 'човні' (the speaker says 'чОвні' instead of the standard 'човнІ')
+1695gorak	Gorak на човні seed 302	fail	Replaced sound: the first word is pronounced with a 'Г' (H) instead of the required 'Ґ' (G) | Wrong stress: the word 'човні' is incorrectly stressed on the first syllable ('чОвні' instead of the standard 'човнІ')
+1695gorak	Ґорак на човні! seed 301	fail	The first sound in 'Ґорак' is pronounced as a fricative 'Г' (/ɦ/) instead of the required plosive 'Ґ' (/g/)
+1695gorak	Ґорак на човні! seed 302	fail	The first sound is pronounced as 'Г' [ɦ] instead of the required 'Ґ' [g].
+1695ukurogg	Ukurogg на човні seed 301	pass	
+crusher	Трошчитель seed 301	fail	Russian-sounding pronunciation: the letter 'и' is pronounced as 'і' (softening the previous consonant), and 'те' is pronounced softly as 'тє' instead of a hard 'т'
+crusher	Трошчитель seed 302	fail	Russian-sounding pronunciation: 'щ' is pronounced as a soft Russian 'щ' instead of the Ukrainian hard 'шч' | The letter 'и' is pronounced like 'і' | The syllable 'те' is pronounced with a soft 'т' (like 'тє' or Russian 'те') instead of a hard 'т'
+crusher	Трошчитель! seed 301	fail	Russian-sounding pronunciation: the letter 'и' is pronounced as a soft Russian 'и' instead of the harder Ukrainian 'и' | Russian-sounding pronunciation: the letter 'т' is softened before 'е' ('тель' instead of the correct Ukrainian 'тел' with a hard 'т')
+crusher	Трошчитель! seed 302	fail	Russian-sounding pronunciation: the 'щ' is pronounced soft, the 'и' sounds like a Russian 'и' (/i/) instead of Ukrainian 'и' (/ɪ/), and the 'т' before 'е' is palatalized (soft) instead of hard.
+fearsoon	Скоро страх! seed 301	pass	
+dpshard	dps на повну seed 301	fail	The delivery is drawn out and sluggish | There is an unnatural pause between 'DPS' and 'на повну' | The intonation is too relaxed and lacks the urgency required for a short in-game callout
+dpshard	dps на повну seed 302	fail	Unnatural pause between 'DPS' and 'на повну' | The delivery is too relaxed and lacks the urgency required for a quick in-game boss warning
+dpshard	DPS на повну! seed 301	fail	There is an unnatural pause between 'DPS' and 'на повну' | The disjointed rhythm breaks the urgency required for a quick in-game callout
+dpshard	DPS на повну! seed 302	fail	Unnatural pause between 'DPS' and 'на повну' | The rhythm is disjointed and lacks the urgency of a single, quick callout
+dpsslow	Повільніше dps seed 301	fail	The acronym 'DPS' is read very slowly letter by letter with pauses, instead of quickly as one unit | There is an unnatural pause between 'Повільніше' and the acronym
+dpsslow	Повільніше dps seed 302	fail	The acronym 'DPS' is read very slowly letter by letter instead of quickly as one unit | There are unnatural pauses between the word and the letters | The delivery is sluggish and lacks the urgency required for a short in-game callout
+dpsslow	Повільніше DPS! seed 301	fail	The acronym 'DPS' is read very slowly letter by letter instead of quickly as one unit | There are unnatural pauses between the letters and before the acronym | The overall delivery is sluggish and lacks the urgency required for a boss warning
+dpsslow	Повільніше DPS! seed 302	fail	The acronym 'DPS' is read very slowly letter by letter with unnatural pauses between each letter. | The delivery is drawn out and sluggish, lacking the urgency required for a boss-warning callout.
+purpleyou	Фіолетовий на тобі seed 301	fail	Unnatural pause between 'Фіолетовий' and 'на тобі' | The preposition 'на' is incorrectly stressed and emphasized
+purpleyou	Фіолетовий на тобі seed 302	fail	Wrong stress: the preposition 'на' is stressed instead of 'тобі' ('нА тобі' means 'here you go' instead of 'on you') | Unnatural pause between 'Фіолетовий' and 'на тобі'
+purpleyou	Фіолетовий на тобі! seed 301	fail	Unnatural pause between 'Фіолетовий' and 'на тобі' | The preposition 'на' is incorrectly stressed and emphasized as if it were the key word
+purpleyou	Фіолетовий на тобі! seed 302	fail	The short function word 'на' is heavily stressed and emphasized | The intonation is unnatural and theatrical for a quick, urgent callout
+redyou	Червоний на тобі seed 301	fail	The short function word 'на' is heavily stressed and emphasized | There is an unnatural pause between 'Червоний' and 'на тобі' | The intonation is disjointed and does not sound like a natural, urgent callout
+redyou	Червоний на тобі seed 302	fail	The short function word 'на' is heavily stressed and emphasized | There is an unnatural pause between 'Червоний' and 'на тобі', making the callout sound disjointed
+redyou	Червоний на тобі! seed 301	fail	The short function word 'на' is heavily stressed and emphasized, which violates the guidelines.
+redyou	Червоний на тобі! seed 302	fail	The function word 'на' is heavily stressed and emphasized, which sounds unnatural for this context and changes the meaning to 'take this'.
