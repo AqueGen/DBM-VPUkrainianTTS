@@ -1,0 +1,11 @@
+key	verdict	text	problems
+aesoon	pass	Скоро шкода по площі	
+bait	fail	Приманюй зараз	Incorrect stress on the word 'Приманюй' (the speaker stresses the last syllable '-нюй' instead of the second syllable '-ма-')
+crowdcontrol	pass	Контролюй	
+defensive	pass	Захист	
+harmonic	pass	Гармонія	
+interruptbyeye	pass	Збий закляття оком	
+kite	pass	Відбігай	
+thanks	pass	Дякую	
+uu	pass	Твоє	
+Thogar/B2D3	fail	Колія два: підкріплення, колія три: воїни	Wrong stress on the word 'колія' (pronounced as 'колІя' instead of the correct 'кОлія') | The delivery is somewhat slow and lacks the urgency expected for a boss-warning callout

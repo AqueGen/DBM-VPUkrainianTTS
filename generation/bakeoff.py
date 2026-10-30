@@ -11,6 +11,7 @@ Run:  python generation/bakeoff.py            # render every variant defined bel
 """
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -114,14 +115,162 @@ VARIANTS = [
 # Round 3 - the voice itself. Matilda is an American-accent source voice, and ElevenLabs
 # states that a voice's own accent leaks into multilingual output, so a Ukrainian-native
 # voice may fix at the root what respelling and stress hints fight downstream.
-# Fill in ids from the ElevenLabs voice library (Voices -> Library -> language Ukrainian)
-# and rerun: python generation/bakeoff.py voice-<name>
-UKRAINIAN_VOICES = {
-    # "voice-<short name>": "<voice_id>",
+# Ids from GET /v1/shared-voices?language=uk, picked for a bright, lively delivery.
+# Rendered on v3, the expressive model: the goal of this round is a more human voice.
+UKRAINIAN_VOICES = {}
+# The 14 female and 4 male uk library voices with the most use, on eleven_v4. el2-* (v2) is
+# only for a voice whose v4 clips run too long.
+LIBRARY_VOICES = {
+    "yaroslava": "0ZQZuw8Sn4cU0rN1Tm2K", "vira": "nCqaTnIbLdME87OuQaZY",
+    "mariya": "2OXYbN1uGomXXJtv9Dq6", "solomiya": "yMBZR4SLoc24wOJLWAB2",
+    "anna": "2o2uQnlGaNuV3ObRpxXt", "katerina-boyko": "Xx7Usst6zGAQKLjgeyV7",
+    "ana": "5erHrdsmUNM63rFLhYiV", "alena": "BEprpS2vpgM32yNJpTXq",
+    "sofiia": "96XEXOjZRHooATdYA8FY", "tonya": "bg0e02brzo3RVUEbuZeo",
+    "kateryna": "X1WtgMmQUBwtiAPn4j1P", "kira": "2HWb7sZSrZqPB8HOI0KI",
+    "marlena": "W4ZBKBsXCMS1XKvLLTlU", "alisa": "KBxO1LTAD4PE7D9rqUeb",
+    "m-evgeniy": "Ntd0iVwICtUtA6Fvx27M", "m-alex": "9Sj8ugvpK1DmcAXyvi3a",
+    "m-bogdan": "jn6ifzU1eO5tfUZ2ZJVg", "m-artem": "h9NSQvWZaC4NFusYsxT9",
 }
-for _vid, _voice in sorted(UKRAINIAN_VOICES.items()):
-    VARIANTS.append(dict(TURBO, id=_vid, label="voice: %s (turbo, forced uk)" % _vid,
+for _name, _voice in LIBRARY_VOICES.items():
+    for _tag, _model in (("el4", "eleven_v4"), ("el2", "eleven_multilingual_v2")):
+        VARIANTS.append({"id": "%s-%s" % (_tag, _name), "label": "ElevenLabs %s: %s" % (_model, _name),
+                         "engine": "elevenlabs", "model": _model, "voice": _voice, "keys": ENGINE_KEYS})
+# What eleven_v4 hears instead, for the whole-pack renders only; v4 reads IPA between slashes.
+# m-alex stressed "на" in "на тобі" like "here, take it": 5 of 5 test lines as text, 0 of 5 as IPA.
+# The rest are words m-alex stressed off the norm (en.wiktionary uk-IPA). IPA as a whole line
+# broke "Дев'ять", "Трощитель", "Провал" and "Спис", turned "воїни" into "воїні" and did not fix
+# "Продовжуй", so those stay plain text.
+ELEVEN_SPOKEN = {
+    "на тобі": "/na toˈbʲi/",
+    "колія": "/ˈkɔlija/", "колії": "/ˈkɔliji/", "кристал": "/krɪsˈtɑl/",
+    # the owner wants the English acronym; "де-пе-ес" is the Azure spelling and m-alex spells it out
+    "де-пе-ес": "DPS",
+}
+# Words m-alex got wrong in one line only and right everywhere else.
+# "Спис" came out as "списка" on four takes, "Спис!" did not. "Вперед" came out as "вперьод"
+# in 11 of 12 plain takes; the shipped com_go is the "Впе-ред" take with seed 3, picked by
+# phones out of 9 (scratch takes.py), so a re-render of this text may not match it.
+ELEVEN_OVERRIDE = {"fearsoon": "/ˈskɔrɔ/ страх", "left": "/liˈʋɔrut͡ʃ/",
+                   "spear": "Спис!", "com_go": "Впе-ред, впе-ред, впе-ред!"}
+# Picked voices, rendered over the whole pack before the budget goes to the next one.
+# Shortlist in pick order: m-alex, m-evgeniy, solomiya.
+for _name in ("m-alex", "m-evgeniy", "solomiya"):
+    VARIANTS.append({"id": "el4-%s-all" % _name, "label": "ElevenLabs eleven_v4: %s - whole pack" % _name,
+                     "engine": "elevenlabs", "model": "eleven_v4", "voice": LIBRARY_VOICES[_name],
+                     "keys": "all", "spoken": ELEVEN_SPOKEN,
+                     # the overrides were found on m-alex; other voices go through the judge loop instead
+                     "override": ELEVEN_OVERRIDE if _name == "m-alex" else {}})
+# m-alex leans on "на" in "... на тобі" as if it were a verb ("here, take it"). Same two
+# lines in other written forms; "same" re-renders the original text to show plain variance.
+NA_FORMS = {
+    "same": ("Стріла на тобі", "Поглинання на тобі"),
+    "comma": ("Стріла, на тобі", "Поглинання, на тобі"),
+    "dash": ("Стріла - на тобі", "Поглинання - на тобі"),
+    "order": ("На тобі стріла", "На тобі поглинання"),
+    "joined": ("Стріла натобі", "Поглинання натобі"),
+}
+for _form, (_arrow, _absorb) in NA_FORMS.items():
+    VARIANTS.append({"id": "el4-m-alex-na-%s" % _form, "label": "m-alex, \"на тобі\": %s" % _form,
+                     "engine": "elevenlabs", "model": "eleven_v4", "voice": LIBRARY_VOICES["m-alex"],
+                     "keys": ["arrowyou", "absorbyou"],
+                     "override": {"arrowyou": _arrow, "absorbyou": _absorb}})
+# None of those forms helped. The five worst "на тобі" lines: other voices as written, and
+# m-alex with "в тебе" instead.
+NA_KEYS = ["lineyou", "coinyou", "greenyou", "arrowyou", "absorbyou"]
+for _name in ("m-evgeniy", "solomiya", "m-artem"):
+    VARIANTS.append({"id": "el4-%s-na" % _name, "label": "%s, \"на тобі\"" % _name,
+                     "engine": "elevenlabs", "model": "eleven_v4", "voice": LIBRARY_VOICES[_name],
+                     "keys": NA_KEYS})
+for _form, _texts in (
+        ("vtebe", ("Лінія в тебе", "Монета в тебе", "Зелений у тебе", "Стріла в тебе", "Поглинання в тебе")),
+        ("utebe-first", ("У тебе лінія", "У тебе монета", "У тебе зелений", "У тебе стріла", "У тебе поглинання"))):
+    VARIANTS.append({"id": "el4-m-alex-na-%s" % _form, "label": "m-alex, \"на тобі\": %s" % _form,
+                     "engine": "elevenlabs", "model": "eleven_v4", "voice": LIBRARY_VOICES["m-alex"],
+                     "keys": NA_KEYS, "override": dict(zip(NA_KEYS, _texts))})
+# The written line stays; only what the engine hears or how it samples changes. Levers from
+# the v4 prompting docs: capitals add emphasis, IPA in slashes, audio tags; plus the API's
+# stability and seed.
+_NA_BASE = {"lineyou": "Лінія", "coinyou": "Монета", "greenyou": "Зелений", "arrowyou": "Стріла",
+            "absorbyou": "Поглинання"}
+for _form, _tail, _extra in (
+        ("caps", "на ТОБІ", None),
+        ("ipa", "/na toˈbʲi/", None),
+        ("tag", "на тобі", None),
+        ("stable", "на тобі", {"voice_settings": {"stability": 0.9, "similarity_boost": 0.75}}),
+        ("seed1", "на тобі", {"seed": 1}),
+        ("seed2", "на тобі", {"seed": 2})):
+    _texts = {k: ("[calm] " if _form == "tag" else "") + "%s %s" % (w, _tail) for k, w in _NA_BASE.items()}
+    VARIANTS.append({"id": "el4-m-alex-na-%s" % _form, "label": "m-alex, \"на тобі\": %s" % _form,
+                     "engine": "elevenlabs", "model": "eleven_v4", "voice": LIBRARY_VOICES["m-alex"],
+                     "keys": NA_KEYS, "override": _texts, "extra": _extra})
+# "де-пе-ес" is the Azure workaround; on m-alex it is read letter by letter. Other spellings,
+# and takes of "Спис", which m-alex reads as "списка".
+_DPS = {"dpshard": "%s на повну", "dpsmore": "Більше %s", "dpsslow": "Повільніше %s", "dpsstop": "Стоп %s"}
+for _form, _word in (("written", "ДПС"), ("dipies", "ді-пі-ес"), ("latin", "DPS")):
+    VARIANTS.append({"id": "el4-m-alex-dps-%s" % _form, "label": "m-alex, DPS: %s" % _word,
+                     "engine": "elevenlabs", "model": "eleven_v4", "voice": LIBRARY_VOICES["m-alex"],
+                     "keys": list(_DPS), "override": {k: t % _word for k, t in _DPS.items()}})
+for _form, _text, _extra in (("seed1", "Спис", {"seed": 1}), ("seed2", "Спис", {"seed": 2}),
+                             ("seed3", "Спис", {"seed": 3}), ("dot", "Спис.", None), ("bang", "Спис!", None)):
+    VARIANTS.append({"id": "el4-m-alex-spear-%s" % _form, "label": "m-alex, spear: %s" % _form,
+                     "engine": "elevenlabs", "model": "eleven_v4", "voice": LIBRARY_VOICES["m-alex"],
+                     "keys": ["spear"], "override": {"spear": _text}, "extra": _extra})
+# IPA [w] in "вперед" drops the "в" ("перед, перед").
+for _form, _text in (("plain", "Вперед! Вперед! Вперед!"), ("u", "Уперед, уперед, уперед!"),
+                     ("ipa-v", "/ʋpɛˈrɛd/, /ʋpɛˈrɛd/, /ʋpɛˈrɛd/!")):
+    VARIANTS.append({"id": "el4-m-alex-go-%s" % _form, "label": "m-alex, com_go: %s" % _form,
+                     "engine": "elevenlabs", "model": "eleven_v4", "voice": LIBRARY_VOICES["m-alex"],
+                     "keys": ["com_go"], "override": {"com_go": _text}})
+# Library voices need a paid plan over the API (402 paid_plan_required on the free tier).
+# Premade voices do not, but none of them is verified for Ukrainian.
+PREMADE_VOICES = {
+    "voice-jessica": "cgSgspJ2msm6clMCkdW9",
+    "voice-bella": "hpp4J3VqNfWAUOO0d1Us",
+    "voice-charlie": "IKne3meq5aSn9XLyUdCD",
+    "voice-harry": "SOYHLrjzK2X1ezoPC6cr",
+}
+for _vid, _voice in sorted({**UKRAINIAN_VOICES, **PREMADE_VOICES}.items()):
+    VARIANTS.append(dict(V3, id=_vid, label="ElevenLabs v3: %s" % _vid[6:],
                          voice=_voice, keys=ENGINE_KEYS))
+# Azure's other Ukrainian voice, and multilingual voices told to speak Ukrainian.
+VARIANTS += [
+    {"id": "azure-ostap", "label": "Azure uk-UA-OstapNeural", "engine": "azure",
+     "voice": "uk-UA-OstapNeural", "keys": ENGINE_KEYS},
+    {"id": "azure-ava-uk", "label": "Azure Ava Multilingual, uk-UA", "engine": "azure",
+     "voice": "en-US-AvaMultilingualNeural", "lang": "uk-UA", "keys": ENGINE_KEYS},
+    {"id": "azure-andrew-uk", "label": "Azure Andrew Multilingual, uk-UA", "engine": "azure",
+     "voice": "en-US-AndrewMultilingualNeural", "lang": "uk-UA", "keys": ENGINE_KEYS},
+]
+
+# Google Cloud TTS: every female uk-UA Chirp 3 HD voice, and Gemini TTS steered by a
+# prompt. Auth is the gcloud ADC login, billed to GOOGLE_PROJECT.
+CHIRP_FEMALE = [
+    "Achernar", "Aoede", "Autonoe", "Callirrhoe", "Despina", "Erinome", "Gacrux",
+    "Kore", "Laomedeia", "Leda", "Pulcherrima", "Sulafat", "Vindemiatrix", "Zephyr",
+]
+CHIRP_MALE = [
+    "Achird", "Algenib", "Algieba", "Alnilam", "Charon", "Enceladus", "Fenrir", "Iapetus",
+    "Orus", "Puck", "Rasalgethi", "Sadachbia", "Sadaltager", "Schedar", "Umbriel", "Zubenelgenubi",
+]
+VARIANTS += [
+    {"id": "chirp-%s" % name.lower(), "label": "Google Chirp 3 HD %s" % name,
+     "engine": "google", "voice": "uk-UA-Chirp3-HD-%s" % name, "keys": ENGINE_KEYS}
+    for name in CHIRP_FEMALE + CHIRP_MALE
+]
+GEMINI_PROMPT = "Коротка бойова команда в рейді: чітко, впевнено, енергійно, без пауз."
+VARIANTS += [
+    {"id": "gemini-%s" % name.lower(), "label": "Gemini 2.5 Pro TTS %s" % name,
+     "engine": "google", "voice": name, "model": "gemini-2.5-pro-tts",
+     "prompt": GEMINI_PROMPT, "keys": ENGINE_KEYS}
+    for name in ("Kore", "Zephyr", "Aoede", "Leda")
+]
+# The combat prompt garbled single words; this isolates the prompt as the cause or not.
+VARIANTS.append({
+    "id": "gemini-aoede-neutral", "label": "Gemini 2.5 Pro TTS Aoede, neutral prompt",
+    "engine": "google", "voice": "Aoede", "model": "gemini-2.5-pro-tts",
+    "prompt": "Читай текст дослівно українською мовою. Природний розмовний голос, "
+              "чітка артикуляція, рівна інтонація, звичайний темп.",
+    "keys": ENGINE_KEYS})
 
 # The licensed route to the voice the pack ships with.
 VARIANTS += [
@@ -156,11 +305,14 @@ def keys_of(variant, rows):
 
 
 def text_for(variant, key, spoken):
-    return variant.get("override", {}).get(key, spoken)
+    text = variant.get("override", {}).get(key, spoken)
+    for written, heard in variant.get("spoken", {}).items():
+        text = re.sub(r"(?<!\w)%s(?!\w)" % re.escape(written), heard, text, flags=re.IGNORECASE)
+    return text
 
 
-def eleven(text, model, language_code, dest, voice=MATILDA):
-    payload = {"text": text, "model_id": model}
+def eleven(text, model, language_code, dest, voice=MATILDA, extra=None):
+    payload = {"text": text, "model_id": model, **(extra or {})}
     if language_code:
         payload["language_code"] = language_code
     req = urllib.request.Request(
@@ -185,9 +337,11 @@ def eleven(text, model, language_code, dest, voice=MATILDA):
     return False
 
 
-def azure(text, voice, dest, style=None, rate=None):
+def azure(text, voice, dest, style=None, rate=None, lang=None):
     """Official Azure Speech, the licensed route to the same voice edge-tts borrows."""
     inner = text
+    if lang:
+        inner = '<lang xml:lang="%s">%s</lang>' % (lang, inner)
     if rate:
         inner = '<prosody rate="%s">%s</prosody>' % (rate, inner)
     if style:
@@ -215,6 +369,48 @@ def azure(text, voice, dest, style=None, rate=None):
                 time.sleep(10 * (attempt + 1))
                 continue
             print("FAIL %s: %d %s" % (dest, e.code, e.read()[:200].decode("utf-8", "replace")))
+            return False
+        except Exception as e:
+            print("RETRY %s: %s" % (dest, e))
+            time.sleep(5)
+    return False
+
+
+GOOGLE_PROJECT = "project-22d39352-f39d-4ca1-bcc"
+GCLOUD = os.path.join(os.environ.get("LOCALAPPDATA", ""),
+                      r"Google\Cloud SDK\google-cloud-sdk\bin\gcloud.cmd")
+_GOOGLE_TOKEN = []
+
+
+def google(text, voice, dest, model=None, prompt=None):
+    """Google Cloud Text-to-Speech: Chirp 3 HD by voice name, Gemini TTS by model name."""
+    import base64
+    if not _GOOGLE_TOKEN:
+        _GOOGLE_TOKEN.append(subprocess.run(
+            [GCLOUD, "auth", "application-default", "print-access-token"],
+            capture_output=True, text=True, check=True).stdout.strip())
+    body = {"input": {"text": text}, "voice": {"languageCode": "uk-UA", "name": voice},
+            "audioConfig": {"audioEncoding": "LINEAR16"}}
+    if model:
+        body["voice"]["modelName"] = model
+    if prompt:
+        body["input"]["prompt"] = prompt
+    req = urllib.request.Request(
+        "https://texttospeech.googleapis.com/v1/text:synthesize",
+        data=json.dumps(body).encode("utf-8"),
+        headers={"Authorization": "Bearer " + _GOOGLE_TOKEN[0],
+                 "x-goog-user-project": GOOGLE_PROJECT,
+                 "Content-Type": "application/json"})
+    for attempt in range(5):
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                open(dest, "wb").write(base64.b64decode(json.load(r)["audioContent"]))
+            return True
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 503):
+                time.sleep(10 * (attempt + 1))
+                continue
+            print("FAIL %s: %d %s" % (dest, e.code, e.read()[:300].decode("utf-8", "replace")))
             return False
         except Exception as e:
             print("RETRY %s: %s" % (dest, e))
@@ -261,12 +457,15 @@ def render(variant, rows):
         os.makedirs(os.path.dirname(ogg), exist_ok=True)
         if os.path.exists(ogg) and os.path.getsize(ogg) > 0:
             continue
-        raw = ogg[:-4] + (".wav" if variant["engine"] == "azure" else ".mp3")
+        raw = ogg[:-4] + (".wav" if variant["engine"] in ("azure", "google") else ".mp3")
         if variant["engine"] == "elevenlabs":
             ok = eleven(sent, variant["model"], variant.get("language_code"), raw,
-                        variant.get("voice", MATILDA))
+                        variant.get("voice", MATILDA), variant.get("extra"))
         elif variant["engine"] == "azure":
-            ok = azure(sent, variant["voice"], raw, variant.get("style"), variant.get("rate"))
+            ok = azure(sent, variant["voice"], raw, variant.get("style"), variant.get("rate"),
+                       variant.get("lang"))
+        elif variant["engine"] == "google":
+            ok = google(sent, variant["voice"], raw, variant.get("model"), variant.get("prompt"))
         else:
             ok = edge(sent, variant["voice"], raw)
         if ok and to_ogg(raw, ogg):
@@ -287,6 +486,8 @@ RETIRED = {
     # not something a published pack may be built on.
     "polina-all",
 }
+# v2 renders only on request, for a voice whose v4 clips run too long.
+RETIRED |= {"el2-" + _name for _name in LIBRARY_VOICES}
 
 
 def main():
@@ -305,7 +506,7 @@ def main():
             continue
         print(variant["id"])
         texts = render(variant, rows)
-        entry = {k: v for k, v in variant.items() if k not in ("keys", "override")}
+        entry = {k: v for k, v in variant.items() if k not in ("keys", "override", "spoken")}
         entry["texts"] = texts
         manifest[variant["id"]] = entry
     os.makedirs(VARIANTS_DIR, exist_ok=True)

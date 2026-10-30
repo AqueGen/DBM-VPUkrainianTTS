@@ -1,0 +1,179 @@
+key	seed	verdict	sent	problems
+1695gorak	101	fail	Ґорак на човні	The first word is pronounced with a fricative 'Г' (Horak) instead of the required plosive 'Ґ' (Gorak).
+1695gorak	102	pass	Ґорак на човні	
+1695ukurogg	101	fail	Укуроґ на човні	The word 'Укуроґ' is pronounced as 'Укурок' (with a 'к' instead of 'ґ' at the end)
+1695ukurogg	102	fail	Укуроґ на човні	The final sound in the first word is pronounced as 'к' instead of 'ґ' (sounds like 'Укурок' instead of 'Укуроґ').
+1695ukurogg	103	fail	Укуроґ на човні	The first word is pronounced as 'Укурок' (with a 'к' sound at the end) instead of the required 'Укуроґ' (with a 'ґ' sound).
+1695ukurogg	104	fail	Укуроґ на човні	The final letter 'ґ' in 'Укуроґ' is devoiced and pronounced as 'к' (sounds like 'Укурок'), which is a phoneme replacement and a Russian-sounding phonetic feature (standard Ukrainian does not devoice final voiced consonants). | The delivery is too calm and conversational, lacking the urgency required for a boss-warning callout.
+attackdoomfire	101	pass	Атакуй вогняний дух	
+attackhulkingterror	101	fail	Атакуй жахіття	The delivery is too slow, calm, and sluggish for an urgent in-game combat callout | Lacks the necessary energy and urgency
+attackhulkingterror	102	pass	Атакуй жахіття	
+banishment	101	pass	Вигнання /na toˈbʲi/	
+bigmobsoon	101	pass	Скоро великий ворог	
+bosstobeam	101	fail	Веди боса до променя	Russian pronunciation of the first word: it sounds like 'вєді' instead of the Ukrainian 'веди' (needs a hard 'д' and the Ukrainian 'и' sound at the end).
+bosstobeam	102	fail	Веди боса до променя	The first word 'Веди' is pronounced with a strong Russian accent as 'Вєді' (with a soft 'д' and an 'і' sound instead of a hard 'д' and 'и').
+bosstobeam	103	fail	Веди боса до променя	The word 'Веди' is pronounced with a strong Russian accent (soft 'v', soft 'd', and an 'i' sound at the end instead of the Ukrainian hard 'd' and 'и', sounding like 'вєді' or 'віді').
+bosstobeam	104	fail	Веди боса до променя	The word 'Веди' is pronounced with a Russian accent as 'Вєді' (with a soft 'д' and an 'і' sound at the end instead of a hard 'д' and 'и')
+breaktormentfirst	101	fail	Розбивай муку першим	Wrong stress on the word 'муку': it is pronounced 'мукУ' (which means 'flour') instead of 'мУку' (which means 'torment/agony', the intended gaming term) | The intonation is too calm and conversational, lacking the urgency required for a boss warning
+breaktormentfirst	102	fail	Розбивай муку першим	Wrong stress on the word 'муку' (pronounced as 'мукУ' meaning flour, instead of 'мУку' meaning torment)
+breaktormentfirst	103	fail	Розбивай муку першим	Wrong stress on the word 'муку': it is pronounced as 'мукУ' (which means 'flour') instead of 'мУку' (which means 'torment/agony').
+breaktormentfirst	104	fail	Розбивай муку першим	Incorrect stress on the word 'муку' (pronounced 'муку́' meaning flour, instead of 'му́ку' meaning torment/agony) | The delivery is too slow, relaxed, and lacks the urgency required for a short in-game callout
+breaktormentsecond	101	pass	Розбивай муку другим	
+breaktormentthird	101	fail	Розбивай муку третім	Wrong stress on the word 'муку': it is pronounced as 'мукУ' (flour) instead of 'мУку' (torment).
+breaktormentthird	102	fail	Розбивай муку третім	Wrong stress on the word 'муку': it is pronounced as 'мукУ' (which means 'flour') instead of 'мУку' (which means 'torment/agony', the correct meaning in this context).
+breaktormentthird	103	fail	Розбивай муку третім	Wrong stress on the word 'муку': it is pronounced 'мукУ' (meaning flour) instead of 'мУку' (meaning torment/agony, which fits the game context) | The delivery is slow, robotic, and lacks the urgency required for a boss-warning callout
+breaktormentthird	104	fail	Розбивай муку третім	Wrong stress on the word 'муку': it is pronounced as 'мукУ' (flour) instead of 'мУку' (torment/suffering).
+bringlighttoshadow	101	pass	Неси світло до тіней	
+changecolor	101	fail	Зміни колір	Wrong stress on the word 'Зміни': the speaker stresses the first syllable ('ЗмІни', which is a noun meaning 'changes'), but as an imperative verb ('change!'), the stress must be on the second syllable ('ЗмінИ').
+changecolor	102	fail	Зміни колір	Wrong stress on the word 'Зміни': the speaker stresses the first syllable ('змІни', which is a noun meaning 'changes'), but as an imperative verb ('change'), the stress must be on the second syllable ('змінИ')
+changecolor	103	fail	Зміни колір	Wrong stress on the word 'Зміни'. The speaker stresses the first syllable ('ЗМІ-ни', which sounds like the noun 'changes'), but the imperative verb 'change' requires stress on the second syllable ('змі-НИ').
+changecolor	104	fail	Зміни колір	Wrong stress on the word 'Зміни': it is pronounced with stress on the first syllable ('ЗмІни', which sounds like the noun 'changes') instead of the second syllable ('змінИ', the correct imperative verb form).
+changemoon	101	fail	Зміни місяць	Wrong stress on the word 'Зміни': it is pronounced with stress on the first syllable ('ЗмІни', which means the noun 'changes') instead of the second syllable ('ЗмінИ', which is the imperative verb 'change'). | The intonation is detached and lacks the urgency of a boss warning.
+changemoon	102	fail	Зміни місяць	Wrong stress on the word 'Зміни': it is stressed on the first syllable (which makes it the plural noun 'змі́ни' - 'changes'), but it should be stressed on the second syllable for the imperative verb ('зміни́' - 'change') | The intonation is flat and lacks the urgency required for a boss-warning callout
+changemoon	103	fail	Зміни місяць	Wrong stress on the word 'Зміни': it is pronounced with stress on the first syllable ('ЗмІни', which means the noun 'changes') instead of the second syllable ('ЗмінИ', which is the imperative verb 'change') | The intonation is flat and lacks the urgency required for a boss-warning callout
+changemoon	104	fail	Зміни місяць	Wrong stress on the word 'Зміни': it is pronounced with stress on the first syllable like the noun 'змІни' (changes), but as an imperative verb (change!) it must be stressed on the second syllable 'змінИ' | Flat, conversational intonation that lacks the urgency needed for a boss warning
+changetarget	101	fail	Зміни ціль	Incorrect stress on the word 'Зміни'. The speaker stresses the first syllable ('змІни', which means the noun 'changes'), but as an imperative verb ('change!'), the stress must be on the second syllable ('змінИ').
+changetarget	102	fail	Зміни ціль	Wrong stress on the word 'Зміни'. The speaker stresses the first syllable ('ЗмІни', which is the noun 'changes'), but the imperative verb 'change' requires stress on the second syllable ('змінИ').
+changetarget	103	fail	Зміни ціль	Wrong stress on the word 'Зміни': the speaker stresses the first syllable ('змІни', which is the noun 'changes'), but it should be stressed on the second syllable ('змінИ', which is the imperative verb 'change').
+changetarget	104	fail	Зміни ціль	Wrong stress on the word 'Зміни': it is pronounced with the stress on the first syllable (like the noun 'змІни' - 'changes'), but as an imperative verb ('change!'), the stress must be on the second syllable ('змінИ')
+checkhp	101	fail	Увага, здоров'я!	Unnatural pause between the words | Intonation is too calm and detached, lacking the urgency required for a boss warning
+checkhp	102	pass	Увага, здоров'я!	
+com_go	101	fail	Вперед, вперед, вперед!	Russian pronunciation used ('вперёд' instead of 'вперед')
+com_go	102	fail	Вперед, вперед, вперед!	Pronounced as Russian 'вперёд' (vperyod) instead of Ukrainian 'вперед' (vpered) | The final consonant 'д' is devoiced to 'т', which is typical for Russian but incorrect for Ukrainian
+com_go	103	fail	Вперед, вперед, вперед!	Pronounced as the Russian word 'вперёд' instead of the Ukrainian 'вперед' | Uses the 'ьо' (yo) sound instead of 'е' | Final consonant 'д' is devoiced to 'т', which is typical for Russian but incorrect for Ukrainian
+com_go	104	fail	Вперед, вперед, вперед!	The speaker says the Russian word 'вперёд' (vperyod) instead of the Ukrainian 'вперед' (vpered).
+crusher	101	fail	Трощитель	Russian-sounding pronunciation (akanye: 'о' is pronounced as 'а') | Russian soft 'щ' and 'и' (sounds like 'і') instead of Ukrainian hard 'щ' and 'и' | The 'т' in '-тель' is pronounced soft, which is typical for Russian, instead of the Ukrainian hard 'т'
+crusher	102	fail	Трощитель	Russian pronunciation: 'о' is pronounced as 'а' (akanye) | Russian soft 'щ' instead of the Ukrainian hard 'шч' sound | Russian 'и' sound instead of the Ukrainian 'и'
+crusher	103	fail	Трощитель	Russian pronunciation with akanye ('Тро' is pronounced as 'Тра') | Russian phonetics used for 'щитель' (soft 'щ', Russian 'и', and soft 'т') instead of Ukrainian hard 'щ', 'и', and 'т'
+crusher	104	fail	Трощитель	Russian pronunciation (akanye: 'о' is pronounced as 'а') | Incorrect vowel sounds ('и' and 'е' are pronounced with Russian phonetics, improperly softening the preceding consonants)
+darknessyou	101	pass	Темрява /na toˈbʲi/	
+devotionaura	101	pass	Віддана аура	
+dotyou	101	pass	Дот /na toˈbʲi/	
+dpshard	101	pass	DPS на повну	
+dpsmore	101	fail	Більше DPS	There is an unnatural pause between 'Більше' and 'DPS'. | The intonation lacks the urgency and continuous flow required for a short in-game callout.
+dpsmore	102	fail	Більше DPS	Unnatural pause between 'Більше' and 'DPS' | The acronym 'DPS' is read slowly letter by letter instead of quickly as one unit | The intonation is robotic and lacks the urgency of a short in-game callout
+dpsmore	103	fail	Більше DPS	Unnatural pause between 'Більше' and 'DPS' | The acronym 'DPS' is read slowly letter by letter instead of quickly as one unit | The delivery is disjointed and lacks the urgency of a short in-game callout
+dpsmore	104	fail	Більше DPS	There is an unnatural pause between 'Більше' and 'DPS' | The acronym 'DPS' is read slowly and deliberately letter by letter instead of quickly as one unit | The intonation is too calm and disjointed, lacking the urgency of an in-game callout
+dpsslow	101	fail	Повільніше DPS	The acronym 'DPS' is read slowly letter by letter with unnatural pauses between the letters.
+dpsslow	102	fail	Повільніше DPS	The acronym 'DPS' is read very slowly letter by letter with pauses in between, rather than quickly as one unit. | There is an unnatural pause between 'Повільніше' and the acronym.
+dpsslow	103	fail	Повільніше DPS	The acronym DPS is read very slowly letter by letter with pauses between each letter, violating the instruction to say it quickly as one unit. | There is an unnatural pause between the word 'Повільніше' and the acronym.
+dpsslow	104	fail	Повільніше DPS	The acronym 'DPS' is read very slowly letter by letter with distinct pauses, rather than quickly as one unit | There is an unnatural pause between 'Повільніше' and 'DPS' | The overall delivery is sluggish and lacks the urgency required for a short in-game callout
+dpsstop	101	fail	Стоп DPS	Unnatural pause between 'Стоп' and 'DPS' | The acronym 'DPS' is read slowly letter by letter instead of quickly as one unit | The delivery is sluggish and lacks the urgency required for a short in-game callout
+dpsstop	102	fail	Стоп DPS	The audio is generated by an English TTS voice, not a native Ukrainian speaker. | The word 'Стоп' is pronounced with an English accent (alveolar 't', aspirated 'p', and an English 'o' vowel).
+dpsstop	103	fail	Стоп DPS	Unnatural pause between 'Стоп' and 'DPS' | Disjointed intonation that sounds like reading two separate items rather than a single phrase | Lacks the urgency and speed required for a short in-game callout
+dpsstop	104	fail	Стоп DPS	English accent on the word 'Стоп' (aspirated 't' and 'p') | Robotic and unnatural intonation that lacks the urgency of an in-game callout | Unnatural pause between 'Стоп' and 'DPS'
+failed	101	pass	Провал	
+findflamejet	101	pass	Знайди вогняний струмінь	
+findshadow	101	pass	Сховайся в тіні	
+firecircle	101	pass	Вогняне коло	
+flameyou	101	pass	Полум'я /na toˈbʲi/	
+frontleft	101	pass	Іди вперед ліворуч	
+incomingdebuff	101	pass	Скоро дебаф	
+lightrifts	101	pass	Розломи світла	
+linegather	101	pass	Лінія, зберіться	
+linesoon	101	pass	Скоро лінія	
+lineyou	101	pass	Лінія /na toˈbʲi/	
+orbsincoming	101	fail	Скоро сфери	Russian-sounding pronunciation of the word 'сфери': the 'р' is softened and the final vowel sounds like 'і' or 'е' instead of a hard 'р' and a clear Ukrainian 'и'.
+orbsincoming	102	fail	Скоро сфери	Russian-sounding pronunciation: the word 'сфери' is pronounced as 'сфєрі' with a soft 'ф', soft 'р', and an 'і' sound at the end instead of the hard Ukrainian 'и'.
+orbsincoming	103	fail	Скоро сфери	Russian-sounding pronunciation of the word 'сфери': it is pronounced as 'сфєрі' with a palatalized 'ф' (sounds like 'є' instead of 'е') and an 'і' sound at the end instead of a clear Ukrainian 'и'.
+orbsincoming	104	fail	Скоро сфери	The final vowel in 'сфери' is pronounced as 'і' instead of 'и' (sounds like 'сфері') | Russian-sounding pronunciation (reading the Ukrainian letter 'и' as the Russian 'и')
+poolyou	101	fail	Калюжа /na toˈbʲi/	Unnatural pause between 'Калюжа' and 'на тобі' | Disjointed intonation makes it sound like two separate phrases rather than a single urgent callout
+poolyou	102	fail	Калюжа /na toˈbʲi/	Unnatural pause between 'Калюжа' and 'на тобі' | The delivery is disjointed and lacks the urgency required for a quick in-game callout
+poolyou	103	pass	Калюжа /na toˈbʲi/	
+purpleyou	101	fail	Фіолетовий /na toˈbʲi/	There is an unnatural pause between 'Фіолетовий' and 'на тобі'. | The delivery is too slow and relaxed, lacking the urgency required for a boss warning.
+purpleyou	102	fail	Фіолетовий /na toˈbʲi/	There is an unnatural, long pause between 'Фіолетовий' and 'на тобі' | The disjointed delivery ruins the rhythm and lacks the urgency needed for a quick in-game callout
+purpleyou	103	fail	Фіолетовий /na toˈbʲi/	There is an unnatural pause between 'Фіолетовий' and 'на тобі' | The rhythm and intonation are disjointed, lacking the natural flow and urgency required for a quick in-game callout
+purpleyou	104	fail	Фіолетовий /na toˈbʲi/	Unnatural pause between 'Фіолетовий' and 'на тобі' | Lacks the urgency required for a short in-game callout
+rageyou	101	pass	Лють /na toˈbʲi/	
+redyou	101	fail	Червоний /na toˈbʲi/	Unnatural pause between 'Червоний' and 'на тобі' | Disjointed intonation that sounds like two separate phrases rather than a single urgent callout
+redyou	102	fail	Червоний /na toˈbʲi/	Unnatural pause between 'Червоний' and 'на тобі' | Disjointed intonation, sounds like two separate sentences rather than a single urgent callout
+redyou	103	fail	Червоний /na toˈbʲi/	Unnatural pause between 'Червоний' and 'на тобі' | The intonation drops after the first word, making it sound like two separate sentences rather than a single, urgent callout
+redyou	104	pass	Червоний /na toˈbʲi/	
+rollincoming	101	pass	Скоро коток	
+shadowrun	101	pass	Тінь /na toˈbʲi/, тікай	
+shareone	101	pass	Група один, діліть	
+silencesoon	101	fail	Скоро німота	Wrong stress on the word 'німота' (pronounced as 'німОта' instead of the standard 'німотА') | The delivery is slow and has an unnatural pause between the words, lacking the urgency required for a quick in-game callout
+silencesoon	102	fail	Скоро німота	The delivery is too slow and sluggish for an urgent in-game callout | The intonation is too calm and lacks the necessary urgency for a boss warning
+silencesoon	103	fail	Скоро німота	Incorrect stress in the word 'німота' (pronounced as 'німОта' instead of 'німотА') | Unnatural pause between the words, making the delivery sound sluggish rather than urgent
+silencesoon	104	fail	Скоро німота	Incorrect stress on the word 'німота': the speaker stresses the second syllable ('німо́та') instead of the last syllable ('німота́').
+slamincoming	101	fail	Скоро удар	The final 'о' in 'Скоро' is pronounced as 'а' (Russian akanye).
+slamincoming	102	fail	Скоро удар	The word 'Скоро' is pronounced as 'Скора' with Russian akanye (the unstressed 'о' is reduced to 'а'). In Ukrainian, the 'о' must be pronounced clearly.
+slamincoming	103	fail	Скоро удар	Russian-sounding pronunciation: the unstressed 'о' at the end of 'Скоро' is reduced to an 'а' sound (akanye)
+slamincoming	104	fail	Скоро удар	Russian akanye: the final 'о' in 'Скоро' is pronounced as 'а' ('Скора' instead of 'Скоро')
+soakbeam	101	pass	Поглинь промінь	
+sparktowater	101	fail	Веди іскру до води	The word 'веди' is pronounced with a soft 'д' and an 'і' sound at the end (like Russian 'веди'), instead of the Ukrainian hard 'д' and 'и'. | The phrase 'до води' is pronounced with Russian akanye ('да вады') and a Russian 'ы' sound at the end instead of the Ukrainian 'и'.
+sparktowater	102	fail	Веди іскру до води	The first word 'Веди' is pronounced with a strong Russian accent as 'Вєді' or 'Віді' (using a soft 'д' and an 'і' sound at the end instead of the Ukrainian hard 'д' and 'и')
+sparktowater	103	fail	Веди іскру до води	The first word 'Веди' is pronounced with Russian phonetics as 'Віді' or 'Вєді' (with a soft 'д' and an 'і' sound at the end instead of a hard 'д' and 'и')
+sparktowater	104	fail	Веди іскру до води	The first word 'Веди' is pronounced with a strong Russian accent as 'Вєді' or 'Віді' (with a soft 'д' and an 'і' sound at the end, instead of the Ukrainian hard 'д' and 'и').
+spear	101	fail	Спис	The audio says 'Списка' instead of exactly 'Спис', adding an extra syllable at the end.
+spear	102	fail	Спис	Added an extra syllable at the end (says 'Списка' instead of 'Спис')
+spear	103	fail	Спис	The audio says 'Списка' instead of 'Спис', adding an extra syllable at the end.
+spear	104	fail	Спис	The speaker says 'Списка' instead of the requested 'Спис', adding an extra syllable at the end.
+stepring	101	fail	Стань у кільця	Wrong stress on the word 'кільця': the speaker stresses the last syllable ('кільцЯ', which is genitive singular), but for the plural 'rings' it should be stressed on the first syllable ('кІльця').
+stepring	102	fail	Стань у кільця	Incorrect stress: the word 'кільця' is stressed on the last syllable ('кільцЯ'), but as an accusative plural ('stand in the rings') it must be stressed on the first syllable ('кІльця').
+stepring	103	fail	Стань у кільця	Wrong stress on the word 'кільця': the speaker stresses the last syllable ('кільцЯ'), but the accusative plural form requires stress on the first syllable ('кІльця').
+stepring	104	fail	Стань у кільця	Wrong stress on the word 'кільця'. The speaker stresses the last syllable ('кільця́', which is genitive singular), but in this context (accusative plural, 'stand in the rings') the stress must be on the first syllable ('кі́льця').
+targetyou	101	fail	Ціль /na toˈbʲi/	The word 'тобі' is completely mispronounced, sounding like Russian 'тебе' or 'табє' instead of 'тобі'.
+targetyou	102	pass	Ціль /na toˈbʲi/	
+tauntboss	101	fail	Забери боса	Russian pronunciation of 'Забери': the final syllable is pronounced with a soft 'р' and an 'і' sound instead of the Ukrainian hard 'р' and 'и'
+tauntboss	102	fail	Забери боса	Russian pronunciation of 'Забери': the 'р' is soft and followed by a Russian 'и' [i] instead of a hard 'р' and Ukrainian 'и' [ɪ] | Vowel reduction in 'Забери' (sounds like 'Забири' due to Russian-style ikan'e)
+tauntboss	103	fail	Забери боса	Russian pronunciation of 'Забери': the 'р' is soft and followed by an 'і' sound instead of the Ukrainian hard 'р' and 'и' | Russian-style vowel reduction (akanye) on the unstressed vowels
+tauntboss	104	fail	Забери боса	Russian-sounding pronunciation: 'забери' is pronounced with a soft 'р' and a Russian 'и' sound at the end, instead of the Ukrainian hard 'р' and 'и' [ɪ].
+telesoon	101	fail	Скоро телепорт	Russian pronunciation: 'телепорт' is pronounced with soft 't' and reduced 'e' vowels (sounds like 'тиліпорт' / 't'il'iport' instead of the Ukrainian hard 't' and clear 'e') | Russian vowel reduction on the unstressed 'o' in 'Скоро'
+telesoon	102	fail	Скоро телепорт	Russian-sounding pronunciation (akanye): the word 'Скоро' is pronounced as 'Скора', with the final 'о' incorrectly reduced to an 'а' sound.
+telesoon	103	fail	Скоро телепорт	Russian-sounding pronunciation of 'телепорт' (the consonants 'т' and 'л' are heavily palatalized, sounding like 'тєлєпорт' or 'тилепорт' instead of the hard Ukrainian 'е') | Russian-style vowel reduction at the end of 'скоро' (sounds like 'скора')
+telesoon	104	fail	Скоро телепорт	Russian-sounding pronunciation of 'телепорт': the consonants 'т' and 'л' are softened before 'е' (sounds like 'тєлєпорт' or 'тилепорт'), whereas in Ukrainian they should remain hard.
+teleyou	101	fail	Телепорт /na toˈbʲi/	Russian-sounding pronunciation of 'Телепорт': the consonants 'т' and 'л' are softened and the unstressed 'е' vowels are reduced to 'и' (sounds like 'тіліпорт'). In Ukrainian, 'т' and 'л' must remain hard before 'е', and the 'е' sounds should be clear.
+teleyou	102	fail	Телепорт /na toˈbʲi/	Russian-sounding pronunciation of 'Телепорт': the consonants 'т' and 'л' are softened before 'е' (sounds like 'тье-лье-порт'), whereas in Ukrainian they should be hard | Vowel reduction in 'Телепорт' (sounds like 'тіліпорт' due to Russian-style unstressed vowel reduction)
+teleyou	103	fail	Телепорт /na toˈbʲi/	Russian-sounding pronunciation of 'Телепорт': the consonants 'т' and 'л' are softened before 'е' (sounds like 'тєлєпорт' or 'целепорт' instead of using hard consonants)
+teleyou	104	fail	Телепорт /na toˈbʲi/	The first word is pronounced as 'Целепорт' instead of 'Телепорт' (the initial 'Т' is replaced with 'Ц') | Sluggish delivery with an unnatural pause between the words
+throweyedebuff	101	pass	Кинь око гравцю з дебафом	
+throweyehealer	101	pass	Кинь око хілеру	
+transporter	101	fail	Транспортер	Russian pronunciation: the word is pronounced as 'транспортёр' with a 'ё' sound instead of the standard Ukrainian 'транспортер' with an 'е' sound.
+transporter	102	fail	Транспортер	Russian pronunciation: the word is pronounced as 'транспортёр' with a 'ё' sound instead of the correct Ukrainian 'транспортер' with an 'е' sound
+transporter	103	fail	Транспортер	Russian pronunciation: the word is pronounced as 'транспортёр' with a 'yo' sound at the end instead of the Ukrainian 'е' | Russian akanye: unstressed 'o' is pronounced as 'a'
+transporter	104	fail	Транспортер	Russian pronunciation: the word is pronounced with a Russian 'ё' sound ('транспортёр') instead of the correct Ukrainian 'е' ('транспортер')
+wrathaura	101	fail	Гнівна аура	Incorrect stress on the word 'Гнівна' (the speaker stresses the second syllable 'гні-ВНА' instead of the correct first syllable 'ГНІ-вна')
+wrathaura	102	pass	Гнівна аура	
+count/10	101	fail	Десять	Russian pronunciation: the 'д' is pronounced soft (palatalized) before 'е', whereas in Ukrainian it must be hard.
+count/10	102	fail	Десять	Russian pronunciation: the 'д' is softened before 'е' and the vowel sounds like Russian 'е', making the word sound exactly like Russian 'десять' instead of Ukrainian 'десять' (which should have a hard 'д' and a clear 'е' sound).
+count/10	103	fail	Десять	Russian pronunciation: the 'д' is pronounced soft (palatalized) before 'е', but it must be hard in Ukrainian | The vowel 'я' is reduced, which is typical for Russian phonetics; in Ukrainian it should be a clear 'а' sound
+count/10	104	fail	Десять	Russian pronunciation: the first consonant 'д' is pronounced soft (palatalized) before 'е', sounding like 'дєсять', whereas in Ukrainian 'д' before 'е' must be hard.
+Thogar/A1	101	fail	/ˈkɔlija/ один: експрес	Unnatural pause between 'один' and 'експрес' | The delivery is too calm and slow for a short, urgent in-game callout
+Thogar/A1	102	fail	/ˈkɔlija/ один: експрес	Wrong stress on the word 'Колія': the speaker stresses the first syllable ('кОлія') instead of the correct second syllable ('колІя').
+Thogar/A1	103	pass	/ˈkɔlija/ один: експрес	
+Thogar/A2	101	fail	/ˈkɔlija/ два: експрес	Russian-sounding pronunciation (akanye): the unstressed 'о' in 'Колія' is pronounced as 'а' ('Калія') | The delivery is somewhat relaxed and has a noticeable pause, lacking the urgency expected for a quick in-game callout
+Thogar/A2	102	fail	/ˈkɔlija/ два: експрес	The word 'Колія' is pronounced with Russian akanye as 'Калія' (the unstressed 'о' is incorrectly pronounced as 'а').
+Thogar/A2	103	pass	/ˈkɔlija/ два: експрес	
+Thogar/A3	101	fail	/ˈkɔlija/ три: експрес	Wrong stress on the word 'колія' (pronounced as 'колІя' instead of the standard 'кОлія') | Unnatural pause between 'три' and 'експрес'
+Thogar/A3	102	pass	/ˈkɔlija/ три: експрес	
+Thogar/A4	101	pass	/ˈkɔlija/ чотири: експрес	
+Thogar/B1E4	101	pass	/ˈkɔlija/ один: підкріплення, /ˈkɔlija/ чотири: лісоруб	
+Thogar/B4	101	pass	/ˈkɔlija/ чотири: підкріплення	
+Thogar/C14	101	pass	/ˈkɔliji/ один і чотири: гармати	
+Thogar/C1D4	101	fail	/ˈkɔlija/ один: гармата, /ˈkɔlija/ чотири: воїни	Unnatural, long pauses between phrases | The delivery is too slow and drawn out for an urgent in-game callout
+Thogar/C1D4	102	fail	/ˈkɔlija/ один: гармата, /ˈkɔlija/ чотири: воїни	Unnatural, disjointed intonation: each phrase is read as a separate sentence with a falling pitch | Unnatural pauses between phrases make the delivery too sluggish and robotic for an urgent in-game callout
+Thogar/C1D4	103	fail	/ˈkɔlija/ один: гармата, /ˈkɔlija/ чотири: воїни	Unnatural pauses between phrases | Sluggish rhythm that lacks the urgency needed for a boss-warning callout | Sounds like disjointed, separate audio clips stitched together
+Thogar/C1D4	104	pass	/ˈkɔlija/ один: гармата, /ˈkɔlija/ чотири: воїни	
+Thogar/C2	101	fail	/ˈkɔlija/ два: гармата	Wrong stress in the word 'колія' (stressed on 'і' instead of the first 'о')
+Thogar/C2	102	fail	/ˈkɔlija/ два: гармата	The word 'Колія' is pronounced with Russian-style akanye as 'Калія' (the unstressed 'о' is incorrectly said as 'а') | The delivery is a bit too relaxed and slow for an urgent in-game callout
+Thogar/C2	103	fail	/ˈkɔlija/ два: гармата	Incorrect stress in the word 'Колія' (should be on the first syllable 'кОлія', but pronounced as 'калІя') | Russian-sounding akanye in 'Колія' (pronounced with an 'а' sound in the first syllable)
+Thogar/C2	104	fail	/ˈkɔlija/ два: гармата	The word 'Колія' is pronounced with Russian akanye as 'Калія' instead of a clear 'о'
+Thogar/D1	101	pass	/ˈkɔlija/ один: воїни	
+Thogar/D1C4	101	fail	/ˈkɔlija/ один: воїни, /ˈkɔlija/ чотири: гармата	The delivery is drawn out and sluggish. | There are unnatural, robotic pauses between the phrases. | The intonation lacks the urgency and fluidity expected for a short in-game callout.
+Thogar/D1C4	102	pass	/ˈkɔlija/ один: воїни, /ˈkɔlija/ чотири: гармата	
+Thogar/D2	101	fail	/ˈkɔlija/ два: воїни	Unnatural, long pause between 'два' and 'воїни' | The delivery is too slow, calm, and detached for a short, urgent in-game callout
+Thogar/D2	102	pass	/ˈkɔlija/ два: воїни	
+Thogar/D2B3	101	fail	/ˈkɔlija/ два: воїни, /ˈkɔlija/ три: підкріплення	The word 'колія' is mispronounced as 'коли я' (with an 'и' sound instead of 'і' and an unnatural split).
+Thogar/D2B3	102	fail	/ˈkɔlija/ два: воїни, /ˈkɔlija/ три: підкріплення	The delivery is too slow and disjointed for an urgent in-game callout. | There are unnatural, robotic pauses between each part of the phrase (after 'два', 'воїни', and 'три').
+Thogar/D2B3	103	fail	/ˈkɔlija/ два: воїни, /ˈkɔlija/ три: підкріплення	Wrong stress on the word 'колія' (pronounced 'кОлія' instead of 'колІя') | The delivery is slow and drawn out with unnatural pauses, lacking the urgency needed for an in-game callout
+Thogar/D2B3	104	fail	/ˈkɔlija/ два: воїни, /ˈkɔlija/ три: підкріплення	Wrong stress on the word 'колія' (pronounced as 'кОлія' instead of the correct 'колІя')
+Thogar/D2C4	101	fail	/ˈkɔlija/ два: воїни, /ˈkɔlija/ чотири: гармата	The word 'колія' is mispronounced as 'коли я' (with an 'и' sound instead of 'і')
+Thogar/D2C4	102	fail	/ˈkɔlija/ два: воїни, /ˈkɔlija/ чотири: гармата	The word 'колія' is mispronounced as 'коли я' (with an 'и' sound instead of 'і') | Unnatural pauses between words, resulting in a robotic and disjointed delivery | Lacks the urgent, fluid intonation required for an in-game callout
+Thogar/D2C4	103	fail	/ˈkɔlija/ два: воїни, /ˈkɔlija/ чотири: гармата	Incorrect stress on the word 'колія' (pronounced 'колІя' instead of the standard 'кОлія') | The delivery is somewhat slow and robotic, lacking the urgency expected for an in-game callout
+Thogar/D2C4	104	fail	/ˈkɔlija/ два: воїни, /ˈkɔlija/ чотири: гармата	Mispronounced 'колія' as 'коли я' (replaced 'і' with 'и' in both instances) | Unnatural pauses and slow, disjointed pacing for an urgent in-game callout
+Thogar/E1A23	101	fail	/ˈkɔlija/ один: лісоруб, /ˈkɔliji/ два і три: експреси	Incorrect stress on the word 'лісоруб' (pronounced as 'лІсоруб' instead of 'лісорУб') | The delivery is drawn out, sluggish, and has unnatural pauses, lacking the urgency of an in-game callout
+Thogar/E1A23	102	fail	/ˈkɔlija/ один: лісоруб, /ˈkɔliji/ два і три: експреси	Unnatural, robotic pauses between phrases | The rhythm and intonation lack the urgency needed for a quick in-game callout
+Thogar/E1A23	103	fail	/ˈkɔlija/ один: лісоруб, /ˈkɔliji/ два і три: експреси	The delivery is sluggish and drawn out. | There are unnatural, robotic pauses between the phrases. | The intonation lacks the urgency required for a short in-game callout.
+Thogar/E1A23	104	fail	/ˈkɔlija/ один: лісоруб, /ˈkɔliji/ два і три: експреси	Unnatural, disjointed intonation with a falling pitch on every phrase | Long pauses between phrases make the delivery too slow and sluggish for an urgent callout | Sounds like a robotic TTS reading separate sentences rather than a single cohesive warning
+Thogar/E23	101	pass	/ˈkɔliji/ два і три: лісоруби	

@@ -15,7 +15,8 @@ import sys
 from concurrent.futures import ThreadPoolExecutor
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-PACK = os.path.dirname(HERE)
+# DBM_VP_PACK points at another voice's addon folder; the default is this one.
+PACK = os.environ.get("DBM_VP_PACK") or os.path.dirname(HERE)
 TARGET = -13.0
 TOLERANCE = 0.3  # leave a clip alone if it is already this close
 LIMIT = 10 ** (-1.5 / 20)

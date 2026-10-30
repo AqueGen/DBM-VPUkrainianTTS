@@ -1,0 +1,5 @@
+key	candidate	verdict	problems
+purpleyou	Фіолетовий /na toˈbʲi/! seed 501	fail	Unnatural pause between 'Фіолетовий' and 'на тобі' | The intonation drops after the first word as if ending a sentence, making it sound disjointed rather than a single urgent callout
+purpleyou	Фіолетовий /na toˈbʲi/! seed 502	fail	There is a noticeable, unnatural pause between 'Фіолетовий' and 'на тобі'. | The intonation is disjointed, making it sound like two separate statements rather than a single, urgent in-game callout.
+purpleyou	Фіолетовий /na toˈbʲi/! seed 503	fail	Unnatural pause between 'Фіолетовий' and 'на тобі' | Disjointed intonation that breaks the flow and lacks the urgency of a short in-game callout
+purpleyou	Фіолетовий /na toˈbʲi/! seed 504	fail	There is an unnatural and noticeable pause between 'Фіолетовий' and 'на тобі' | The disjointed delivery breaks the phrase into two separate chunks, ruining the urgency and natural flow of a short callout | The function word 'на' receives unnatural emphasis due to the pause preceding it

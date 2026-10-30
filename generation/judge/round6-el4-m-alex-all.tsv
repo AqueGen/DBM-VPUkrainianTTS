@@ -1,0 +1,13 @@
+key	candidate	verdict	problems
+dpsslow	Сповільни DPS seed 601	fail	The acronym 'DPS' is read very slowly letter by letter instead of quickly as one unit. | There is an unnatural pause between the word 'Сповільни' and the acronym.
+dpsslow	Сповільни DPS seed 602	fail	The acronym 'DPS' is read very slowly letter by letter with unnatural pauses between each letter, rather than being spoken quickly as one unit.
+dpsslow	Сповільни DPS seed 603	fail	The acronym 'DPS' is read very slowly letter by letter with unnatural pauses between each letter. | The overall delivery is drawn out and lacks the urgency required for a short in-game callout.
+dpsslow	Сповільни DPS! seed 601	fail	The acronym 'DPS' is read very slowly letter by letter with unnatural pauses between each letter. | The overall delivery is too sluggish and lacks the urgency needed for a quick in-game callout.
+dpsslow	Сповільни DPS! seed 602	fail	The acronym 'DPS' is read very slowly letter by letter with unnatural pauses between each letter. | The overall delivery is drawn out and lacks the urgency required for a quick in-game callout.
+dpsslow	Сповільни DPS! seed 603	fail	The acronym DPS is read slowly letter by letter instead of quickly as one unit | Unnatural pause between the word and the acronym
+purpleyou	Фіолетовий /na toˈbʲi/. seed 601	fail	Unnatural pause between 'Фіолетовий' and 'на тобі' | Disjointed intonation that breaks the flow of a short, urgent callout
+purpleyou	Фіолетовий /na toˈbʲi/. seed 602	fail	Unnatural pause between 'Фіолетовий' and 'на тобі' | The disjointed rhythm and lack of flow make it sound unnatural and lacking the urgency needed for a boss warning
+purpleyou	Фіолетовий /na toˈbʲi/. seed 603	fail	Unnatural pause between 'Фіолетовий' and 'на тобі' | Disjointed intonation that sounds like two separate sentences rather than a single urgent callout
+purpleyou	Фіолетовий, /na toˈbʲi/! seed 601	fail	Unnatural pause between 'Фіолетовий' and 'на тобі' | Intonation lacks urgency and sounds like two separate sentences rather than a single quick callout
+purpleyou	Фіолетовий, /na toˈbʲi/! seed 602	fail	Unnatural pause between 'Фіолетовий' and 'на тобі' | Intonation sounds like two separate sentences rather than a single urgent callout
+purpleyou	Фіолетовий, /na toˈbʲi/! seed 603	fail	Unnatural pause between 'Фіолетовий' and 'на тобі' | Intonation sounds like two separate sentences rather than a single urgent callout

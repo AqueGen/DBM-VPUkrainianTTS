@@ -1,0 +1,52 @@
+key	candidate	verdict	problems
+changecolor	/zmʲiˈnɪ/ колір seed 201	fail	The word 'Зміни' is mispronounced with Russian phonetics as 'Зміні' or 'Змєні' (soft 'н' and 'і' at the end instead of the Ukrainian hard 'и')
+changecolor	/zmʲiˈnɪ/ колір seed 202	fail	Wrong stress on the first word: it is pronounced with the stress on the first syllable ('змІни', which is the noun 'changes') instead of the imperative verb ('змінИ', meaning 'change!'). | The final vowel in the first word is pronounced incorrectly as 'і' instead of 'и' (sounds like 'зміні').
+changecolor	Змі-ни колір seed 201	fail	Wrong stress on the word 'Зміни': it is pronounced with stress on the first syllable (like the noun 'змІни') instead of the correct imperative form ('змінИ') | Unnatural, disjointed rhythm with a noticeable pause between the syllables of 'Зміни' | Sluggish and drawn-out delivery, which is unsuitable for a short, urgent in-game callout
+changecolor	Змі-ни колір seed 202	fail	Wrong stress on the first word: the speaker says 'ЗмІни' (noun meaning 'changes') instead of the imperative verb 'ЗмінИ' (change). | Unnatural pause between the two words. | Sluggish and robotic delivery, lacking the urgency needed for a boss warning.
+changemoon	/zmʲiˈnɪ/ місяць seed 201	fail	Unnatural pause between the words | The delivery is disjointed and lacks the urgency required for a boss warning
+changemoon	/zmʲiˈnɪ/ місяць seed 202	pass	
+changetarget	/zmʲiˈnɪ/ ціль seed 201	pass	
+breaktormentthird	Розбивай /ˈmuku/ третім seed 201	pass	
+breakvine	Розірви /loˈzu/ seed 201	fail	Wrong stress in the word 'лозу' (pronounced as 'ло́зу' instead of the correct 'лозу́')
+breakvine	Розірви /loˈzu/ seed 202	fail	Incorrect stress on the word 'лозу' (pronounced with stress on the first syllable 'лОзу' instead of the correct 'лозУ')
+breakvine	Розірви ло-зу seed 201	fail	Unnatural pause between the syllables of the word 'лозу' (ло-зу) | The delivery is drawn out and sluggish, lacking the urgency required for a boss warning
+breakvine	Розірви ло-зу seed 202	fail	The delivery is very sluggish and drawn out. | There is an unnatural pause between the words. | The intonation lacks the urgency required for a quick in-game callout.
+1695gorak	/ˈɡɔrak/ на човні seed 201	fail	The first sound is pronounced as a fricative 'Г' [ɦ] instead of the required plosive 'Ґ' [g]
+1695gorak	/ˈɡɔrak/ на човні seed 202	fail	The speaker pronounces the first word with a 'Г' (Horak) instead of the required 'Ґ' (Gorak).
+1695gorak	Ґо-рак на човні seed 201	fail	Replaced sound: pronounced 'Горак' (with a fricative Г) instead of 'Ґорак' (with a plosive Ґ)
+1695gorak	Ґо-рак на човні seed 202	fail	The first sound is pronounced as 'Г' (/ɦ/) instead of the required 'Ґ' (/g/) | The stress in the first word is incorrectly placed on the second syllable (Гора́к instead of Ґо́рак)
+1695ukurogg	/ukuˈrɔɡ/ на човні seed 201	fail	The word 'Укуроґ' is pronounced as 'Укурох' (the final sound 'ґ' is replaced with 'х')
+1695ukurogg	/ukuˈrɔɡ/ на човні seed 202	fail	The final sound in 'Укуроґ' is pronounced as 'х' instead of 'ґ'. | There is an unnatural pause between the first word and the rest of the phrase, making the delivery sound disconnected and sluggish.
+1695ukurogg	Уку-роґ на човні seed 201	fail	The letter 'ґ' in 'Укуроґ' is incorrectly pronounced as 'х' (sounds like 'Укурох')
+1695ukurogg	Уку-роґ на човні seed 202	fail	Replaced sound: the first word is pronounced as 'Укурок' with a 'к' at the end instead of the required 'ґ'.
+attacktotem	Атакуй /toˈtɛm/ seed 201	pass	
+crusher	Тро-щи-тель seed 201	fail	Russian-sounding pronunciation: 'и' is pronounced as 'і' (sounds like 'Трощітель') | Russian-sounding pronunciation: 'те' is pronounced as 'тє' with a soft 'т' (sounds like 'тєль' instead of 'тель')
+crusher	Тро-щи-тель seed 202	fail	Russian-sounding pronunciation: 'щ' is pronounced as a soft Russian 'щ' instead of the hard Ukrainian 'шч' | The vowel 'и' is pronounced as the Russian 'и' (/i/) instead of the Ukrainian 'и' (/ɪ/) | The vowel 'е' in the last syllable sounds like a Russian 'е' (/je/)
+crusher	Тро-щитель! seed 201	fail	The vowel 'и' is pronounced as 'і' (sounds like 'Трощітель' instead of 'Трощитель') | Russian-sounding soft 'щ' instead of the standard Ukrainian hard 'щ' | The delivery is slow and over-enunciated, lacking the urgency needed for a boss warning
+crusher	Тро-щитель! seed 202	fail	Russian-sounding pronunciation: 'и' is pronounced as 'і' (щі instead of щи) | The 'т' is palatalized before 'е' (sounds like 'тєль' instead of 'тель')
+fearsoon	Ско-ро страх seed 201	fail	The delivery is drawn out and sluggish | The intonation and rhythm lack the urgency required for a short in-game boss warning
+fearsoon	Ско-ро страх seed 202	fail	Unnatural pause between the words | Sluggish and drawn-out delivery that lacks the urgency needed for a boss warning
+fearsoon	Скоро! Страх seed 201	fail	Unnatural pause between 'Скоро' and 'страх' | The disjointed delivery lacks the urgency and flow required for a quick in-game callout
+fearsoon	Скоро! Страх seed 202	fail	There is a long, unnatural pause between the words 'Скоро' and 'страх' | The delivery is too disjointed and lacks the urgency required for a quick in-game callout
+dpshard	squeezed dpshard.ogg	fail	There is an unnatural pause between 'DPS' and 'на повну' | The delivery is disjointed and lacks the urgency of a quick in-game callout
+dpshard	squeezed fix-s101.ogg	fail	Unnatural pause between 'DPS' and 'на повну' | Disjointed intonation that lacks the urgency and flow of a single in-game callout
+dpshard	squeezed fix-s102.ogg	fail	Unnatural pause between 'DPS' and 'на повну' | Disjointed intonation that lacks the urgency of a single, quick callout
+dpshard	squeezed fix-s103.ogg	fail	Unnatural pause between 'DPS' and 'на повну' | The intonation is too relaxed and lacks the urgency required for a short in-game callout
+dpshard	squeezed fix-s104.ogg	fail	Unnatural pause between 'DPS' and 'на повну' | Sluggish, drawn-out delivery | Intonation is too relaxed and lacks the urgency required for a quick in-game callout
+dpsslow	squeezed dpsslow.ogg	fail	The acronym 'DPS' is read very slowly letter by letter with distinct pauses, violating the instruction to speak it quickly as one unit. | There is an unnatural pause between 'Повільніше' and the acronym. | The overall delivery is sluggish and lacks the urgency required for a short in-game callout.
+dpsslow	squeezed fix-s101.ogg	fail	The acronym 'DPS' is read very slowly letter by letter with long pauses, rather than quickly as one unit. | There is an unnatural pause between 'Повільніше' and the acronym.
+dpsslow	squeezed fix-s102.ogg	fail	The acronym DPS is read very slowly letter by letter with unnatural pauses instead of quickly as one unit.
+dpsslow	squeezed fix-s103.ogg	fail	The acronym 'DPS' is read slowly letter by letter with unnatural pauses, rather than quickly as one unit.
+dpsslow	squeezed fix-s104.ogg	fail	The acronym 'DPS' is read very slowly letter by letter with unnatural pauses between each letter, instead of being spoken quickly as one unit.
+purpleyou	squeezed purpleyou.ogg	fail	Unnatural pause between 'Фіолетовий' and 'на тобі' | Disjointed intonation; sounds like two separate recordings stitched together rather than a single urgent callout
+purpleyou	squeezed fix-s101.ogg	fail	Unnatural pause between 'Фіолетовий' and 'на тобі' | Disjointed intonation, sounds like two separate audio clips stitched together | Lacks the urgency and fluidity required for a short in-game callout
+purpleyou	squeezed fix-s102.ogg	fail	There is a highly unnatural pause between 'Фіолетовий' and 'на тобі'. | The disconnected delivery ruins the rhythm and lacks the urgency required for a boss-warning callout.
+purpleyou	squeezed fix-s103.ogg	fail	Unnatural pause between 'Фіолетовий' and 'на тобі' | Disjointed intonation, lacks the urgency of a single callout phrase
+purpleyou	squeezed fix-s104.ogg	fail	Unnatural pause between 'Фіолетовий' and 'на тобі' | Disjointed rhythm and intonation, lacks the urgency required for a quick in-game callout
+redyou	squeezed redyou.ogg	fail	Unnatural pause between 'Червоний' and 'на тобі' | Disjointed rhythm and intonation, lacks the fluidity and urgency of a quick in-game callout
+redyou	squeezed fix-s101.ogg	fail	Unnatural pause between 'Червоний' and 'на тобі' | Disjointed intonation, sounds like two separate phrases rather than a single urgent callout
+redyou	squeezed fix-s102.ogg	fail	Unnatural pause between 'Червоний' and 'на тобі' | The delivery sounds like two separate sentences rather than a single, urgent callout
+redyou	squeezed fix-s103.ogg	fail	Unnatural pause between 'Червоний' and 'на тобі' | Lacks the urgency and fluid rhythm expected for a short in-game callout
+redyou	squeezed fix-s104.ogg	fail	Unnatural pause between 'Червоний' and 'на тобі' | Disjointed rhythm and intonation; sounds like two separate phrases rather than a single urgent callout
+Thogar/E1A23	squeezed E1A23.ogg	fail	The line is drawn out and sluggish | There are unnatural pauses between phrases | The intonation lacks the urgency required for an in-game callout
+Thogar/E1A23	squeezed fix-s101.ogg	pass	
