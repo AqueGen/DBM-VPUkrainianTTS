@@ -1,3 +1,4 @@
+-- Copyright (c) 2026 AqueGen. All rights reserved. See LICENSE.
 local PATH = "Interface\\AddOns\\DBM-VPUkrainianEvgeniy\\events\\"
 
 if DBM then

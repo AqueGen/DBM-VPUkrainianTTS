@@ -1,3 +1,4 @@
+-- Copyright (c) 2026 AqueGen. All rights reserved. See LICENSE.
 local _, ns = ...
 
 ns.PREFIX = "|cff308530DBM Voice Ukrainian|r: "

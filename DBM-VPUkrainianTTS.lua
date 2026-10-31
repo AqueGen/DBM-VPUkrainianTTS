@@ -1,3 +1,4 @@
+-- Copyright (c) 2026 AqueGen. All rights reserved. See LICENSE.
 -- Registers the event sounds that DBM does not discover from the TOC metadata.
 --
 -- Alert phrases and the countdown are resolved by DBM-Core from the addon folder

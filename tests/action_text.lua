@@ -1,3 +1,4 @@
+-- Copyright (c) 2026 AqueGen. All rights reserved. See LICENSE.
 -- Run: lua tests/action_text.lua   (Lua 5.1, from the pack root)
 local files = {"text/Phrases.lua", "text/Actions.lua", "text/Engine.lua", "Options.lua"}
 

@@ -1,3 +1,4 @@
+-- Copyright (c) 2026 AqueGen. All rights reserved. See LICENSE.
 local _, ns = ...
 
 local ACTION_TEXT = "DBM_VP_UKRAINIANTTS_ACTION_TEXT"
