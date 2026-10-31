@@ -1,3 +1,4 @@
+-- Copyright (c) 2026 AqueGen. All rights reserved. See LICENSE.
 -- Run: lua tests/whats_new.lua   (Lua 5.1, from the pack root)
 local handlers, timers, shown = {}, {}, 0
 _G.CreateFrame = function()

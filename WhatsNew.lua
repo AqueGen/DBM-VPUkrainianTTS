@@ -1,3 +1,4 @@
+-- Copyright (c) 2026 AqueGen. All rights reserved. See LICENSE.
 local _, ns = ...
 
 -- Bump when NOTES change; every player then sees the window once more.

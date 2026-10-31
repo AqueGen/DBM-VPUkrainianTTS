@@ -1,3 +1,4 @@
+-- Copyright (c) 2026 AqueGen. All rights reserved. See LICENSE.
 -- Shared by every Ukrainian pack (identical copy in each folder); the first one loaded installs the hook.
 if not DBM or DBM.UkrainianVoiceSync then return end
 DBM.UkrainianVoiceSync = true
